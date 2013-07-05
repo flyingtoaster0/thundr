@@ -37,10 +37,11 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: scheduler
+  database: d5gq1mv8nefsra
   pool: 5
-  host: localhost
-  username: postgres1
-  password: pass4u
+  port: 5432
+  host: ec2-107-20-201-165.compute-1.amazonaws.com
+  username: hpwrozhcyhgutd
+  password: kvdZYK84MTSNh-VBVyqsjUyLJe
 
 
