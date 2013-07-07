@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  courseCode: MyString
+  name: MyString
+  description: MyText
+  campus: MyString
+  room: MyString
+  startDate: 2013-07-07
+  endDate: 2013-07-07
+  mon: false
+  tue: false
+  wed: false
+  thu: false
+  fri: false
+  sat: false
+  sun: false
+  startTime: 2013-07-07 13:24:40
+  endTime: 2013-07-07 13:24:40
+  instructor: MyString
+  notes: MyText
+
+two:
+  courseCode: MyString
+  name: MyString
+  description: MyText
+  campus: MyString
+  room: MyString
+  startDate: 2013-07-07
+  endDate: 2013-07-07
+  mon: false
+  tue: false
+  wed: false
+  thu: false
+  fri: false
+  sat: false
+  sun: false
+  startTime: 2013-07-07 13:24:40
+  endTime: 2013-07-07 13:24:40
+  instructor: MyString
+  notes: MyText
