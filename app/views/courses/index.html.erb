@@ -1,0 +1,15 @@
+<h1>Listing courses</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @courses.each do |course| %>
+    <tr>
+      <td><%= course.courseCode %></td>
+      <td><%= course.name %></td>
+    </tr>
+  <% end %>
+</table>

@@ -3,6 +3,19 @@ class CoursesController < ApplicationController
   end
 
   def create
-    render text: params[:course].inspect
+    @course = Course.new(params[:course])
+
+    @course.save
+    redirect_to @course
   end
+
+  def show
+    @course = Course.find(params[:id])
+  end
+
+  def index
+    @courses = Course.all
+  end
+
+
 end
