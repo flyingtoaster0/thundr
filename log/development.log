@@ -4410,3 +4410,41 @@ Served asset /home.js - 304 Not Modified (2ms)
 
 Started GET "/assets/application.js?body=1" for 199.246.40.54 at 2013-07-08 11:39:22 -0400
 Served asset /application.js - 304 Not Modified (17ms)
+
+
+Started GET "/" for 199.246.40.54 at 2013-07-08 11:49:34 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 717ms (Views: 714.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.css?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /application.css - 304 Not Modified (42ms)
+
+
+Started GET "/assets/home.css?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /home.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/courses.css?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /courses.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/courses.js?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /courses.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/home.js?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /home.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
+Served asset /application.js - 304 Not Modified (17ms)
