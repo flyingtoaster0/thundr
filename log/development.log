@@ -4448,3 +4448,523 @@ Served asset /home.js - 304 Not Modified (2ms)
 
 Started GET "/assets/application.js?body=1" for 199.246.40.54 at 2013-07-08 11:49:35 -0400
 Served asset /application.js - 304 Not Modified (17ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-09 09:55:32 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (3.0ms)
+Compiled courses.css  (10ms)  (pid 10964)
+Compiled home.css  (3ms)  (pid 10964)
+Compiled application.css  (56ms)  (pid 10964)
+Compiled jquery.js  (10ms)  (pid 10964)
+Compiled jquery_ujs.js  (0ms)  (pid 10964)
+Compiled courses.js  (335ms)  (pid 10964)
+Compiled home.js  (163ms)  (pid 10964)
+Compiled application.js  (612ms)  (pid 10964)
+Completed 200 OK in 841ms (Views: 841.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/courses.js?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /courses.js - 200 OK (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /home.css - 200 OK (9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /application.css - 304 Not Modified (39ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /jquery.js - 304 Not Modified (6ms)
+
+
+Started GET "/assets/courses.css?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /courses.css - 200 OK (41ms)
+
+
+Started GET "/assets/home.js?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /home.js - 200 OK (20ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (25ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-09 09:55:33 -0400
+Served asset /application.js - 304 Not Modified (6ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2013-07-09 09:55:58 -0400
+Processing by Devise::RegistrationsController#new as HTML
+Mysql2::Error: Table 'scheduler.users' doesn't exist: SHOW FULL FIELDS FROM `users`
+Completed 500 Internal Server Error in 35ms
+
+ActiveRecord::StatementInvalid (Mysql2::Error: Table 'scheduler.users' doesn't exist: SHOW FULL FIELDS FROM `users`):
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:245:in `query'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:245:in `block in execute'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract_adapter.rb:280:in `block in log'
+  activesupport (3.2.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract_adapter.rb:275:in `log'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:245:in `execute'
+  activerecord (3.2.13) lib/active_record/connection_adapters/mysql2_adapter.rb:211:in `execute'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:259:in `execute_and_free'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:426:in `columns'
+  activerecord (3.2.13) lib/active_record/connection_adapters/schema_cache.rb:12:in `block in initialize'
+  activerecord (3.2.13) lib/active_record/model_schema.rb:228:in `yield'
+  activerecord (3.2.13) lib/active_record/model_schema.rb:228:in `columns'
+  activerecord (3.2.13) lib/active_record/model_schema.rb:243:in `column_defaults'
+  activerecord (3.2.13) lib/active_record/base.rb:482:in `initialize'
+  devise (2.2.4) lib/devise/models/registerable.rb:20:in `new'
+  devise (2.2.4) lib/devise/models/registerable.rb:20:in `new_with_session'
+  devise (2.2.4) app/controllers/devise/registrations_controller.rb:87:in `build_resource'
+  devise (2.2.4) app/controllers/devise/registrations_controller.rb:7:in `new'
+  actionpack (3.2.13) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (3.2.13) lib/abstract_controller/base.rb:167:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (3.2.13) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:436:in `_run__190119364__process_action__84343714__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `block in instrument'
+  activesupport (3.2.13) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (3.2.13) lib/active_support/notifications.rb:123:in `instrument'
+  actionpack (3.2.13) lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  actionpack (3.2.13) lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+  activerecord (3.2.13) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (3.2.13) lib/abstract_controller/base.rb:121:in `process'
+  actionpack (3.2.13) lib/abstract_controller/rendering.rb:45:in `process'
+  actionpack (3.2.13) lib/action_controller/metal.rb:203:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  actionpack (3.2.13) lib/action_controller/metal.rb:246:in `block in action'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:36:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/mapper.rb:42:in `call'
+  journey (1.0.4) lib/journey/router.rb:68:in `block in call'
+  journey (1.0.4) lib/journey/router.rb:56:in `each'
+  journey (1.0.4) lib/journey/router.rb:56:in `call'
+  actionpack (3.2.13) lib/action_dispatch/routing/route_set.rb:612:in `call'
+  warden (1.2.1) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.1) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.1) lib/warden/manager.rb:34:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  rack (1.4.5) lib/rack/etag.rb:23:in `call'
+  rack (1.4.5) lib/rack/conditionalget.rb:25:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/head.rb:14:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/flash.rb:242:in `call'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:210:in `context'
+  rack (1.4.5) lib/rack/session/abstract/id.rb:205:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/cookies.rb:341:in `call'
+  activerecord (3.2.13) lib/active_record/query_cache.rb:64:in `call'
+  activerecord (3.2.13) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `_run__217355645__call__489163207__callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.13) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.13) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  C:/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  C:/Ruby200/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  C:/Ruby200/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered C:/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered C:/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered C:/Ruby200/lib/ruby/gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (91.0ms)
+Connecting to database specified by database.yml
+  [1m[36m (66.0ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (84.0ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCourses (20130707172439)
+  [1m[35m (28.0ms)[0m  CREATE TABLE `courses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `courseCode` varchar(255), `name` varchar(255), `description` text, `campus` varchar(255), `room` varchar(255), `startDate` date, `endDate` date, `mon` tinyint(1), `tue` tinyint(1), `wed` tinyint(1), `thu` tinyint(1), `fri` tinyint(1), `sat` tinyint(1), `sun` tinyint(1), `startTime` time, `endTime` time, `instructor` varchar(255), `notes` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (2.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130707172439')[0m
+Migrating to DeviseCreateUsers (20130708150819)
+  [1m[35m (48.0ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (25.0ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35m (166.0ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130708150819')[0m
+Migrating to AddAdminToUsers (20130708151611)
+  [1m[35m (186.0ms)[0m  ALTER TABLE `users` ADD `admin` tinyint(1) DEFAULT 0
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130708151611')[0m
+  [1m[35m (1.0ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2013-07-09 09:56:30 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (443.0ms)
+Completed 200 OK in 491ms (Views: 459.0ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-09 09:56:30 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-09 09:56:30 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-09 09:56:30 -0400
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-09 09:56:30 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2013-07-09 09:56:40 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Eaz85a/pVktlUtTXIBg1u6GEUPXqJLQkSwk0ocCeGMk=", "user"=>{"email"=>"flyingtoaster0@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36m (1.0ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (49.0ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'flyingtoaster0@gmail.com' LIMIT 1
+  [1m[36mSQL (10.0ms)[0m  [1mINSERT INTO `users` (`admin`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `encrypted_password`, `last_sign_in_at`, `last_sign_in_ip`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `sign_in_count`, `updated_at`) VALUES (0, '2013-07-09 13:56:40', NULL, NULL, 'flyingtoaster0@gmail.com', '$2a$10$G.ZAsrkg8bGkVkfxJEDj4OF6k6sZh9cN78QjzZ3H9c5cmuEppU76S', NULL, NULL, NULL, NULL, NULL, 0, '2013-07-09 13:56:40')[0m
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (13.0ms)[0m  UPDATE `users` SET `last_sign_in_at` = '2013-07-09 13:56:40', `current_sign_in_at` = '2013-07-09 13:56:40', `last_sign_in_ip` = '127.0.0.1', `current_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2013-07-09 13:56:40' WHERE `users`.`id` = 1
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 306ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-07-09 09:56:40 -0400
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (1.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered home/index.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 56ms (Views: 55.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-07-09 09:56:41 -0400
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-07-09 09:56:41 -0400
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-07-09 09:56:41 -0400
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-07-09 09:56:41 -0400
+Served asset /application.css - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 108.162.156.147 at 2013-07-09 10:37:19 -0400
+Processing by HomeController#index as HTML
+Mysql2::Error: Table 'scheduler.users' doesn't exist: SHOW FULL FIELDS FROM `users`
+  Rendered home/index.html.erb within layouts/application (1372.0ms)
+Completed 500 Internal Server Error in 1531ms
+
+ActionView::Template::Error (Mysql2::Error: Table 'scheduler.users' doesn't exist: SHOW FULL FIELDS FROM `users`):
+    1: <h1>Yo! Testing</h1>
+    2: 
+    3: <% unless current_user.nil? %>
+    4: <%= current_user.email %>
+    5: <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+    6: <% else %>
+  app/views/home/index.html.erb:3:in `_app_views_home_index_html_erb__477124145_27880644'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (39.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (26.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.0.0-p195/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (169.4ms)
+Connecting to database specified by database.yml
+  [1m[36m (318.6ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (95.7ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (2.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateCourses (20130707172439)
+  [1m[35m (42.0ms)[0m  CREATE TABLE `courses` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `courseCode` varchar(255), `name` varchar(255), `description` text, `campus` varchar(255), `room` varchar(255), `startDate` date, `endDate` date, `mon` tinyint(1), `tue` tinyint(1), `wed` tinyint(1), `thu` tinyint(1), `fri` tinyint(1), `sat` tinyint(1), `sun` tinyint(1), `startTime` time, `endTime` time, `instructor` varchar(255), `notes` text, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (11.7ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130707172439')[0m
+Migrating to DeviseCreateUsers (20130708150819)
+  [1m[35m (39.7ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int(11) DEFAULT 0, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (76.7ms)[0m  [1mCREATE UNIQUE INDEX `index_users_on_email` ON `users` (`email`)[0m
+  [1m[35m (73.1ms)[0m  CREATE UNIQUE INDEX `index_users_on_reset_password_token` ON `users` (`reset_password_token`)
+  [1m[36m (15.0ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130708150819')[0m
+Migrating to AddAdminToUsers (20130708151611)
+  [1m[35m (97.2ms)[0m  ALTER TABLE `users` ADD `admin` tinyint(1) DEFAULT 0
+  [1m[36m (12.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20130708151611')[0m
+  [1m[35m (2.5ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 108.162.156.147 at 2013-07-09 10:40:07 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (4.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (1422.4ms)
+Compiled jquery.js  (63ms)  (pid 7587)
+Compiled jquery_ujs.js  (10ms)  (pid 7587)
+Compiled application.js  (342ms)  (pid 7587)
+Completed 200 OK in 2790ms (Views: 2760.3ms | ActiveRecord: 21.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:11 -0400
+Served asset /application.css - 304 Not Modified (138ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:11 -0400
+Served asset /jquery.js - 304 Not Modified (93ms)
+
+
+Started GET "/assets/home.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:12 -0400
+Served asset /home.css - 304 Not Modified (35ms)
+
+
+Started GET "/assets/courses.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:12 -0400
+Served asset /courses.js - 304 Not Modified (31ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:12 -0400
+Served asset /jquery_ujs.js - 200 OK (38ms)
+
+
+Started GET "/assets/courses.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:12 -0400
+Served asset /courses.css - 304 Not Modified (35ms)
+
+
+Started GET "/assets/home.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:12 -0400
+Served asset /home.js - 304 Not Modified (32ms)
+
+
+Started GET "/assets/application.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:12 -0400
+Served asset /application.js - 200 OK (136ms)
+
+
+Started GET "/users/sign_in" for 108.162.156.147 at 2013-07-09 10:40:15 -0400
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"3RQc+HIq9GiJugTBqj4kGDgD57XwLHqbAeYZqd5UVtQ="}
+  Rendered devise/shared/_links.erb (44.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (538.5ms)
+Completed 200 OK in 1394ms (Views: 868.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:19 -0400
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/home.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:19 -0400
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/courses.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:20 -0400
+Served asset /courses.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:20 -0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/courses.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:20 -0400
+Served asset /courses.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:20 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/users/sign_up" for 108.162.156.147 at 2013-07-09 10:40:21 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendered devise/shared/_links.erb (15.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (114.4ms)
+Completed 200 OK in 464ms (Views: 444.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:22 -0400
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/courses.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:23 -0400
+Served asset /courses.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/courses.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:23 -0400
+Served asset /courses.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:23 -0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/application.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:23 -0400
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/home.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:23 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started POST "/users" for 108.162.156.147 at 2013-07-09 10:40:31 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3RQc+HIq9GiJugTBqj4kGDgD57XwLHqbAeYZqd5UVtQ=", "user"=>{"email"=>"flyingtoaster0@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (1.0ms)[0m  BEGIN
+  [1m[36mUser Exists (27.4ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'flyingtoaster0@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (3.3ms)[0m  INSERT INTO `users` (`admin`, `created_at`, `current_sign_in_at`, `current_sign_in_ip`, `email`, `encrypted_password`, `last_sign_in_at`, `last_sign_in_ip`, `remember_created_at`, `reset_password_sent_at`, `reset_password_token`, `sign_in_count`, `updated_at`) VALUES (0, '2013-07-09 14:40:33', NULL, NULL, 'flyingtoaster0@gmail.com', '$2a$10$3hIb.42HD1olwTXipbOaHeCy4xoUcYSUhSROuJhQrTGmqTUSshBs2', NULL, NULL, NULL, NULL, NULL, 0, '2013-07-09 14:40:33')
+  [1m[36m (197.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2013-07-09 14:40:33', `current_sign_in_at` = '2013-07-09 14:40:33', `last_sign_in_ip` = '108.162.156.147', `current_sign_in_ip` = '108.162.156.147', `sign_in_count` = 1, `updated_at` = '2013-07-09 14:40:33' WHERE `users`.`id` = 1[0m
+  [1m[35m (10.5ms)[0m  COMMIT
+Redirected to http://flyingtoaster0.no-ip.org:3000/
+Completed 302 Found in 1763ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 108.162.156.147 at 2013-07-09 10:40:33 -0400
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  Rendered home/index.html.erb within layouts/application (42.0ms)
+Completed 200 OK in 358ms (Views: 350.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:34 -0400
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/home.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:34 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/courses.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:34 -0400
+Served asset /courses.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:34 -0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/courses.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:34 -0400
+Served asset /courses.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:34 -0400
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/" for 108.162.156.147 at 2013-07-09 10:40:42 -0400
+Processing by HomeController#index as HTML
+  [1m[35mUser Load (1.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+  Rendered home/index.html.erb within layouts/application (30.5ms)
+Completed 200 OK in 335ms (Views: 330.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:43 -0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/courses.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:43 -0400
+Served asset /courses.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:43 -0400
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/home.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:43 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:43 -0400
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/courses.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:43 -0400
+Served asset /courses.js - 304 Not Modified (1ms)
+
+
+Started DELETE "/users/sign_out" for 108.162.156.147 at 2013-07-09 10:40:45 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3RQc+HIq9GiJugTBqj4kGDgD57XwLHqbAeYZqd5UVtQ="}
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://flyingtoaster0.no-ip.org:3000/
+Completed 302 Found in 121ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 108.162.156.147 at 2013-07-09 10:40:45 -0400
+Processing by HomeController#index as HTML
+  Rendered home/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 342ms (Views: 338.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/home.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:46 -0400
+Served asset /home.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:46 -0400
+Served asset /jquery.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/courses.js?body=1" for 108.162.156.147 at 2013-07-09 10:40:46 -0400
+Served asset /courses.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/courses.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:46 -0400
+Served asset /courses.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/home.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:46 -0400
+Served asset /home.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 108.162.156.147 at 2013-07-09 10:40:46 -0400
+Served asset /application.css - 304 Not Modified (4ms)

@@ -9,14 +9,26 @@
 #  pool: 5
 #  timeout: 5000
 
+#development:
+#  adapter: postgresql
+#  encoding: unicode
+#  database: scheduler
+#  pool: 5
+#  port: 5432
+#  host: flyingtoaster0.no-ip.org
+#  username: postgres1
+#  password: pass4u
+
+
 development:
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: scheduler
   pool: 5
-  host: localhost
-  username: postgres1
+  username: root
   password: pass4u
+  host: localhost
 
 
 # Warning: The database defined as "test" will be erased and
