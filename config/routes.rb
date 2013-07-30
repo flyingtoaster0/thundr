@@ -1,9 +1,24 @@
 LakeheadScheduler::Application.routes.draw do
-  devise_for :users
+  #
+  # devise_for :users
 
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+
+  #root  'static_pages#home'
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  #match '/admin', to: 'admin#index',            via: 'get'
+  #match '/admin/test_function', to: 'admin#test_function',            via: 'get'
   get "home/index"
 
+  match '/admin/:id/launch_update', :to => 'admin#launch_update', :as => 'launch_update', via: 'get'
+  match '/admin/:id/confirm', :to => 'admin#confirm', :as => 'confirm', via: 'get'
+  resources :admin
   resources :courses
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +63,7 @@ LakeheadScheduler::Application.routes.draw do
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
+  #     resources :courses
   #   end
 
   # You can have the root of your site routed with "root"

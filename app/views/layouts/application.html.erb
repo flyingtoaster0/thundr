@@ -3,14 +3,45 @@
 <head>
   <title>LakeheadScheduler</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="content">
+  <div class="header">
+    <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+      <a class="pure-menu-heading" href="">Your Site</a>
 
-<%= yield %>
+      <ul>
+        <li class="pure-menu-selected"><a href="#">Home</a></li>
+        <li><a href="#">Tour</a></li>
+        <li><a href="#">API</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+
+      <div class="pure-menu-heading" style="float: right;">
+        <% if current_user %>
+          <%= current_user.username %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+
+    <%= yield %>
+  </div>
+</div>
+
+
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+
+
+
+
 
 </body>
 </html>

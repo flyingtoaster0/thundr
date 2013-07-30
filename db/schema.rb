@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708151611) do
+ActiveRecord::Schema.define(:version => 20130724093721) do
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
 
   create_table "courses", :force => true do |t|
     t.string   "courseCode"
@@ -36,6 +42,44 @@ ActiveRecord::Schema.define(:version => 20130708151611) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "courses_carts", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "cart_id"
+  end
+
+  create_table "courses_schedules", :id => false, :force => true do |t|
+    t.integer "course_id"
+    t.integer "schedule_id"
+  end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "progresses", :force => true do |t|
+    t.integer "percent"
+    t.text    "description"
+  end
+
+  create_table "schedules", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id",    :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
     t.string   "encrypted_password",     :default => "",    :null => false
@@ -50,9 +94,13 @@ ActiveRecord::Schema.define(:version => 20130708151611) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
+    t.string   "password_digest"
+    t.string   "remember_token"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

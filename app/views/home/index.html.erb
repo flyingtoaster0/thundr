@@ -1,8 +1,8 @@
-<h1>Yo! Testing</h1>
+<div class="pure-g-r content-ribbon">
+    <div class="pure-u">
+        <h1>Home</h1>
 
-<% unless current_user.nil? %>
-<%= current_user.email %>
-<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-<% else %>
-<%= link_to "Sign in", new_user_session_path, :method => :get %>
-<% end %>
+        <%= link_to "Sign in", signin_path %><br />
+        <%= link_to "Sign out", signout_path, method: "delete" %><br />
+    </div>
+</div>

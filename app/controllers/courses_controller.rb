@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+
+
   def new
   end
 
@@ -14,6 +16,7 @@ class CoursesController < ApplicationController
   end
 
   def index
+    @test = current_user
     @courses = Course.all
   end
 

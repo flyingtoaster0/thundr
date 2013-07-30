@@ -1,0 +1,64 @@
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+<script type = "text/javascript">
+  var numVal = 0;
+  var refreshIntervalId = null;
+  $('#confirmDiv').hide();
+
+
+  function updateProgress()
+  {
+      //console.log("TEST");
+      jQuery(document).ready(function($) {
+          $.ajax({
+              type: "get",
+              url: "admin/get_info",
+              dataType: "text",
+              success: function (data) {
+                  numVal = parseInt(data);
+                  $("#proBar").css("width", data+"%");
+                  //document.write(data);
+              }
+
+          });
+          if(parseInt(numVal) == 100)
+          {
+              console.log("Load complete");
+              $('#confirmDiv').show();
+              clearInterval(refreshIntervalId);
+          }
+      });
+
+
+  }
+  if(<%= @_request.filtered_parameters['doUpdate'] %>)
+  {
+      var refreshIntervalId = setInterval(updateProgress,2000);
+  }
+
+</script>
+
+
+<h1>Admin</h1>
+
+<% unless @_request.filtered_parameters['doUpdate'] %>
+    <%= link_to 'Load', 'admin/1/launch_update' %>
+
+<% end %>
+
+
+<% if @_request.filtered_parameters['doUpdate'] %>
+
+    <div style="width: 400px;">
+      <div class="progress">
+        <div class="bar" id="proBar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <div id='confirmDiv' style = 'display: none;'>
+      <%= link_to 'Confirm', 'admin/1/confirm' %>
+    </div>
+<% end %>

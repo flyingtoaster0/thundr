@@ -23,14 +23,19 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-
 end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'rspec-rails', '2.13.1'
+
+# To use ActiveModel has_secure_password
+
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'delayed_job_active_record'
+gem 'daemons'
+gem 'strong_parameters'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
@@ -43,4 +48,3 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'devise'
