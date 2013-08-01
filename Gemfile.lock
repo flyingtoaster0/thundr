@@ -60,8 +60,13 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    mini_portile (0.5.1)
     multi_json (1.7.7)
     mysql2 (0.3.13)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
+    nokogiri (1.6.0-x86-mingw32)
+      mini_portile (~> 0.5.0)
     pg (0.15.1)
     pg (0.15.1-x86-mingw32)
     polyglot (0.3.3)
@@ -136,6 +141,7 @@ DEPENDENCIES
   delayed_job_active_record
   jquery-rails
   mysql2
+  nokogiri (~> 1.6.0)
   pg
   rails (= 3.2.13)
   rspec-rails (= 2.13.1)

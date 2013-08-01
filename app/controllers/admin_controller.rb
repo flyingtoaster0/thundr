@@ -3,12 +3,11 @@ class AdminController < ApplicationController
 
 
   def launch_update
-    #update code goes here
-    #update progress table
-    #@prog = @prog +1
 
     @testAdmin = Admin.new
-    @testAdmin.start_update
+    @testAdmin.run_db_import
+
+    #run_db_import
     redirect_to action: 'index', :doUpdate => true
   end
 
@@ -19,7 +18,8 @@ class AdminController < ApplicationController
 
   def show
     @percent = Progress.first.percent
-    render inline: @percent.to_s
+    @description = Progress.first.description
+    render inline: @percent.to_s << "$$" << @description
   end
 
   def confirm

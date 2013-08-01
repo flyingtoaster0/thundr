@@ -36,6 +36,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'strong_parameters'
+gem 'nokogiri', '~> 1.6.0'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
@@ -48,3 +49,4 @@ gem 'strong_parameters'
 # To use debugger
 # gem 'debugger'
 
+#gem 'devise'
