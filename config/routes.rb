@@ -1,6 +1,4 @@
 LakeheadScheduler::Application.routes.draw do
-  #
-  # devise_for :users
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -10,6 +8,9 @@ LakeheadScheduler::Application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+
+
+
   #match '/admin', to: 'admin#index',            via: 'get'
   #match '/admin/test_function', to: 'admin#test_function',            via: 'get'
   get "home/index"
@@ -17,6 +18,9 @@ LakeheadScheduler::Application.routes.draw do
   match '/admin/:id/launch_update', :to => 'admin#launch_update', :as => 'launch_update', via: 'get'
   match '/admin/:id/confirm', :to => 'admin#confirm', :as => 'confirm', via: 'get'
   resources :admin
+
+  get 'search' => 'courses#search'
+
   resources :courses
 
   # The priority is based upon order of creation:
@@ -69,6 +73,7 @@ LakeheadScheduler::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => 'home#index'
+
 
   # See how all your routes lay out with "rake routes"
 

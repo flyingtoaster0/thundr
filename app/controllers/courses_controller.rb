@@ -20,5 +20,8 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
+  def search
+    @query = params[:q]
+  end
 
 end
