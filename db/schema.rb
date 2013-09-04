@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731161255) do
+ActiveRecord::Schema.define(:version => 20130904043228) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -70,6 +70,11 @@ ActiveRecord::Schema.define(:version => 20130731161255) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
+
+  create_table "departments", :force => true do |t|
+    t.string "deptCode"
+    t.string "deptName"
+  end
 
   create_table "progresses", :force => true do |t|
     t.integer "percent"

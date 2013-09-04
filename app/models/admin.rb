@@ -117,9 +117,9 @@ class Admin
   end
 
 
-  def add_dept(deptCode)
+  def add_dept(deptCode, deptName)
     unless Department.find_by_deptCode(deptCode)
-      _newDept = Department.new(:deptCode => deptCode)
+      _newDept = Department.new(:deptCode => deptCode, :deptName => deptName)
       _newDept.save
     end
   end
@@ -129,11 +129,20 @@ class Admin
   def run_db_import
     doc = Nokogiri::HTML(open('http://timetable.lakeheadu.ca/2013FW_UG_TBAY/courtime.html'))
 
+
     linkArr = Array.new()
-    doc.css('ul li a').map {|link| [ link["href"]]}.each do |x|
-      unless x[0].include? "http" or x[0].include? "nrmt"
-        linkArr.push("http://timetable.lakeheadu.ca/2013FW_UG_TBAY/" + x[0])
-      end
+
+
+    #doc.css('div#copy ul li a').map {|link| [ link["href"]]}.each do |x|
+    #  linkArr.push("http://timetable.lakeheadu.ca/2013FW_UG_TBAY/" + x[0])
+    #
+    #end
+
+    #Add the rows to the departments table and push to the links array
+    puts 'Getting the links...'
+    doc.css('div#copy ul li a').each do |x|
+      add_dept(x["href"][0..3].upcase, x.text)
+      linkArr.push("http://timetable.lakeheadu.ca/2013FW_UG_TBAY/" + x["href"])
     end
 
     # Leaving this here for testing purposes
@@ -244,14 +253,13 @@ class Admin
       _currentCourseNum += 1
       _coursePercent = ((_currentCourseNum / _courseArraySize) * 50) + 50
 
-      #Add any new departments to the departments table
-      add_dept(c.courseCode[0..3])
-
+      puts 'Saving courses to the database...'
       @prog.description = 'Saving courses to the database... ' << c.courseCode
       @prog.percent = _coursePercent
       @prog.save
       c.save
     end
+
     @prog.percent = 100
     @prog.description = 'Done'
     @prog.save
