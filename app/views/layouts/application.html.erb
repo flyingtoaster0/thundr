@@ -8,53 +8,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="content">
-  <div class="header">
-    <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
-      <a class="pure-menu-heading" href="">Your Site</a>
+    <div class="content">
+      <div class="header">
+        <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+          <a class="pure-menu-heading" href="">Your Site</a>
 
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Resources</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
 
-      <div class="pure-menu-heading" style="float: right;">
+          <div class="pure-menu-heading" style="float: right;">
 
-        <% if current_user %>
-          <%= current_user.username %>
-        <% end %>
-
-
-        <form accept-charset="UTF-8" action="search" class="pure-form" method="get">
-          <%= text_field_tag :q, nil, placeholder: 'e.g. COMP-1411' %>
-          <%= submit_tag 'Search', :name => nil, :class => 'pure-button pure-button-search' %>
-        </form>
+            <% if current_user %>
+              <%= current_user.username %>
+            <% end %>
 
 
+            <%= render 'layouts/search' %>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <%= yield %>
+      </div>
+
+      <div class="footer">
+        Have ideas? Wanna help out? Check out the project on <a href="https://github.com/flyingtoaster0/lakehead-scheduler">GitHub!</a>
       </div>
     </div>
-  </div>
-  <div class="content" style= "min-height:775px">
-
-    <%= yield %>
-  </div>
-
-  <div class="footer">
-    Have ideas? Wanna help out? Check out the project on <a href="https://github.com/flyingtoaster0/lakehead-scheduler">GitHub!</a>
-  </div>
-</div>
-
-
-
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-
-
-
 
 </body>
 </html>

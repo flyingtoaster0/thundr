@@ -1,8 +1,13 @@
-<div class="pure-g-r content-ribbon">
-    <div class="pure-u">
-        <h1>Home</h1>
+<div class="department-body">
 
-        <%= link_to "Sign in", signin_path %><br />
-        <%= link_to "Sign out", signout_path, method: "delete" %><br />
+    <div class="splash">
+        <h1>Lakehead Scheduler</h1>
+
+        <p class="splash-subhead">A course catalog for Lakehead University students</p>
+
+        <h2 class="search-label">Enter a course code to begin</h2>
+        <%#= #link_to "Sign in", signin_path %>
+        <%#= #link_to "Sign out", signout_path, method: "delete" %>
+        <%= render 'layouts/search' %>
     </div>
 </div>
