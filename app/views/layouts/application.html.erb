@@ -21,17 +21,17 @@
             <li><a href="#">Contact</a></li>
           </ul>
 
+
           <div class="pure-menu-heading" style="float: right;">
-
-            <% if current_user %>
-              <%= current_user.username %>
-            <% end %>
-
-
             <%= render 'layouts/search' %>
-
-
           </div>
+
+          <div class="pure-menu-heading" style="float: right;">
+            <% if current_user %>
+                <%= current_user.username %>
+            <% end %>
+          </div>
+
         </div>
       </div>
 
