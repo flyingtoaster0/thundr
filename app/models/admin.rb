@@ -117,6 +117,14 @@ class Admin
   end
 
 
+  def add_dept(deptCode)
+    unless Department.find_by_deptCode(deptCode)
+      _newDept = Department.new(:deptCode => deptCode)
+      _newDept.save
+    end
+  end
+
+
   # this function runs the bulk of the code
   def run_db_import
     doc = Nokogiri::HTML(open('http://timetable.lakeheadu.ca/2013FW_UG_TBAY/courtime.html'))
@@ -230,9 +238,15 @@ class Admin
     _currentCourseNum = 0.0
     _coursePercent = 0.0
 
+
+    #Courses and departments get added to their respective tables here
     _courseArray.each do |c|
       _currentCourseNum += 1
       _coursePercent = ((_currentCourseNum / _courseArraySize) * 50) + 50
+
+      #Add any new departments to the departments table
+      add_dept(c.courseCode[0..3])
+
       @prog.description = 'Saving courses to the database... ' << c.courseCode
       @prog.percent = _coursePercent
       @prog.save
