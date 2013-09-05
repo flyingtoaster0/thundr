@@ -65,8 +65,8 @@ body .primary-button {
 
 .department-body {
     margin: 0em auto 0;
-    padding: 1em;
-    height: inherit;
+    padding: 1em 1em 8em 1em;
+    height: 100%;
     background: #F9F9F9;
 }
 
@@ -95,6 +95,19 @@ body .primary-button {
 
 .content .content-ribbon {
     border-bottom: 1px solid #eee;
+}
+
+.tab-content {
+    overflow: auto;
+}
+
+.home-tab {
+    border-left: none;
+    border-right: none;
+}
+
+.wide-table {
+    width: 100%;
 }
 
 .ribbon {

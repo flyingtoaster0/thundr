@@ -1,13 +1,82 @@
+<script type="text/javascript">
+  function paginate(pageId)
+  {
+      for(var i=1; i<4; i++)
+      {
+          var page = document.getElementById(i);
+          page.style.display="none";
+
+          var paginatorId = "paginate"+i;
+          var paginatorButton = document.getElementById(paginatorId);
+          paginatorButton.className="pure-button";
+
+      }
+      var page = document.getElementById(pageId);
+      page.style.display="";
+
+      var paginatorId = "paginate"+pageId;
+      var paginatorButton = document.getElementById(paginatorId);
+      paginatorButton.className="pure-button pure-button-active";
+  }
+</script>
+
 <div class="department-body">
 
-    <div class="splash">
-        <h1>Lakehead Scheduler</h1>
+  <div class="splash">
+      <h1>Lakehead Scheduler</h1>
 
-        <p class="splash-subhead">A course catalog for Lakehead University students</p>
+      <p class="splash-subhead">A course catalog for Lakehead University students</p>
 
-        <h2 class="search-label">Enter a course code to begin</h2>
-        <%#= #link_to "Sign in", signin_path %>
-        <%#= #link_to "Sign out", signout_path, method: "delete" %>
-        <%= render 'layouts/search' %>
+      <h2 class="search-label">Enter a course code to begin</h2>
+      <%#= #link_to "Sign in", signin_path %>
+      <%#= #link_to "Sign out", signout_path, method: "delete" %>
+      <%= render 'layouts/search' %>
+  </div>
+
+  <ul class="pure-paginator">
+
+    <!-- TODO Change the implementation of the onclick events to jquery -->
+    <li><a class="pure-button pure-button-active" href="javascript:void(0);" onclick="paginate(1)" id="paginate1">A - F</a></li>
+    <li><a class="pure-button" href="javascript:void(0);" onclick="paginate(2)" id="paginate2">G - M</a></li>
+    <li><a class="pure-button" href="javascript:void(0);" onclick="paginate(3)" id="paginate3">N - Z</a></li>
+  </ul>
+  <div class="pure-g">
+    <div class="pure-u-2-3">
+      <div class=tab-content>
+
+        <table class="pure-table-borderless wide-table" id="1">
+          <tbody>
+            <% @deptArray1.each do |d| %>
+                <tr>
+                  <td style="width: 10em;"><%= d[:deptCode] %></td>
+                  <td><%= d[:deptName] %></td>
+                </tr>
+            <% end %>
+          </tbody>
+          </table>
+
+
+          <table class="pure-table-borderless wide-table" id="2" style="display: none">
+            <tbody>
+              <% @deptArray2.each do |d| %>
+                <tr>
+                  <td style="width: 10em;"><%= d[:deptCode] %></td>
+                  <td><%= d[:deptName] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+          <table class="pure-table-borderless wide-table" id="3" style="display: none">
+            <tbody>
+              <% @deptArray3.each do |d| %>
+                <tr>
+                  <td style="width: 10em;"><%= d[:deptCode] %></td>
+                  <td><%= d[:deptName] %></td>
+                </tr>
+              <% end %>
+          </table>
+      </div>
     </div>
+  </div>
 </div>
