@@ -94,6 +94,7 @@ class Admin
 
     _newCourse = Course.new
     _newCourse.courseCode = _courseCode
+    _newCourse.section = _courseCode[10..12]
     _newCourse.name = _courseName
     _newCourse.room = _room
     _newCourse.campus = _campus
@@ -247,13 +248,13 @@ class Admin
     _currentCourseNum = 0.0
     _coursePercent = 0.0
 
-
+    puts 'Saving courses to the database...'
     #Courses and departments get added to their respective tables here
     _courseArray.each do |c|
       _currentCourseNum += 1
       _coursePercent = ((_currentCourseNum / _courseArraySize) * 50) + 50
 
-      puts 'Saving courses to the database...'
+
       @prog.description = 'Saving courses to the database... ' << c.courseCode
       @prog.percent = _coursePercent
       @prog.save
