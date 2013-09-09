@@ -19,9 +19,18 @@ LakeheadScheduler::Application.routes.draw do
   match '/admin/:id/confirm', :to => 'admin#confirm', :as => 'confirm', via: 'get'
   resources :admin
 
-  get 'search' => 'courses#search'
+  get 'search' => 'search#index'
 
-  resources :courses
+  resources :departments
+  resources :departments, :path => 'courses' do
+    resources :courses, :path => ''
+  end
+
+
+
+
+
+  #resources :courses
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -12,7 +12,8 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
+    @course = Course.find_by_department_and_courseCode(params[:department_id], params[:id])
+    x=5
   end
 
   def index
@@ -21,6 +22,23 @@ class CoursesController < ApplicationController
   end
 
   def search
+    course_info = params[:q].split('-')
+    dept_name = course_info[0]
+    course_code = course_info[1]
+
+    if course_code
+      course = Course.find_by_department_and_courseCode(dept_name, course_code)
+      if course
+        redirect_to(course)
+      end
+    else
+      department = Department.find_by_deptCode(dept_name)
+      if department
+        #redirect to course listing for this department
+      end
+    end
+
+
     @query = params[:q]
   end
 

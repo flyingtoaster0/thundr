@@ -1,11 +1,10 @@
+<br><br>
 <p>
   <strong>Course Code:</strong>
-  <%= @course.courseCode %>
+  <%= @course.department + '-' + @course.courseCode %>
 </p>
 
 <p>
   <strong>Name:</strong>
   <%= @course.name %>
 </p>
-
-<%= link_to 'Back', courses_path %>

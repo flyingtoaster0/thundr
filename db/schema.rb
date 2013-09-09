@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904043228) do
+ActiveRecord::Schema.define(:version => 20130907220921) do
 
   create_table "carts", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20130904043228) do
     t.integer  "synonym"
     t.string   "method"
     t.float    "credits"
+    t.string   "section"
+    t.string   "department"
   end
 
   create_table "courses_carts", :id => false, :force => true do |t|

@@ -93,8 +93,10 @@ class Admin
 
 
     _newCourse = Course.new
-    _newCourse.courseCode = _courseCode
-    _newCourse.section = _courseCode[10..12]
+    _newCourse.courseCode = _courseCode[5..9].gsub(/\-/,'')
+    _newCourse.department = _courseCode[0..3].to_s
+    _newCourse.section = _courseCode[10..13].gsub(/\-/,'')
+
     _newCourse.name = _courseName
     _newCourse.room = _room
     _newCourse.campus = _campus
@@ -111,8 +113,6 @@ class Admin
     _newCourse.synonym = _synonym.to_i
     _newCourse.instructor = _instructor
     _newCourse.method = _method
-
-    #_newCourse.save
 
     return _newCourse
   end
@@ -255,7 +255,7 @@ class Admin
       _coursePercent = ((_currentCourseNum / _courseArraySize) * 50) + 50
 
 
-      @prog.description = 'Saving courses to the database... ' << c.courseCode
+      @prog.description = 'Saving courses to the database... '
       @prog.percent = _coursePercent
       @prog.save
       c.save
