@@ -49,7 +49,7 @@
             <% @deptArray1.each do |d| %>
                 <tr>
                   <td style="width: 10em;"><%= d[:deptCode] %></td>
-                  <td><%= d[:deptName] %></td>
+                  <td><%= link_to(d[:deptName], 'departments/'+d[:deptCode], {}) %></td>
                 </tr>
             <% end %>
           </tbody>
@@ -61,7 +61,7 @@
               <% @deptArray2.each do |d| %>
                 <tr>
                   <td style="width: 10em;"><%= d[:deptCode] %></td>
-                  <td><%= d[:deptName] %></td>
+                  <td><%= link_to(d[:deptName], 'departments/'+d[:deptCode], {}) %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -72,7 +72,7 @@
               <% @deptArray3.each do |d| %>
                 <tr>
                   <td style="width: 10em;"><%= d[:deptCode] %></td>
-                  <td><%= d[:deptName] %></td>
+                  <td><%= link_to(d[:deptName], 'departments/'+d[:deptCode], {}) %></td>
                 </tr>
               <% end %>
           </table>

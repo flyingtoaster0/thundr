@@ -41,8 +41,16 @@ body {
     margin: 0
 }
 
+a {
+    text-decoration: none;
+}
+
 a:focus {
     outline: thin dotted
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 a:active,a:hover {
@@ -1055,6 +1063,10 @@ table {
     word-spacing: normal;
     vertical-align: top;
     text-rendering: auto
+}
+
+.pure-paginator li a {
+    text-decoration: none;
 }
 
 .pure-paginator .pure-button {
