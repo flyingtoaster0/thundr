@@ -3,11 +3,6 @@ class HomeController < ApplicationController
 
 
   def index
-
-    #cookies.permanent[:test2] = ActiveSupport::JSON.encode(@testArr)
-    #@arr = ActiveSupport::JSON.decode(cookies[:test2])
-
-
     letters = ('A'..'F').to_a
     _data = Department.where('substr("deptCode", 1, 1) IN (?)', letters)
 
