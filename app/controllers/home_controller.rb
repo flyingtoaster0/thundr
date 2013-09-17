@@ -3,6 +3,7 @@ class HomeController < ApplicationController
 
 
   def index
+
     letters = ('A'..'F').to_a
     _data = Department.where('substr("deptCode", 1, 1) IN (?)', letters)
 
