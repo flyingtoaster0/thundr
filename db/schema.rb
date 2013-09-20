@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(:version => 20130907220921) do
   end
 
   create_table "courses", :force => true do |t|
-    t.string   "courseCode"
+    t.string   "code"
     t.string   "name"
     t.text     "description"
     t.string   "campus"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130907220921) do
     t.datetime "updated_at",  :null => false
     t.integer  "synonym"
     t.string   "method"
+    t.string   "link"
     t.float    "credits"
     t.string   "section"
     t.string   "department"

@@ -91,9 +91,10 @@ class Admin
 
     _instructor = infoArr[9].sub(%r{.*: },'')
 
+    _department = _courseCode[0..3].to_s
 
     _newCourse = Course.new
-    _newCourse.courseCode = _courseCode[5..9].gsub(/\-/,'')
+    _newCourse.code = _courseCode[5..9].gsub(/\-/,'')
     _newCourse.department = _courseCode[0..3].to_s
     _newCourse.section = _courseCode[10..13].gsub(/\-/,'')
 
@@ -113,6 +114,14 @@ class Admin
     _newCourse.synonym = _synonym.to_i
     _newCourse.instructor = _instructor
     _newCourse.method = _method
+
+
+    # do some parsing to see where a TUT or PRA are linked to - find the number
+    if not _courseName[/\d+/].nil? and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS'))
+      _newCourse.link = _department+'-'+_courseName[/\d+/]
+    elsif _method == 'LAB'
+      _newCourse.link = _courseCode[5..8].gsub(/\-/,'')
+    end
 
     return _newCourse
   end

@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find_by_department_and_courseCode(params[:department_id], params[:id])
+    @course = Course.find_by_department_and_code(params[:department_id], params[:id])
     x=5
   end
 
@@ -27,7 +27,7 @@ class CoursesController < ApplicationController
     course_code = course_info[1]
 
     if course_code
-      course = Course.find_by_department_and_courseCode(dept_name, course_code)
+      course = Course.find_by_department_and_code(dept_name, course_code)
       if course
         redirect_to(course)
       end
