@@ -1,3 +1,38 @@
+<div class="department-body">
+  <div class="pure-g">
+    <div class="pure-u">
+      <ul class="breadcrumb">
+        <li class="active">
+          <%= link_to('Home', root_url, {}) %>
+          <span class="divider">-</span>
+        </li>
+
+        <li class="active">
+          <%= @course.department %>
+          <span class="divider">-</span>
+        </li>
+
+        <li class="active">
+          <%= @course.course_code %>
+        </li>
+
+      </ul>
+      <h1>
+        <%= link_to(@course.course_code, 'courses/'+@course.department+'/'+@course.code, {}) %>
+
+      </h1>
+
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
+
+
 <br><br>
 <p>
   <strong>Course Code:</strong>

@@ -6,4 +6,19 @@ class Course < ActiveRecord::Base
   def course_code
     department + '-' + code
   end
+
+  def labs
+    Course.find_all_by_link(course_code, :conditions => ['method = ?', 'LAB'])
+  end
+
+
+  def tutorials
+    Course.find_all_by_link(course_code, :conditions => ['method = ?', 'TUT'])
+  end
+
+
+  def practicals
+    Course.find_all_by_link(course_code, :conditions => ['method = ?', 'PRA'])
+  end
+
 end
