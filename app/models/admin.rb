@@ -106,10 +106,10 @@ class Admin
     _newCourse.wed = _wed
     _newCourse.thu = _thu
     _newCourse.fri = _fri
-    _newCourse.startTime = _startTime
-    _newCourse.endTime = _endTime
-    _newCourse.startDate = _startDate
-    _newCourse.endDate = _endDate
+    _newCourse.startTime = _startTime ? Time.parse(_startTime) : nil
+    _newCourse.endTime = _endTime ? Time.parse(_endTime) : nil
+    _newCourse.startDate = _startDate ? Time.parse('20'+_startDate) : nil
+    _newCourse.endDate = _endDate ? Time.parse('20'+_endDate) : nil
     _newCourse.credits = _credits.to_f
     _newCourse.synonym = _synonym.to_i
     _newCourse.instructor = _instructor
@@ -117,10 +117,12 @@ class Admin
 
 
     # do some parsing to see where a TUT or PRA are linked to - find the number
-    if not _courseName[/\d+/].nil? and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS'))
+    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS'))) or _courseName.include? 'Clinical for' or _courseName.include? 'Laboratory for'
       _newCourse.link = _department+'-'+_courseName[/\d+/]
     elsif _method == 'LAB'
-      _newCourse.link = _courseCode[5..8].gsub(/\-/,'')
+      _newCourse.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
+    else
+      _newCourse.link = nil
     end
 
     return _newCourse

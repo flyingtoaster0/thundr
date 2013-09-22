@@ -13,7 +13,9 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find_by_department_and_code(params[:department_id], params[:id])
-    x=5
+    @fall_listings = [@course.fall_lectures, @course.fall_labs, @course.fall_tutorials, @course.fall_practicals]
+    @winter_listings = [@course.winter_lectures, @course.winter_labs, @course.winter_tutorials, @course.winter_practicals]
+    @listings = [@fall_listings, @winter_listings].reject{|x| x.reject{|y| y.empty?}.empty?}
   end
 
   def index
