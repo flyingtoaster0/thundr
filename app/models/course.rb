@@ -40,7 +40,7 @@ class Course < ActiveRecord::Base
       when 'S'
         'Summer'
       when 'Y'
-        'All Year'
+        'All-Year'
     end
   end
 
@@ -75,7 +75,7 @@ class Course < ActiveRecord::Base
   end
 
   def fall_labs
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Laboratory for%"', 'LAB', 'F%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'LAB', 'F%'])
   end
 
   def fall_tutorials
@@ -83,7 +83,7 @@ class Course < ActiveRecord::Base
   end
 
   def fall_practicals
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Clinical for%"', 'PRA', 'F%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'F%'])
   end
 
 
@@ -92,7 +92,7 @@ class Course < ActiveRecord::Base
   end
 
   def winter_labs
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Laboratory for%"', 'LAB', 'W%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'LAB', 'W%'])
   end
 
   def winter_tutorials
@@ -100,7 +100,7 @@ class Course < ActiveRecord::Base
   end
 
   def winter_practicals
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Clinical for%"', 'PRA', 'W%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'W%'])
   end
 
 
@@ -109,7 +109,7 @@ class Course < ActiveRecord::Base
   end
 
   def summer_labs
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Laboratory for%"', 'LAB', 'S%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'LAB', 'S%'])
   end
 
   def summer_tutorials
@@ -117,7 +117,7 @@ class Course < ActiveRecord::Base
   end
 
   def summer_practicals
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Clinical for%"', 'PRA', 'S%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'S%'])
   end
 
   
@@ -126,7 +126,7 @@ class Course < ActiveRecord::Base
   end
 
   def year_labs
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Laboratory for%"', 'LAB', 'Y%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'LAB', 'Y%'])
   end
 
   def year_tutorials
@@ -134,7 +134,7 @@ class Course < ActiveRecord::Base
   end
 
   def year_practicals
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ? or name like "Clinical for%"', 'PRA', 'Y%'])
+    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'Y%'])
   end
 
 end

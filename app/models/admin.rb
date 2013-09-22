@@ -113,11 +113,21 @@ class Admin
     _newCourse.credits = _credits.to_f
     _newCourse.synonym = _synonym.to_i
     _newCourse.instructor = _instructor
+
+
+    if _courseName.include? 'Clinical for'
+      _method = 'PRA'
+      puts(_courseName)
+    elsif _courseName.include? 'Laboratory for'
+      _method = 'LAB'
+      puts(_courseName)
+    end
+
     _newCourse.method = _method
 
 
     # do some parsing to see where a TUT or PRA are linked to - find the number
-    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS'))) or _courseName.include? 'Clinical for' or _courseName.include? 'Laboratory for'
+    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
       _newCourse.link = _department+'-'+_courseName[/\d+/]
     elsif _method == 'LAB'
       _newCourse.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')

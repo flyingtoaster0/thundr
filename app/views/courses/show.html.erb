@@ -57,12 +57,41 @@
                       <span style="float: right;">Synonym: <%= course.synonym %></span>
                       <!-- TODO make the synonym copy to clipboard when clicked -->
                     </header>
-                    <% course.day_array.each do |day| %>
+
+                    <% unless course.day_array.empty? %>
+                        <% course.day_array.each do |day| %>
+                            <tr>
+                              <td>
+                                <div class='table-list-row'>
+                                  <div class="pure-g">
+                                    <div class="pure-u-3-8">
+                                      <%= day %>, <%= course.start_time %> - <%= course.end_time %>
+                                    </div>
+
+                                    <div class="pure-u-1-4">
+                                      <%= course.instructor %>
+                                    </div>
+
+                                    <div class="pure-u-1-8">
+                                      <%= course.room %>
+                                    </div>
+
+                                    <div class="pure-u-1-4">
+                                      <span style="float: right;">
+                                        <%= course.start_date %> - <%= course.end_date %>
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                        <% end %>
+                    <% else %>
                         <tr class='course'>
                           <td>
                             <div class="pure-g">
                               <div class="pure-u-3-8">
-                                <%= day %>, <%= course.start_time %> - <%= course.end_time %>
+                                -
                               </div>
 
                               <div class="pure-u-1-4">

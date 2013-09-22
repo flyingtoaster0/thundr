@@ -205,6 +205,7 @@ body .primary-button {
 
 .table-list tr {
     /* line-height: 20px;     Make this something reasonable later on */
+
     text-align: left;
     vertical-align: top;
     border-top: 1px solid #ddd;
@@ -215,7 +216,8 @@ body .primary-button {
     /* color: make the text a subtly different color */
 }
 
-.table-list .course {
 
+.table-list .table-list-row {
+    padding: 0 4px 0 4px;
 }
 
