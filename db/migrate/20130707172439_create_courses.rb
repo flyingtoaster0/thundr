@@ -4,6 +4,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :code
       t.string :name
       t.text :description
+      t.string :prerequisite
       t.string :campus
       t.string :room
       t.date :startDate

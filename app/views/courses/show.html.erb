@@ -8,7 +8,7 @@
         </li>
 
         <li class="active">
-          <%= @course.department %>
+          <%= link_to(@course.department, 'department/'+@course.department, {}) %>
           <span class="divider">-</span>
         </li>
 
@@ -52,9 +52,14 @@
                   <table class='table-list'>
                     <header>
                       <h6>
-                        <span style="float: left;"><%= course.method_name %> (<%= course.course_code_full %>)</span>
+                        <span style="float: left;">
+                          <%= course.method_name %> <div title='<%= course.name %>'>(<%= link_to(course.course_code_full,
+                                                                                                 'courses/' + course.department + '/' + course.code, {}) %>)</div>
+                        </span>
                       </h6>
-                      <span style="float: right;">Synonym: <%= course.synonym %></span>
+                      <span style="float: right;">
+                        Synonym: <%= course.synonym %>
+                      </span>
                       <!-- TODO make the synonym copy to clipboard when clicked -->
                     </header>
 

@@ -1,7 +1,7 @@
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :schedules
   has_and_belongs_to_many :carts
-  attr_accessible :campus, :name, :link, :method, :code, :description, :endDate, :endTime, :fri, :instructor, :mon, :name, :notes, :room, :sat, :startDate, :startTime, :sun, :thu, :tue, :wed
+  attr_accessible :campus, :name, :link, :method, :code, :description, :prerequisite, :endDate, :endTime, :fri, :instructor, :mon, :name, :notes, :room, :sat, :startDate, :startTime, :sun, :thu, :tue, :wed
 
 
   #@day_hash = {'Monday' => mon, 'Tuesday' => tue, 'Wednesday' => wed, 'Thursday' => thu, 'Friday' => fri, 'Saturday' => sat, 'Sunday' => sun }

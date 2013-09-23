@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20130907220921) do
     t.string   "code"
     t.string   "name"
     t.text     "description"
+    t.string   "prerequisite"
     t.string   "campus"
     t.string   "room"
     t.date     "startDate"
@@ -38,8 +39,8 @@ ActiveRecord::Schema.define(:version => 20130907220921) do
     t.time     "endTime"
     t.string   "instructor"
     t.text     "notes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "synonym"
     t.string   "method"
     t.string   "link"

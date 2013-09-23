@@ -135,7 +135,27 @@ class Admin
       _newCourse.link = nil
     end
 
+    _description_url = 'http://timetable.lakeheadu.ca/scripts/return.course.description.php?c=' + _department + '&cn=' + _courseCode[5..9].gsub(/\-/,'')
+
+    _description, _prerequisite = get_description_and_prereq _description_url
+
+    puts("Course: " + _courseCode + "\nPrerequisite: " + _prerequisite + "\nDescription: " + _description[0..31] + "\n\n")
+
+    _newCourse.description =_description
+    _newCourse.prerequisite = _prerequisite
+
     return _newCourse
+  end
+
+
+  def get_description_and_prereq url
+    doc = Nokogiri::HTML(open(url))
+    divs = doc.css('div')
+
+    _description = divs[1] ? divs[1].content : ''
+    _prerequisite = divs[3] ? divs[3].content.gsub(/.*: /,'') : ''
+
+    return _description, _prerequisite
   end
 
 
