@@ -8,7 +8,7 @@
         </li>
 
         <li class="active">
-          <%= link_to(@course.department, 'department/'+@course.department, {}) %>
+          <%= link_to(@course.department, '/departments/'+@course.department, {}) %>
           <span class="divider">-</span>
         </li>
 
@@ -24,8 +24,29 @@
     <div class="pure-u">
       <div class="course-info">
         <h1>
-          <%= link_to(@course.course_code, 'courses/'+@course.department+'/'+@course.code, {}) %>
+          <%= link_to(@course.department, '/courses/'+@course.department+'/'+@course.code, {}) %><%= '-' + @course.code+' - '+@course.name %>
         </h1>
+
+        <div class = 'description'>
+            <% if @course.description %>
+                <%= @course.description %>
+            <% else %>
+                No description was found for this course.
+            <% end %>
+        </div>
+
+        <div class = 'prereqs'>
+            <% if @course.prerequisite %>
+              Prerequisites: <%= @course.prerequisite %>
+            <% else %>
+              No prerequisite information was found for this course.
+            <% end %>
+        </div>
+
+        <div class = 'textbooks'>
+
+        </div>
+
       </div>
     </div>
 
@@ -40,9 +61,9 @@
   <% @listings.each do |season_listing| %>
       <div class='list-container'>
 
-        <h5>
+        <h3>
           <%= season_listing.first.first ? season_listing.first.first.season : '' %>
-        </h5>
+        </h3>
 
 
         <% season_listing.each do |course_listing| %>
@@ -51,15 +72,15 @@
                 <div class='section'>
                   <table class='table-list'>
                     <header>
-                      <h6>
-                        <span style="float: left;">
-                          <%= course.method_name %> <div title='<%= course.name %>'>(<%= link_to(course.course_code_full,
-                                                                                                 'courses/' + course.department + '/' + course.code, {}) %>)</div>
-                        </span>
-                      </h6>
-                      <span style="float: right;">
+
+                          <div style="float: left;" >
+                            <%= course.method_name %> (<%= link_to(course.course_code_full,'/courses/' + course.department + '/' + course.code, {:title => course.name}) %>)
+                          </div>
+
+
+                      <div style="float: right;">
                         Synonym: <%= course.synonym %>
-                      </span>
+                      </div>
                       <!-- TODO make the synonym copy to clipboard when clicked -->
                     </header>
 

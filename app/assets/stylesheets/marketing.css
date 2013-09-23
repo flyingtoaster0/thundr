@@ -74,7 +74,7 @@ body .primary-button {
     margin: 2em auto 0;
     padding: 0em 0.5em;
     margin: 0 auto;
-    max-width: 980px;
+    max-width: 1060px;
 }
 
 .content {
@@ -194,8 +194,28 @@ body .primary-button {
 
 }
 
+.list-container .section {
+    padding: 9px;
+    margin-bottom: 10px;
+    background-color: #e3e3e3;
+    border: solid #d1d1d1 1px;
+
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+
+.list-container h3 {
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
 .table-list {
-    background-color: #e9e9e9;
+    background-color: #ededed;
     width: 100%;
 }
 
@@ -220,4 +240,26 @@ body .primary-button {
 .table-list .table-list-row {
     padding: 0 4px 0 4px;
 }
+
+.course-info {
+    margin: 10px 90px;
+    padding: 25px;
+    background-color: #e0e0e0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+.course-info h1 {
+}
+
+.course-info .description {
+    margin-bottom: 16px;
+}
+
+.course-info .prereqs {
+
+}
+
 
