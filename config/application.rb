@@ -62,5 +62,7 @@ module LakeheadScheduler
     config.assets.initialize_on_precompile = false
 
     config.action_controller.include_all_helpers = true
+
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end
