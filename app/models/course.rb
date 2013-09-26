@@ -44,6 +44,11 @@ class Course < ActiveRecord::Base
     end
   end
 
+
+  def all_seasons
+    return Course.find_all_by_department_and_code(department, code).collect{|c| c.section[0]}
+  end
+
   def day_array
     [mon, tue, wed, thu, fri, sat, sun].zip(['Monday',
                                             'Tuesday',
