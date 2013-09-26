@@ -21,32 +21,32 @@
 
     <hr>
 
-    <div class="pure-u">
-      <div class="course-info">
+
+    <div class="course-info">
+      <div class="pure-u">
         <h1>
           <%= link_to(@course.department, '/courses/'+@course.department+'/'+@course.code, {}) %><%= '-' + @course.code+' - '+@course.name %>
         </h1>
 
         <div class = 'description'>
-            <% if @course.description %>
-                <%= @course.description %>
-            <% else %>
-                No description was found for this course.
-            <% end %>
+          <% if @course.description %>
+              <%= @course.description %>
+          <% else %>
+              No description was found for this course.
+          <% end %>
         </div>
 
         <div class = 'prereqs'>
-            <% if @course.prerequisite %>
+          <% if @course.prerequisite %>
               Prerequisites: <%= @course.prerequisite %>
-            <% else %>
+          <% else %>
               No prerequisite information was found for this course.
-            <% end %>
+          <% end %>
         </div>
 
         <div class = 'textbooks'>
 
         </div>
-
       </div>
     </div>
 
