@@ -21,17 +21,32 @@
 </script>
 
 <div class="department-body">
-
   <div class="splash">
-      <h1>Lakehead Scheduler</h1>
-
-      <p class="splash-subhead">A course catalog for Lakehead University students</p>
-
-      <h2 class="search-label">Enter a course code to begin</h2>
-      <%#= #link_to "Sign in", signin_path %>
-      <%#= #link_to "Sign out", signout_path, method: "delete" %>
-      <%= render 'layouts/search' %>
+    <div class="pure-g">
+      <div class="pure-u">
+        <h1>Lakehead Scheduler</h1>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u">
+        <p class="splash-subhead">A course catalog for Lakehead University students</p>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u">
+        <h2 class="search-label">Enter a course code to begin</h2>
+      </div>
+    </div>
+    <div class="pure-g">
+      <div class="pure-u" style="margin: 12px 4px;">
+        <%#= #link_to "Sign in", signin_path %>
+        <%#= #link_to "Sign out", signout_path, method: "delete" %>
+        <%= render 'layouts/search' %>
+      </div>
+    </div>
   </div>
+
+
 
   <ul class="pure-paginator">
 

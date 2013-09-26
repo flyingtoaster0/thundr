@@ -13,13 +13,26 @@
 
 }
 
-
 html,body {
     height: 100%;
     margin: 0 auto;
     line-height: 1.7em;
     position:relative;
     font-family: "FiraSans";
+    font-size: 14px;
+    line-height: 20px;
+    color: #333;
+}
+
+
+a {
+    color: #cf8200;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a65b00;
+    text-decoration: underline;
 }
 
 .l-box {
@@ -58,17 +71,16 @@ body .primary-button {
         line-height: 1.2em;
     }
     .splash .splash-subhead {
-        font-size: 130%;
+        font-size: 18px;
         font-weight: 300;
-        line-height: 1.4em;
     }
     .splash .primary-button {
         font-size: 150%;
     }
     .splash .search-label {
-        font-size: 140%;
+        line-height: 24px;
         font-weight: 900;
-        line-height: 1em;
+        line-height: 24px;
         color: #999;
     }
 
@@ -106,8 +118,32 @@ body .primary-button {
     border-bottom: 1px solid #eee;
 }
 
+.pure-paginator .pure-button{
+    color: #cf8200;
+    font-weight: bold;
+}
+
+.pure-paginator .pure-button:hover{
+    color: #bf7500;
+}
+
+.pure-paginator .pure-button-active{
+     color: #333;
+     font-weight: bold;
+ }
+
+
+.pure-paginator .pure-button-active:hover{
+    color: #333;
+}
+
 .tab-content {
+    padding-top: 10px;
     overflow: auto;
+}
+
+.tab-content td {
+    padding: 4px 8px 4px 8px;
 }
 
 .home-tab {
@@ -165,6 +201,8 @@ body .primary-button {
 
 .breadcrumb li {
     float: left;
+    line-height: 20px;
+
 }
 
 
@@ -232,16 +270,22 @@ body .primary-button {
 
 }
 
+
 .table-list tr {
-    /* line-height: 20px;     Make this something reasonable later on */
+    line-height: 20px;
 
     text-align: left;
     vertical-align: top;
     border-top: 1px solid #ddd;
 }
 
+.table-list td {
+    padding: 4px 6px 4px 6px;
+}
+
 .table-list tr:hover {
     background-color: #f5f5f5;
+    color: #BF8330;
     /* color: make the text a subtly different color */
 }
 
