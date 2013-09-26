@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20130907220921) do
     t.boolean  "fri"
     t.boolean  "sat"
     t.boolean  "sun"
-    t.time     "startTime"
-    t.time     "endTime"
+    t.string   "startTime"
+    t.string   "endTime"
     t.string   "instructor"
     t.text     "notes"
     t.datetime "created_at",   :null => false

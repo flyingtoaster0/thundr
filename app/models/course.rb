@@ -63,11 +63,11 @@ class Course < ActiveRecord::Base
   end
 
   def start_time
-    startTime ? startTime.strftime('%l:%M%p') : ''
+    startTime ? Time.parse(startTime).strftime('%l:%M%p') : ''
   end
 
   def end_time
-    endTime ? endTime.strftime('%l:%M%p') : ''
+    endTime ? Time.parse(endTime).strftime('%l:%M%p') : ''
   end
   
   def fall_lectures

@@ -106,8 +106,8 @@ class Admin
     _newCourse.wed = _wed
     _newCourse.thu = _thu
     _newCourse.fri = _fri
-    _newCourse.startTime = _startTime ? Time.parse(_startTime) : nil
-    _newCourse.endTime = _endTime ? Time.parse(_endTime) : nil
+    _newCourse.startTime = _startTime # ? Time.parse(_startTime) : nil
+    _newCourse.endTime = _endTime # ? Time.parse(_endTime) : nil
     _newCourse.startDate = _startDate ? Time.parse('20'+_startDate) : nil
     _newCourse.endDate = _endDate ? Time.parse('20'+_endDate) : nil
     _newCourse.credits = _credits.to_f
@@ -117,10 +117,10 @@ class Admin
 
     if _courseName.include? 'Clinical for'
       _method = 'PRA'
-      puts(_courseName)
+      #puts(_courseName)
     elsif _courseName.include? 'Laboratory for'
       _method = 'LAB'
-      puts(_courseName)
+      #puts(_courseName)
     end
 
     _newCourse.method = _method
@@ -136,13 +136,11 @@ class Admin
     end
 
     _description_url = 'http://timetable.lakeheadu.ca/scripts/return.course.description.php?c=' + _department + '&cn=' + _courseCode[5..9].gsub(/\-/,'')
-
     _description, _prerequisite = get_description_and_prereq _description_url
-
     _newCourse.description =_description
     _newCourse.prerequisite = _prerequisite
 
-    puts('New course added: ' + _courseCode)
+    #puts('New course added: ' + _courseCode)
 
     return _newCourse
   end
@@ -242,10 +240,10 @@ class Admin
 
     if _courseName.include? 'Clinical for'
       _method = 'PRA'
-      puts(_courseName)
+      #puts(_courseName)
     elsif _courseName.include? 'Laboratory for'
       _method = 'LAB'
-      puts(_courseName)
+      #puts(_courseName)
     end
 
     existing_course.method = _method
