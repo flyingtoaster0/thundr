@@ -13,6 +13,14 @@
 
 }
 
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot?v=3.2.1');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('../fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html,body {
     height: 100%;
     margin: 0 auto;
@@ -61,6 +69,8 @@ aside {
 .header .pure-menu {
     padding: 0.5em;
 
+    font-size: 17px;
+
 }
 
 .header .pure-menu li a:hover,
@@ -74,6 +84,7 @@ aside {
     border: 0;
     border-bottom: 1px solid #b7b7b7;
     background-color: #FF9200;
+    /*
     background-image: -moz-linear-gradient(top,#FF9200, #e67700);
     background-image: -webkit-gradient(linear,0 0,0 100%,from(#FF9200),to(#e67700));
     background-image: -webkit-linear-gradient(top,#FF9200, #e67700);
@@ -81,6 +92,15 @@ aside {
     background-image: linear-gradient(to bottom, #FF9200, #e67700);
 
     border: 1px solid #d37201;
+    */
+
+
+    background-image: -moz-linear-gradient(top,#E48632, #d47831);
+    background-image: -webkit-gradient(linear,0 0,0 100%,from(#E48632),to(#d47831));
+    background-image: -webkit-linear-gradient(top,#E48632, #d47831);
+    background-image: -o-linear-gradient(top,#E48632,#d47831);
+    background-image: linear-gradient(to bottom, #E48632, #d47831);
+
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-bottomleft: 5px;
     border-bottom-left-radius: 5px;
@@ -93,17 +113,26 @@ aside {
 }
 
 .pure-menu.pure-menu-open.pure-menu-fixed.menu-bar ul {
-    margin:6px;
+    margin:2px;
 }
 
 .pure-button.pure-button-search {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    background: #ffde45;
+    background-image: linear-gradient(to bottom, #ffde45, #f2d243);
+    color: #333;
     font-weight:bold;
+
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+
+    /*
+
     font-size: 14px;
     line-height: 20px;
     padding-top: 0.45em;
@@ -116,11 +145,8 @@ aside {
 
     text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
 
-    /*border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1)*/
-}
-
-.pure-button.pure-button-search:hover {
-    background-image: linear-gradient(to bottom, #fa8e00, #dc6f00);
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1)
+    */
 }
 
 .search-form input#q{
@@ -131,7 +157,7 @@ aside {
 }
 
 .search-form .pure-form input[type=text]:focus {
-    border-color: #ff9200
+    border-color: #f2d243
 }
 
 .nav{
