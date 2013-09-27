@@ -221,7 +221,7 @@ body .primary-button {
 
 .muted {
     margin: 5px;
-    color: #999;
+    color: #777;
 }
 
 .list-container {
@@ -449,7 +449,7 @@ a.ununderlinable:hover .underlinable{
     left:0;
     height:100%;
     width:100%;
-    background-image:url(/static/img/seasons.png?069a40b181d3);
+    background-image:url(seasons.png);
     background-repeat:no-repeat;
     background-position:-20px 0;
     content:' ';
@@ -458,4 +458,22 @@ a.ununderlinable:hover .underlinable{
 .season-tag.hide {
     opacity:.33%;
     filter:alpha(opacity=33%);
+}
+
+.expo {
+    margin: 50px;
+    padding: 30px;
+    background-color: #e0e0e0;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.faq-item {
+    margin-top:35px;
+    list-style: none;
+}
+
+.faq-item .faq-header {
+    margin-top: 0;
 }

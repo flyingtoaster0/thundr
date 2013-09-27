@@ -9,6 +9,10 @@ LakeheadScheduler::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
+  match '/about', to: 'info#about'
+  match '/faq', to: 'info#faq'
+  match '/contact', to: 'info#contact'
+
 
 
   #match '/admin', to: 'admin#index',            via: 'get'
@@ -25,6 +29,8 @@ LakeheadScheduler::Application.routes.draw do
   resources :departments, :path => 'courses' do
     resources :courses, :path => ''
   end
+
+
 
 
 
