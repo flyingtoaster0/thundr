@@ -1,0 +1,26 @@
+<div class="department-body">
+  <div class="pure-g">
+    <div class="pure-u">
+      <ul class="breadcrumb">
+        <li>
+          <%= link_to('Home', root_url, {}) %>
+          <span class="divider">-</span>
+        </li>
+
+        <li class="active">
+          Search results for "<%= @query %>"
+        </li>
+
+      </ul>
+      <h1>
+        Search results for "<%= @query %>"
+
+      </h1>
+
+    </div>
+
+  </div>
+  <aside>
+    This search turned up no results. (For now, searching only supports course codes, like "MATH-3331", or subjects codes like "biol")
+  </aside>
+</div>

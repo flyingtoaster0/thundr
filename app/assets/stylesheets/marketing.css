@@ -42,6 +42,14 @@ hr {
     border-bottom: 1px solid #fff;
 }
 
+aside {
+    padding: 0.3em 1em;
+    border-radius: 3px;
+    background-color: #f7e1d9;
+    border-color: #f1caa2;
+    color: #ad512c;
+}
+
 .l-box {
     padding: 1em;
 }
@@ -293,7 +301,7 @@ body .primary-button {
 
 .breadcrumb .divider {
     padding: 0 5px;
-    /* color: #ccc; */
+    color: #999;
 }
 
 .breadcrumb .active {
