@@ -5,7 +5,7 @@ class SearchController < ApplicationController
     course_code = course_info[1]
 
     if course_code
-      course = Course.find_by_department_and_courseCode(dept_code, course_code)
+      course = Course.find_by_department_and_code(dept_code, course_code)
 
       if course
         redirect_to('/courses/'+dept_code+'/'+course_code)

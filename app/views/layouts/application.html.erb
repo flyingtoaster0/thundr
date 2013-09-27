@@ -10,8 +10,9 @@
 <body>
     <div class="content">
       <div class="header">
-        <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal">
+        <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal menu-bar">
           <a class="pure-menu-heading" href="">Your Site</a>
+
 
           <ul>
             <li><a href="/">Home</a></li>
@@ -25,12 +26,13 @@
             <%= render 'layouts/search' %>
           </div>
 
+          <!--
           <div class="pure-menu-heading" style="float: right;">
-            <% if current_user %>
-                <%= current_user.username %>
-            <% end %>
+            <%# if current_user %>
+                <%#= current_user.username %>
+            <%# end %>
           </div>
-
+          -->
         </div>
       </div>
 
