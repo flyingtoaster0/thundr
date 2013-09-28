@@ -1,0 +1,568 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'FiraSans';
+  src: url('fonts/FiraSans-Regular.eot?#iefix') format("embedded-opentype"), url('fonts/FiraSans-Regular.woff') format("woff"), url('fonts/FiraSans-Regular.ttf') format("truetype");
+}
+
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=3.2.1');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=3.2.1') format("embedded-opentype"), url('../fonts/fontawesome-webfont.woff?v=3.2.1') format("woff"), url('../fonts/fontawesome-webfont.ttf?v=3.2.1') format("truetype"), url('../fonts/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+html, body {
+  height: 100%;
+  margin: 0 auto;
+  line-height: 1.7em;
+  position: relative;
+  font-family: "FiraSans";
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+}
+
+a {
+  color: #cf8200;
+  text-decoration: none;
+  &:hover {
+    color: #a65b00;
+    text-decoration: underline;
+  }
+}
+
+hr {
+  margin: 0 0 28px 0;
+  border: 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #fff;
+}
+
+aside {
+  padding: 0.3em 1em;
+  border-radius: 3px;
+  background-color: #f7e1d9;
+  border-color: #f1caa2;
+  color: #ad512c;
+}
+
+.l-box {
+  padding: 1em;
+}
+
+.header {
+  margin: 0 auto;
+  .pure-menu {
+    padding: 0.5em;
+    font-size: 17px;
+    li a {
+      color: #fff;
+      &:hover, &:focus {
+        background: none;
+        border: none;
+        color: #ddd;
+      }
+    }
+  }
+}
+
+.pure-menu.pure-menu-open.pure-menu-fixed.menu-bar {
+  border: 0;
+  border-bottom: 1px solid #b7b7b7;
+  background-color: #FF9200;
+  /*
+  background-image: -moz-linear-gradient(top,#FF9200, #e67700);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(#FF9200),to(#e67700));
+  background-image: -webkit-linear-gradient(top,#FF9200, #e67700);
+  background-image: -o-linear-gradient(top,#FF9200,#e67700);
+  background-image: linear-gradient(to bottom, #FF9200, #e67700);
+
+  border: 1px solid #d37201;
+  */
+  background-image: -moz-linear-gradient(top, #e48632, #d47831);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e48632), to(#d47831));
+  background-image: -webkit-linear-gradient(top, #e48632, #d47831);
+  background-image: -o-linear-gradient(top, #e48632, #d47831);
+  background-image: linear-gradient(to bottom, #e48632, #d47831);
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-bottom-right-radius: 5px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  ul {
+    margin: 2px;
+  }
+}
+
+.pure-button.pure-button-search {
+  font-size: 14px;
+  line-height: 20px;
+  background: #ffde45;
+  background-image: linear-gradient(to bottom, #ffde45, #f2d243);
+  color: #333;
+  font-weight: bold;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  /*
+
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 0.45em;
+  background: #FF9200;
+  background-image: linear-gradient(to bottom, #FF9200, #e67700);
+  border: 1px solid;
+  border-color: #e98c25 #e98c25 #c06000;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05);
+  color: #fff;
+
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+
+  border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1)
+  */
+}
+
+.search-form {
+  input#q {
+    color: #333;
+    font-family: FiraSans;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .pure-form input[type=text]:focus {
+    border-color: #f2d243;
+  }
+}
+
+.nav {
+  vertical-align: middle;
+}
+
+.pure-menu-heading ul {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+body .primary-button {
+  background: #02a6eb;
+  color: #fff;
+}
+
+.splash {
+  margin: 0em auto 0;
+  padding: 1em 2em;
+  background: #eee;
+  .splash-head {
+    font-size: 300%;
+    margin: 0em 0;
+    line-height: 1.2em;
+  }
+  .splash-subhead {
+    font-size: 18px;
+    font-weight: 300;
+  }
+  .primary-button {
+    font-size: 150%;
+  }
+  .search-label {
+    line-height: 24px;
+    font-weight: 900;
+    line-height: 24px;
+    color: #999;
+  }
+}
+
+.department-body {
+  margin: 0em auto 0;
+  padding: 4.5em 1em 8em 1em;
+  height: 100%;
+  background: #F9F9F9;
+}
+
+.content-body {
+  margin: 2em auto 0;
+  padding: 0em 0.5em;
+  margin: 0 auto;
+  max-width: 1060px;
+}
+
+.content {
+  height: auto !important;
+  /* real browsers */
+  height: 100%;
+  /* IE6: treated as min-height*/
+  position: relative;
+  /* needed for footer positioning*/
+  min-height: 100%;
+  /* real browsers */
+  .content-subhead {
+    color: #999;
+    padding-bottom: 0.3em;
+    text-transform: uppercase;
+    margin: 0;
+    border-bottom: 2px solid #eee;
+    display: inline-block;
+  }
+  .content-ribbon {
+    border-bottom: 1px solid #eee;
+  }
+}
+
+.wide-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border-top: 1px solid #cbcbcb;
+  border-bottom: 1px solid #cbcbcb;
+  tr {
+    border-collapse: collapse;
+    border-top: 1px solid #cbcbcb;
+  }
+}
+
+.department-body .pure-paginator {
+  margin-top: 0.5em;
+  li a {
+    text-decoration: none;
+  }
+  .pure-button {
+    color: #cf8200;
+    font-weight: bold;
+    height: 2.5em;
+  }
+}
+
+pure-paginator .pure-button {
+  border-radius: 0;
+  padding: .8em 1.4em;
+  vertical-align: top;
+  height: 2.5em;
+}
+
+.pure-paginator {
+  .pure-button:hover {
+    color: #bf7500;
+  }
+  .pure-button-active {
+    color: #333;
+    font-weight: bold;
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+.tab-content {
+  padding-top: 10px;
+  overflow: auto;
+  td {
+    padding: 4px 8px 4px 8px;
+  }
+}
+
+.home-tab {
+  border-left: none;
+  border-right: none;
+}
+
+.wide-table {
+  width: 100%;
+}
+
+.ribbon {
+  background: #eee;
+  text-align: center;
+  padding: 2em;
+  color: #999;
+  h2 {
+    display: inline;
+    font-weight: normal;
+  }
+}
+
+.footer {
+  bottom: 0;
+  /* stick to bottom */
+  width: 100%;
+  background: #111;
+  color: #666;
+  text-align: center;
+  padding: 1em;
+  font-size: 80%;
+  position: absolute;
+  a {
+    color: #cccccc;
+    text-decoration: none;
+    &:hover {
+      color: #cccccc;
+      text-decoration: underline;
+    }
+  }
+}
+
+.breadcrumb {
+  list-style: none;
+  overflow: hidden;
+  padding: 8px 8px;
+  margin: 0;
+  list-style: none;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  li {
+    float: left;
+    line-height: 20px;
+  }
+  .divider {
+    padding: 0 5px;
+    color: #999;
+  }
+  .active {
+    color: #999;
+  }
+}
+
+.muted {
+  margin: 5px;
+  color: #777;
+}
+
+.list-container {
+  padding: 9px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  /*background-color:#e9e9e9;*/
+  border: solid #e3e3e3 1px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: inset 0 4px 5px -5px #bbbbbb;
+  -webkit-box-shadow: inset 0 4px 5px -5px #bbbbbb;
+  box-shadow: inset 0 4px 5px -5px #bbbbbb;
+  .section {
+    padding: 9px;
+    margin-bottom: 10px;
+    background-color: #e3e3e3;
+    border: solid #d1d1d1 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+  h3 {
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 1;
+    color: inherit;
+    text-rendering: optimizelegibility;
+  }
+}
+
+.table-list {
+  background-color: #ededed;
+  width: 100%;
+  tr {
+    line-height: 20px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+  }
+  td {
+    padding: 4px 6px 4px 6px;
+  }
+  tr:hover {
+    background-color: #f5f5f5;
+    color: #BF8330;
+    /* color: make the text a subtly different color */
+  }
+  .table-list-row {
+    padding: 0 4px 0 4px;
+  }
+}
+
+.course-info {
+  margin: 10px 90px;
+  padding: 25px;
+  background-color: #e0e0e0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
+  .description {
+    margin-bottom: 16px;
+  }
+
+}
+
+a.ununderlinable:hover {
+  text-decoration: none;
+  .underlinable {
+    text-decoration: underline;
+  }
+}
+
+.season-tag {
+  &.season-Fall {
+    position: relative;
+    display: inline-block;
+    height: 14px;
+    line-height: 15px;
+    font-size: 9px;
+    vertical-align: middle;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fcf9f7;
+    border: 1px solid #c67f54;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #c68257;
+    background-image: linear-gradient(tobottom, #c47a4d, #c98d67);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc47a4d',endColorstr='#ffc98d67',GradientType=0);
+    padding: 0 6px 0 20px;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: url(seasons.png);
+      background-repeat: no-repeat;
+      background-position: 1px 0;
+      content: ' ';
+    }
+  }
+  &.season-Winter {
+    position: relative;
+    display: inline-block;
+    height: 14px;
+    line-height: 15px;
+    font-size: 9px;
+    vertical-align: middle;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid #7668be;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #796bbf;
+    background-image: linear-gradient(tobottom, #7061bb, #877ac3);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff7061bb',endColorstr='#ff877ac3',GradientType=0);
+    padding: 0 6px 0 20px;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: url(seasons.png);
+      background-repeat: no-repeat;
+      background-position: 1px -24px;
+      content: ' ';
+    }
+  }
+  &.season-Summer {
+    position: relative;
+    display: inline-block;
+    height: 14px;
+    line-height: 15px;
+    font-size: 9px;
+    vertical-align: middle;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #edf5ee;
+    border: 1px solid #64ac6d;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #67ac6f;
+    background-image: linear-gradient(tobottom, #5fa967, #74b27b);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5fa967',endColorstr='#ff74b27b',GradientType=0);
+    padding: 0 6px 0 20px;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: url(seasons.png);
+      background-repeat: no-repeat;
+      background-position: 1px -48px;
+      content: ' ';
+    }
+  }
+  &.season-None {
+    position: relative;
+    display: inline-block;
+    height: 14px;
+    line-height: 15px;
+    font-size: 9px;
+    vertical-align: middle;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fafafa;
+    border: 1px solid #8d8d8d;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #8f8f8f;
+    background-image: linear-gradient(tobottom, #888888, #989898);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff888888',endColorstr='#ff989898',GradientType=0);
+    padding: 0 6px 0 20px;
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: url(seasons.png);
+      background-repeat: no-repeat;
+      background-position: -20px 0;
+      content: ' ';
+    }
+  }
+  &.hide {
+    opacity: .33%;
+    filter: alpha(opacity = 33%);
+  }
+}
+
+.expo {
+  margin: 50px;
+  padding: 30px;
+  background-color: #e0e0e0;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.faq-item {
+  margin-top: 35px;
+  list-style: none;
+  .faq-header {
+    margin-top: 0;
+  }
+}
