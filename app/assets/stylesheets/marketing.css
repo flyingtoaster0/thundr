@@ -73,6 +73,11 @@ aside {
 
 }
 
+
+.header .pure-menu li a{
+    color: #fff;
+}
+
 .header .pure-menu li a:hover,
 .header .pure-menu li a:focus {
     background: none;
@@ -160,7 +165,7 @@ aside {
     border-color: #f2d243
 }
 
-.nav{
+.nav {
     vertical-align:middle;
 }
 
@@ -169,6 +174,7 @@ aside {
     margin-top: auto;
     margin-bottom: auto;
 }
+
 
 body .primary-button {
     background: #02a6eb;
@@ -233,9 +239,39 @@ body .primary-button {
     border-bottom: 1px solid #eee;
 }
 
-.pure-paginator .pure-button{
+
+.wide-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border-top: 1px solid #cbcbcb;
+    border-bottom: 1px solid #cbcbcb;
+}
+
+.wide-table tr{
+    border-collapse: collapse;
+    border-top: 1px solid #cbcbcb;
+}
+
+.department-body .pure-paginator {
+    margin-top: 0.5em;
+}
+
+.department-body .pure-paginator li a {
+    text-decoration: none;
+}
+
+.department-body .pure-paginator .pure-button{
     color: #cf8200;
     font-weight: bold;
+    height: 2.5em
+}
+
+pure-paginator .pure-button {
+    border-radius: 0;
+    padding: .8em 1.4em;
+    vertical-align: top;
+    height: 2.5em
 }
 
 .pure-paginator .pure-button:hover{

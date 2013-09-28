@@ -29,18 +29,18 @@
         </h1>
 
         <div class = 'description'>
-          <% if @course.description %>
-              <%= @course.description %>
-          <% else %>
+          <% if @course.description == '' %>
               No description was found for this course.
+          <% else %>
+              <%= @course.description %>
           <% end %>
         </div>
 
         <div class = 'prereqs'>
-          <% if @course.prerequisite %>
-              Prerequisites: <%= @course.prerequisite %>
-          <% else %>
+          <% if @course.prerequisite == '' %>
               No prerequisite information was found for this course.
+          <% else %>
+              Prerequisites: <%= @course.prerequisite %>
           <% end %>
         </div>
 

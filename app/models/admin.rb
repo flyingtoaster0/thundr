@@ -179,7 +179,7 @@ class Admin
 
     _courseCode = info_array[0]
 
-    _courseName = info_array[1]
+    _courseName = info_array[1].gsub(/Computer Requirements/,'')
 
     _method = info_array[2]
 
