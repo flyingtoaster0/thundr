@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LakeheadScheduler</title>
+  <title>Thundr | The (unofficial) course catalog for Lakehead University students</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "http://yui.yahooapis.com/pure/0.3.0/pure-min.css", :media => "all" %>
 
   <%= javascript_include_tag "application" %>
+  <%= favicon_link_tag 'favicon.png' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
     <div class="content">
       <div class="header">
         <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal menu-bar">
-          <a class="pure-menu-heading" href="">Your Site</a>
+          <a class="pure-menu-heading" href="/"><%= image_tag('logo_small.png', alt: "Thundr") %></a>
 
 
-          <ul>
+          <div class="pure-menu-heading" style="float: right;">
+            <%= render 'layouts/search' %>
+          </div>
+
+          <ul style="float: right;">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/faq">FAQ</a></li>
@@ -23,9 +28,7 @@
           </ul>
 
 
-          <div class="pure-menu-heading" style="float: right;">
-            <%= render 'layouts/search' %>
-          </div>
+
 
           <!--
           <div class="pure-menu-heading" style="float: right;">
