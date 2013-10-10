@@ -4,7 +4,6 @@ LakeheadScheduler::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
 
-  #root  'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
@@ -24,6 +23,7 @@ LakeheadScheduler::Application.routes.draw do
   get 'search' => 'search#index'
 
   resources :departments
+
   resources :departments, :path => 'courses' do
     resources :courses, :path => ''
   end
@@ -31,7 +31,9 @@ LakeheadScheduler::Application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     resources :departments
-    resources :courses
+    match '/courses',                            to: 'courses#index',                     via: 'get'
+    match '/courses/department/:department_id',  to: 'courses#find_by_department',        via: 'get'
+    match '/courses/:department_id/:course_id',  to: 'courses#show',                      via: 'get'
   end
 
 

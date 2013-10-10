@@ -5,4 +5,11 @@ class API::DepartmentsController < ApplicationController
       format.json { render :json => @departments }
     end
   end
+
+  def show
+    @department = Department.where('deptCode = ?', params[:id])
+    respond_to do |format|
+      format.json { render :json => @department }
+    end
+  end
 end
