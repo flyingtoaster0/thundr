@@ -30,20 +30,35 @@ class CoursesController < ApplicationController
     dept_name = course_info[0]
     course_code = course_info[1]
 
-    if course_code
-      course = Course.find_by_department_and_code(dept_name, course_code)
-      if course
-        redirect_to(course)
+    course = nil
+
+    unless(Department.where('lower(deptCode) = ?', dept_name))
+      if course_code
+        #course = Course.find_by_department_and_code(dept_name, course_code)
+        #if course
+        #  redirect_to(course)
+        #end
+
+
+        limit = course_code.length
+        while limit > 0 and course.nil?
+          course = Course.where("department like = ? AND code LIKE '?%'", dept_name, course_code)
+
+          limit -= 1
+        end
+
+
+
+      else
+        department = Department.find_by_deptCode(dept_name)
+        if department
+          #redirect to course listing for this department
+        end
       end
-    else
-      department = Department.find_by_deptCode(dept_name)
-      if department
-        #redirect to course listing for this department
+
+
+      @query = params[:q]
       end
     end
-
-
-    @query = params[:q]
-  end
 
 end
