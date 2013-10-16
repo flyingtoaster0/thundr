@@ -31,10 +31,11 @@ LakeheadScheduler::Application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     resources :departments
-    match '/courses',                            to: 'courses#index',                     via: 'get'
-    match '/courses/department/:department_id',  to: 'courses#find_by_department',        via: 'get'
-    match '/courses/:department_id/:course_id',  to: 'courses#show',                      via: 'get'
-    match 'search/:q',                              to: 'courses#search',                    via: 'get'
+    match '/courses',                                     to: 'courses#index',                     via: 'get'
+    match '/courses/department/:department_id',           to: 'courses#find_by_department',        via: 'get'
+    match '/courses/:department_id/:course_id',           to: 'courses#show',                      via: 'get'
+    match '/courses/:department_id/:course_id/:section',  to: 'courses#full_course',               via: 'get'
+    match 'search/:q',                                    to: 'courses#search',                    via: 'get'
   end
 
 

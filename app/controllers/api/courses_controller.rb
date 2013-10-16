@@ -7,7 +7,7 @@ class API::CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.where('code = ? AND department = ?', params[:course_id], params[:department_id]).first
+    @course = Course.where('code = ? AND department = ?', params[:course_id], params[:department_id])
     respond_to do |format|
       format.json { render :json => @course }
     end
@@ -17,6 +17,13 @@ class API::CoursesController < ApplicationController
     @courses = Course.where('department = ?', params[:department_id])
     respond_to do |format|
       format.json { render :json => @courses }
+    end
+  end
+
+  def full_course
+    @course = Course.where('code = ? AND department = ? AND section = ?', params[:course_id], params[:department_id], params[:section])
+    respond_to do |format|
+      format.json { render :json => @course }
     end
   end
 
