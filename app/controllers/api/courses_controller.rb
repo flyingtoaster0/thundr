@@ -50,7 +50,7 @@ class API::CoursesController < ApplicationController
     end
 
     #Checking by course title
-    course_name = params[:q]
+    course_name = params[:q].gsub('+',' ')
     #courses = nil
 
     limit = course_name.length
@@ -60,7 +60,7 @@ class API::CoursesController < ApplicationController
     end
 
     #check by instructor
-    instructor_name = params[:q]
+    instructor_name = params[:q].gsub('+',' ')
     courses = Course.where("lower(instructor) LIKE ?", '%'+instructor_name[0..limit].downcase+'%') if courses.blank?
 
     respond_to do |format|
