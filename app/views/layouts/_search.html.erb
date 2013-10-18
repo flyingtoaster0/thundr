@@ -1,5 +1,5 @@
 <div class="search-form">
-  <%= form_tag('/search', :method => 'get', :class => 'pure-form') do %>
+  <%= form_tag('/courses/search/', :method => 'get', :class => 'pure-form') do %>
       <%= text_field_tag :q, nil, :class=> 'pure-input-rounded', placeholder: 'e.g. COMP-1411' %>
       <%= submit_tag 'Go!', :name => nil, :class => 'pure-button pure-button-search' %>
   <% end %>

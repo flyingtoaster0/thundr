@@ -14,7 +14,8 @@ LakeheadScheduler::Application.routes.draw do
 
 
 
-  get "home/index"
+
+        get "home/index"
 
   match '/admin/:id/launch_update', :to => 'admin#launch_update', :as => 'launch_update', via: 'get'
   match '/admin/:id/confirm', :to => 'admin#confirm', :as => 'confirm', via: 'get'
@@ -24,9 +25,21 @@ LakeheadScheduler::Application.routes.draw do
 
   resources :departments
 
-  resources :departments, :path => 'courses' do
-    resources :courses, :path => ''
-  end
+  #resources :courses
+
+  match 'courses/:search', to: 'courses#search', via: 'get'
+  match 'courses/:department_id/:id', to: 'courses#show', via: 'get'
+
+
+  #resources :departments, :path => 'courses' do
+  #  match 'courses/search', to: 'courses#search', via: 'get'
+  #  resources :courses, :path => ''
+
+
+  #end
+
+
+
 
 
   namespace :api, :defaults => {:format => :json} do
