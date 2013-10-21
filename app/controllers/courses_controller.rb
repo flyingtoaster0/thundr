@@ -26,39 +26,51 @@ class CoursesController < ApplicationController
   end
 
   def search
+
+
+
+
+
+
     course_info = params[:q].split('-')
-    dept_name = course_info[0]
+    @query = course_info[0] ? course_info[0] : ''
+    dept_code = course_info[0]
     course_code = course_info[1]
 
-    course = nil
+    courses = nil
 
-    unless(Department.where('lower(deptCode) = ?', dept_name))
+    #check by course code
+    unless(Department.where('"deptCode" = ?', dept_code.upcase).blank?)
       if course_code
-        #course = Course.find_by_department_and_code(dept_name, course_code)
-        #if course
-        #  redirect_to(course)
-        #end
-
 
         limit = course_code.length
-        while limit > 0 and course.nil?
-          course = Course.where("department like = ? AND code LIKE '?%'", dept_name, course_code)
-
+        while limit > 0 and @courses.blank?
+          @courses = Course.where("lower(department) = ? AND code LIKE ?", dept_code.downcase, course_code[0..limit]+'%')
           limit -= 1
         end
-
-
-
-      else
-        department = Department.find_by_deptCode(dept_name)
-        if department
-          #redirect to course listing for this department
-        end
       end
 
-
-      @query = params[:q]
-      end
+      @courses = Course.where('lower(department) = ?', dept_code.downcase) if @courses.blank?
     end
+
+    #Checking by course title
+    course_name = params[:q].gsub('+',' ')
+    #courses = nil
+
+    limit = course_name.length
+    while limit > 4 and @courses.blank?
+      @courses = Course.where("lower(name) LIKE ?", '%'+course_name[0..limit].downcase+'%')
+      limit -= 1
+    end
+
+    #check by instructor
+    instructor_name = params[:q].gsub('+',' ')
+    @courses = Course.where("lower(instructor) LIKE ?", '%'+instructor_name[0..limit].downcase+'%') if @courses.blank?
+
+    #respond_to do |format|
+    #  format.json { render :json => courses}
+    #end
+    z=5
+  end
 
 end
