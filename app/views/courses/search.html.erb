@@ -19,6 +19,12 @@
     </div>
   </div>
 
+  <% if @courses.blank? %>
+      <aside>
+        This search turned up no results. Try searching course codes like "MATH-3331", words like "calculus" or instructor last names like "Benson".
+      </aside>
+  <% else %>
+
   <div class='list-container'>
 
     <table class='table-list'>
@@ -73,4 +79,5 @@
       </tbody>
     </table>
   </div>
+  <% end %>
 </div>
