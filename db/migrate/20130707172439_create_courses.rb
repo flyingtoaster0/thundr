@@ -5,21 +5,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :prerequisite
-      t.string :campus
-      t.string :room
-      t.date :startDate
-      t.date :endDate
-      t.boolean :mon
-      t.boolean :tue
-      t.boolean :wed
-      t.boolean :thu
-      t.boolean :fri
-      t.boolean :sat
-      t.boolean :sun
-      t.string :startTime
-      t.string :endTime
       t.string :instructor
-      t.text :notes
 
       t.timestamps
     end
