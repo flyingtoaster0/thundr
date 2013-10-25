@@ -7,8 +7,8 @@ class Admin
   def start_update
     #update code goes here
     #update progress table
-    #@prog = @prog +1
-    @prog = Progress.first
+    ##@prog = #@prog +1
+    #@prog = Progress.first
 
 
     _i = 0
@@ -16,8 +16,8 @@ class Admin
 
     while _i < _num  do
       _i +=1
-      @prog.percent = _i
-      @prog.save
+      #@prog.percent = _i
+      #@prog.save
       sleep 0.1
 
     end
@@ -222,7 +222,19 @@ class Admin
       #puts(_courseName)
     end
 
-    _newCourse.method = _methodi
+    _newCourse.method = _method
+
+
+    # do some parsing to see where a TUT or PRA are linked to - find the number
+    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
+      _newCourse.link = _department+'-'+_courseName[/\d+/]
+    elsif _method == 'LAB'
+      _newCourse.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
+    else
+      _newCourse.link = nil
+    end
+
+
 
 
     _newCourse.save
@@ -249,14 +261,7 @@ class Admin
     _newSection.instructor = _instructor
 
 
-    # do some parsing to see where a TUT or PRA are linked to - find the number
-    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
-      _newCourse.link = _department+'-'+_courseName[/\d+/]
-    elsif _method == 'LAB'
-      _newCourse.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
-    else
-      _newCourse.link = nil
-    end
+
 
 
     _newSection.course_id = _newCourse.id
@@ -458,11 +463,11 @@ class Admin
     #linkArr.push("http://timetable.lakeheadu.ca/2013FW_UG_TBAY/nurs.html")
 
     _courseArray = Array.new
-    @prog = Progress.first
-    @prog.percent = 0
-    @prog.description = 'Constructing course array'
+    ##@prog = Progress.first
+    #@prog.percent = 0
+    #@prog.description = 'Constructing course array'
     puts 'Constructing course array...'
-    @prog.save
+    #@prog.save
 
     startCount = 0
     i = 0
@@ -477,9 +482,9 @@ class Admin
       doc = Nokogiri::HTML(open(link))
       currentLink += 1
       percent = (currentLink/total) * 50
-      @prog.percent = percent
-      @prog.description = 'Parsing: ' << link
-      @prog.save
+      #@prog.percent = percent
+      #@prog.description = 'Parsing: ' << link
+      #@prog.save
       doc.css('tr td').each do |x|
 
         unless x.attr('style').nil?
@@ -577,7 +582,7 @@ class Admin
     end
     #actually add them here
 
-    #@prog.description = 'Saving courses to the database'
+    ##@prog.description = 'Saving courses to the database'
 
     #_courseArraySize =_courseArray.length
     #_currentCourseNum = 0.0
@@ -590,15 +595,15 @@ class Admin
     #  _coursePercent = ((_currentCourseNum / _courseArraySize) * 50) + 50
 
 
-    #  @prog.description = 'Saving courses to the database... '
-    #  @prog.percent = _coursePercent
-    #  @prog.save
+    #  #@prog.description = 'Saving courses to the database... '
+    #  #@prog.percent = _coursePercent
+    #  #@prog.save
     #  c.save
     #end
 
-    #@prog.percent = 100
-    #@prog.description = 'Done'
-    #@prog.save
+    ##@prog.percent = 100
+    ##@prog.description = 'Done'
+    ##@prog.save
   end
   handle_asynchronously :run_db_import, :run_at => Proc.new { 5.seconds.from_now }
 end

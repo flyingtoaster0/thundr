@@ -34,7 +34,7 @@ class AdminController < ApplicationController
     _isAdmin = current_user.nil? ? false : current_user.admin?
     unless _isAdmin
 
-      redirect_to root_url
+      #redirect_to root_url
     end
   end
 end

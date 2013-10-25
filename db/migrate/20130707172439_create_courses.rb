@@ -10,6 +10,7 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :synonym
       t.string :method
       t.float :credits
+      t.string :link
       t.timestamps
     end
   end

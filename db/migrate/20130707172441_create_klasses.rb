@@ -1,12 +1,12 @@
-class CreateClasses < ActiveRecord::Migration
+class CreateKlasses < ActiveRecord::Migration
   def change
-    create_table :classes do |t|
+    create_table :klasses do |t|
+      t.belongs_to :section
       t.string :day
       t.string :start_time
       t.string :end_time
       t.string :campus
       t.string :room
-      t.integer :section_id
 
       t.timestamps
     end

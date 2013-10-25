@@ -1,18 +1,19 @@
 class Course < ActiveRecord::Base
   has_and_belongs_to_many :schedules
   has_and_belongs_to_many :carts
+  has_many :sections
   #attr_accessible :campus, :name, :link, :method, :code, :description, :prerequisite, :endDate, :endTime, :fri, :instructor, :mon, :name, :notes, :room, :sat, :startDate, :startTime, :sun, :thu, :tue, :wed
 
 
   #@day_hash = {'Monday' => mon, 'Tuesday' => tue, 'Wednesday' => wed, 'Thursday' => thu, 'Friday' => fri, 'Saturday' => sat, 'Sunday' => sun }
 
-  def course_code
-    department + '-' + code
-  end
+  #def course_code
+  #  department + '-' + code
+  #end
 
-  def course_code_full
-    department + '-' + code + '-' + section
-  end
+  #def course_code_full
+  #  department + '-' + code + '-' + section
+  #end
 
   def method_name
     case method
@@ -31,24 +32,25 @@ class Course < ActiveRecord::Base
     end
   end
 
-  def season
-    case section[0]
-      when 'F'
-        'Fall'
-      when 'W'
-        'Winter'
-      when 'S'
-        'Summer'
-      when 'Y'
-        'All-Year'
-    end
-  end
+  #def season
+  #  case section[0]
+  #    when 'F'
+  #      'Fall'
+  #    when 'W'
+  #      'Winter'
+  #    when 'S'
+  #      'Summer'
+  #    when 'Y'
+  #      'All-Year'
+  #  end
+  #end
 
 
-  def all_seasons
-    return Course.find_all_by_department_and_code(department, code).collect{|c| c.section[0]}
-  end
+  #def all_seasons
+  #  return Course.find_all_by_department_and_code(department, code).collect{|c| c.section[0]}
+  #end
 
+=begin
   def day_array
     [mon, tue, wed, thu, fri, sat, sun].zip(['Monday',
                                             'Tuesday',
@@ -141,5 +143,6 @@ class Course < ActiveRecord::Base
   def year_practicals
     Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'Y%'])
   end
+=end
 
 end
