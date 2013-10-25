@@ -31,17 +31,11 @@ class Admin
   def getDayArray(dayString)
     dayArr = Array.new()
 
-    dayArr[0] = false
-    dayArr[1] = false
-    dayArr[2] = false
-    dayArr[3] = false
-    dayArr[4] = false
-
-    dayArr[0] = true if dayString.include? "M"
-    dayArr[1] = true if ((dayString.include? "T" and !dayString.include? "Th") or (dayString.include? "T" and dayString.count("T") == 2))
-    dayArr[2] = true if dayString.include? "W"
-    dayArr[3] = true if dayString.include? "Th"
-    dayArr[4] = true if dayString.include? "F"
+    dayArr.append 'M' if dayString.include? "M"
+    dayArr.append 'T' if ((dayString.include? "T" and !dayString.include? "Th") or (dayString.include? "T" and dayString.count("T") == 2))
+    dayArr.append 'W' if dayString.include? "W"
+    dayArr.append 'Th' if dayString.include? "Th"
+    dayArr.append 'F' if dayString.include? "F"
 
     return dayArr
   end
@@ -144,6 +138,175 @@ class Admin
 
     return _newCourse
   end
+
+
+
+
+
+
+
+
+  def make_items(infoArr)
+    # just make sure that the array actually makes sense
+    if infoArr.length != 10
+      return
+    end
+
+    _courseCode = infoArr[0]
+
+    _courseName = infoArr[1]
+
+    _method = infoArr[2]
+
+    _room = infoArr[3]
+
+    _campus = "TBAY"
+
+
+    unless infoArr[4].nil?
+      unless infoArr[4].empty?
+        _dayArr = getDayArray(infoArr[4])
+        _mon = _dayArr[0]
+        _tue = _dayArr[1]
+        _wed = _dayArr[2]
+        _thu = _dayArr[3]
+        _fri = _dayArr[4]
+      end
+    end
+
+    unless infoArr[5].nil? or infoArr[5].empty? or infoArr[5]== '-'
+      _timeArr = infoArr[5].split('-')
+      _startTime = Time.strptime(_timeArr[0], "%H:%M%P").strftime("%H:%M")
+      _endTime = Time.strptime(_timeArr[1], "%H:%M%P").strftime("%H:%M")
+    end
+
+    _dateArr = infoArr[6].split('-')
+    _startDate = _dateArr[0]
+    _endDate = _dateArr[1]
+
+    _credits = infoArr[7]
+
+    _synonym = infoArr[8].sub(%r{.*: },'')
+
+    _instructor = infoArr[9].sub(%r{.*: },'')
+
+    _department = _courseCode[0..3].to_s
+
+    _course_code = _courseCode[5..9].gsub(/\-/,'')
+
+    _section_code = _courseCode[10..13].gsub(/\-/,'')
+
+    # ----------------- BEGIN ADDING NEW COURSE ------------------
+
+
+    _newCourse = Course.find_or_create_by(department: _department, course_code: _course_code )
+    _newCourse.department = _courseCode[0..3].to_s
+    _newCourse.course_code = _courseCode[5..9].gsub(/\-/,'')
+    _newCourse.name = _courseName
+    _newCourse.credits = _credits.to_f
+    _newCourse.synonym = _synonym.to_i
+
+
+    _description_url = 'http://timetable.lakeheadu.ca/scripts/return.course.description.php?c=' + _department + '&cn=' + _courseCode[5..9].gsub(/\-/,'')
+    _description, _prerequisite = get_description_and_prereq _description_url
+
+
+    _newCourse.description =_description
+    _newCourse.prerequisite = _prerequisite
+
+    if _courseName.include? 'Clinical for'
+      _method = 'PRA'
+      #puts(_courseName)
+    elsif _courseName.include? 'Laboratory for'
+      _method = 'LAB'
+      #puts(_courseName)
+    end
+
+    _newCourse.method = _methodi
+
+
+    _newCourse.save
+
+
+    # ----------------- END ADDING NEW COURSE ------------------
+
+
+
+
+
+    # ----------------- BEGIN ADDING SECTIONS ------------------
+
+    _newSection = Section.find_or_create_by(department: _department, course_code: _course_code, section_code: _section_code )
+
+
+    _newSection.department = _courseCode[0..3].to_s
+    _newSection.course_code = _courseCode[5..9].gsub(/\-/,'')
+    _newSection.section_code = _courseCode[10..13].gsub(/\-/,'')
+
+
+    _newSection.start_date = _startDate ? Time.parse('20'+_startDate) : nil
+    _newSection.end_date = _endDate ? Time.parse('20'+_endDate) : nil
+    _newSection.instructor = _instructor
+
+
+    # do some parsing to see where a TUT or PRA are linked to - find the number
+    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
+      _newCourse.link = _department+'-'+_courseName[/\d+/]
+    elsif _method == 'LAB'
+      _newCourse.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
+    else
+      _newCourse.link = nil
+    end
+
+
+    _newSection.course_id = _newCourse.id
+
+    _newSection.save
+    #_newSection.course_id = Course.where('department = ? AND course_code = ?', _department, _course_code).id
+
+
+    # ----------------- END ADDING SECTIONS ------------------
+
+
+
+
+    # ----------------- BEGIN ADDING CLASSES ------------------
+
+
+    _dateArr.each do |day|
+      if day
+
+        _newKlass = Klass.new
+
+        _newKlass.day = day
+        _newKlass.start_time = _startTime
+        _newKlass.end_time = _endTime
+        _newKlass.room = _room
+        _newKlass.section_id = _newSection.id
+        _newKlass.save
+      end
+    end
+
+
+    # ----------------- END ADDING CLASSES ------------------
+
+
+
+
+
+
+
+
+
+    #puts('New course added: ' + _courseCode)
+
+    #return _newCourse
+  end
+
+
+
+
+
 
 
 
@@ -354,17 +517,20 @@ class Admin
 
 
               unless infoArray2.empty?
+
+                make_items infoArray2
+
                 #puts "_________________"
 
-                existing_course = Course.find_by_department_and_code_and_section(department_from_course_code(infoArray2[0]),
-                                                                                 code_from_course_code(infoArray2[0]),
-                                                                                 section_from_course_code(infoArray2[0]))
+                #existing_course = Course.find_by_department_and_code_and_section(department_from_course_code(infoArray2[0]),
+                #                                                                 code_from_course_code(infoArray2[0]),
+                #                                                                 section_from_course_code(infoArray2[0]))
 
-                if existing_course
-                  update_course(existing_course, infoArray2)
-                else
-                  _courseArray.append(makeCourse(infoArray2))
-                end
+                #if existing_course
+                #  update_course(existing_course, infoArray2)
+                #else
+                #  _courseArray.append(makeCourse(infoArray2))
+                #end
 
 
               end
@@ -378,18 +544,21 @@ class Admin
 
 
               unless infoArray[0].nil?
+
+                make_items infoArray[0..9]
+
                 #puts "__________________"
                 #puts infoArray[0]
                 
-                existing_course = Course.find_by_department_and_code_and_section(department_from_course_code(infoArray[0]),
-                                                                                  code_from_course_code(infoArray[0]),
-                                                                                  section_from_course_code(infoArray[0]))
+                #existing_course = Course.find_by_department_and_code_and_section(department_from_course_code(infoArray[0]),
+                #                                                                  code_from_course_code(infoArray[0]),
+                #                                                                  section_from_course_code(infoArray[0]))
                 
-                if existing_course
-                  update_course(existing_course, infoArray[0..9])
-                else
-                  _courseArray.append(makeCourse(infoArray[0..9]))
-                end
+                #if existing_course
+                #  update_course(existing_course, infoArray[0..9])
+                #else
+                #  _courseArray.append(makeCourse(infoArray[0..9]))
+                #end
                 
                 
               end
@@ -408,28 +577,28 @@ class Admin
     end
     #actually add them here
 
-    @prog.description = 'Saving courses to the database'
+    #@prog.description = 'Saving courses to the database'
 
-    _courseArraySize =_courseArray.length
-    _currentCourseNum = 0.0
-    _coursePercent = 0.0
+    #_courseArraySize =_courseArray.length
+    #_currentCourseNum = 0.0
+    #_coursePercent = 0.0
 
-    puts 'Saving courses to the database...'
+    #puts 'Saving courses to the database...'
     #Courses and departments get added to their respective tables here
-    _courseArray.each do |c|
-      _currentCourseNum += 1
-      _coursePercent = ((_currentCourseNum / _courseArraySize) * 50) + 50
+    #_courseArray.each do |c|
+    #  _currentCourseNum += 1
+    #  _coursePercent = ((_currentCourseNum / _courseArraySize) * 50) + 50
 
 
-      @prog.description = 'Saving courses to the database... '
-      @prog.percent = _coursePercent
-      @prog.save
-      c.save
-    end
+    #  @prog.description = 'Saving courses to the database... '
+    #  @prog.percent = _coursePercent
+    #  @prog.save
+    #  c.save
+    #end
 
-    @prog.percent = 100
-    @prog.description = 'Done'
-    @prog.save
+    #@prog.percent = 100
+    #@prog.description = 'Done'
+    #@prog.save
   end
   handle_asynchronously :run_db_import, :run_at => Proc.new { 5.seconds.from_now }
 end

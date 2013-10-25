@@ -1,24 +1,24 @@
 LakeheadScheduler::Application.routes.draw do
 
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  #resources :sessions, only: [:new, :create, :destroy]
 
 
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/signup'  => 'users#new',            :via => [:get]
+  match '/signin'  => 'sessions#new',         :via => [:get]
+  match '/signout' => 'sessions#destroy',     :via => [:delete]
 
-  match '/about', to: 'info#about'
-  match '/faq', to: 'info#faq'
-  match '/contact', to: 'info#contact'
-
-
+  match '/about' => 'info#about', :via => [:get]
+  match '/faq' => 'info#faq', :via => [:get]
+  match '/contact' => 'info#contact', :via => [:get]
 
 
-        get "home/index"
 
-  match '/admin/:id/launch_update', :to => 'admin#launch_update', :as => 'launch_update', via: 'get'
-  match '/admin/:id/confirm', :to => 'admin#confirm', :as => 'confirm', via: 'get'
+
+  get "home/index"
+
+  match '/admin/:id/launch_update', :to => 'admin#launch_update', :as => 'launch_update', :via => [:get]
+  match '/admin/:id/confirm', :to => 'admin#confirm', :as => 'confirm', :via => [:get]
   resources :admin
 
   get 'search' => 'search#index'
@@ -27,12 +27,12 @@ LakeheadScheduler::Application.routes.draw do
 
   #resources :courses
 
-  match 'courses/:search', to: 'courses#search', via: 'get'
-  match 'courses/:department_id/:id', to: 'courses#show', via: 'get'
+  match 'courses/:search' => 'courses#search', :via => [:get]
+  match 'courses/:department_id/:id' => 'courses#show', :via => [:get]
 
 
   #resources :departments, :path => 'courses' do
-  #  match 'courses/search', to: 'courses#search', via: 'get'
+  #  match 'courses/search' => 'courses#search', :via => 'get'
   #  resources :courses, :path => ''
 
 
@@ -44,11 +44,11 @@ LakeheadScheduler::Application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     resources :departments
-    match '/courses',                                     to: 'courses#index',                     via: 'get'
-    match '/courses/department/:department_id',           to: 'courses#find_by_department',        via: 'get'
-    match '/courses/:department_id/:course_id',           to: 'courses#show',                      via: 'get'
-    match '/courses/:department_id/:course_id/:section',  to: 'courses#full_course',               via: 'get'
-    match 'search/:q',                                    to: 'courses#search',                    via: 'get'
+    match '/courses'                                     => 'courses#index',                     :via => [:get]
+    match '/courses/department/:department_id'           => 'courses#find_by_department',        :via => [:get]
+    match '/courses/:department_id/:course_id'           => 'courses#show',                      :via => [:get]
+    match '/courses/:department_id/:course_id/:section'  => 'courses#full_course',               :via => [:get]
+    match 'search/:q'                                    => 'courses#search',                    :via => [:get]
   end
 
 

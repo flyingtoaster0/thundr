@@ -7,7 +7,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string :prerequisite
       t.text :description
 
-      t.integer :integer
+      t.integer :synonym
       t.string :method
       t.float :credits
       t.timestamps
