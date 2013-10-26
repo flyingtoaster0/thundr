@@ -46,9 +46,13 @@ class Course < ActiveRecord::Base
   #end
 
 
-  #def all_seasons
-  #  return Course.find_all_by_department_and_code(department, code).collect{|c| c.section[0]}
-  #end
+  def all_seasons
+
+    return Section.where(:department => department, :course_code => course_code).collect{|s| s.section_code[0]}
+
+
+    #return Section.find_all_by_department_and_code(department, code).collect{|c| c.section[0]}
+  end
 
 =begin
   def day_array

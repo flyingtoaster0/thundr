@@ -13,12 +13,12 @@
             <div class='table-list-row'>
               <div class="pure-g">
                 <div class="pure-u-1-4">
-                  <%= c.department %>-<%= c.code %>
+                  <%= c.department %>-<%= c.course_code %>
                 </div>
 
                 <div class="pure-u-1-2">
 
-                  <%= link_to('/courses'+'/'+c.department+'/'+c.code, {class: 'ununderlinable'}) do %>
+                  <%= link_to('/courses'+'/'+c.department+'/'+c.course_code, {class: 'ununderlinable'}) do %>
                                 <span class="underlinable" style='margin-right: 9px'>
                                     <%= c.name %>
                                 </span>
