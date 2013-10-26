@@ -7,13 +7,11 @@ class Course < ActiveRecord::Base
 
   #@day_hash = {'Monday' => mon, 'Tuesday' => tue, 'Wednesday' => wed, 'Thursday' => thu, 'Friday' => fri, 'Saturday' => sat, 'Sunday' => sun }
 
-  #def course_code
-  #  department + '-' + code
-  #end
+  def department_and_course_code
+    department + '-' + course_code
+  end
 
-  #def course_code_full
-  #  department + '-' + code + '-' + section
-  #end
+
 
   def method_name
     case method
@@ -32,24 +30,10 @@ class Course < ActiveRecord::Base
     end
   end
 
-  #def season
-  #  case section[0]
-  #    when 'F'
-  #      'Fall'
-  #    when 'W'
-  #      'Winter'
-  #    when 'S'
-  #      'Summer'
-  #    when 'Y'
-  #      'All-Year'
-  #  end
-  #end
-
 
   def all_seasons
 
     return Section.where(:department => department, :course_code => course_code).collect{|s| s.section_code[0]}
-
 
     #return Section.find_all_by_department_and_code(department, code).collect{|c| c.section[0]}
   end
@@ -73,48 +57,50 @@ class Course < ActiveRecord::Base
     endDate ? endDate.strftime('%b ') + endDate.strftime('%e').to_i.ordinalize + endDate.strftime(', %Y') : ''
   end
 
-  def start_time
-    startTime ? Time.parse(startTime).strftime('%l:%M%p') : ''
-  end
 
-  def end_time
-    endTime ? Time.parse(endTime).strftime('%l:%M%p') : ''
-  end
-  
+=end
+
   def fall_lectures
-    Course.find_all_by_department_and_code(department, code, :conditions => ['section like ?', 'F%'])
+
+    Section.where('department = ? AND course_code = ? AND section_code like ?', department, course_code, 'F%')
+    #Course.find_all_by_department_and_code(department, code, :conditions => ['section like ?', 'F%'])
   end
 
   def fall_labs
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'LAB', 'F%'])
+    Section.where('link = ? AND method = ? AND section_code like ?', department_and_course_code, 'LAB', 'F%')
+    #Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'LAB', 'F%'])
   end
 
   def fall_tutorials
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'TUT', 'F%'])
+
+    Section.where('link = ? AND method = ? AND section_code like ?', department_and_course_code, 'TUT', 'F%')
+    #Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'TUT', 'F%'])
   end
 
   def fall_practicals
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'F%'])
+
+    Section.where('link = ? AND method = ? AND section_code like ?', department_and_course_code, 'PRA', 'F%')
+    #Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'F%'])
   end
 
 
   def winter_lectures
-    Course.find_all_by_department_and_code(department, code, :conditions => ['section like ?', 'W%'])
+    Section.where('department = ? AND course_code = ? AND section_code like ?', department, course_code, 'W%')
   end
 
   def winter_labs
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'LAB', 'W%'])
+    Section.where('link = ? AND method = ? AND section_code like ?', department_and_course_code, 'LAB', 'W%')
   end
 
   def winter_tutorials
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'TUT', 'W%'])
+    Section.where('link = ? AND method = ? AND section_code like ?', department_and_course_code, 'TUT', 'W%')
   end
 
   def winter_practicals
-    Course.find_all_by_link(course_code, :conditions => ['method = ? and section like ?', 'PRA', 'W%'])
+    Section.where('link = ? AND method = ? AND section_code like ?', department_and_course_code, 'PRA', 'W%')
   end
 
-
+=begin
   def summer_lectures
     Course.find_all_by_department_and_code(department, code, :conditions => ['section like ?', 'S%'])
   end

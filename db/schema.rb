@@ -25,10 +25,8 @@ ActiveRecord::Schema.define(version: 20130904043228) do
     t.string   "name"
     t.string   "prerequisite"
     t.text     "description"
-    t.integer  "synonym"
     t.string   "method"
     t.float    "credits"
-    t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,6 +94,9 @@ ActiveRecord::Schema.define(version: 20130904043228) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "season"
+    t.string   "link"
+    t.integer  "synonym"
+    t.string   "method"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

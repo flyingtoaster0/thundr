@@ -204,7 +204,6 @@ class Admin
     _newCourse.course_code = _courseCode[5..9].gsub(/\-/,'')
     _newCourse.name = _courseName
     _newCourse.credits = _credits.to_f
-    _newCourse.synonym = _synonym.to_i
 
 
     _description_url = 'http://timetable.lakeheadu.ca/scripts/return.course.description.php?c=' + _department + '&cn=' + _courseCode[5..9].gsub(/\-/,'')
@@ -222,20 +221,12 @@ class Admin
       #puts(_courseName)
     end
 
+
+
+
+
+
     _newCourse.method = _method
-
-
-    # do some parsing to see where a TUT or PRA are linked to - find the number
-    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
-      _newCourse.link = _department+'-'+_courseName[/\d+/]
-    elsif _method == 'LAB'
-      _newCourse.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
-    else
-      _newCourse.link = nil
-    end
-
-
-
 
     _newCourse.save
 
@@ -262,7 +253,19 @@ class Admin
 
 
 
+    # do some parsing to see where a TUT or PRA are linked to - find the number
+    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
+      _newSection.link = _department+'-'+_courseName[/\d+/]
+    elsif _method == 'LAB'
+      _newSection.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
+    else
+      _newSection.link = nil
+    end
 
+
+    _newSection.synonym = _synonym.to_i
+
+    _newSection.method = _method
 
     _newSection.course_id = _newCourse.id
 
@@ -277,20 +280,22 @@ class Admin
 
     # ----------------- BEGIN ADDING CLASSES ------------------
 
+    unless _dayArr.nil?
+      _dayArr.each do |day|
+        if day
 
-    _dateArr.each do |day|
-      if day
+          _newKlass = Klass.new
 
-        _newKlass = Klass.new
-
-        _newKlass.day = day
-        _newKlass.start_time = _startTime
-        _newKlass.end_time = _endTime
-        _newKlass.room = _room
-        _newKlass.section_id = _newSection.id
-        _newKlass.save
+          _newKlass.day = day
+          _newKlass.start_time = _startTime
+          _newKlass.end_time = _endTime
+          _newKlass.room = _room
+          _newKlass.section_id = _newSection.id
+          _newKlass.save
+        end
       end
     end
+
 
 
     # ----------------- END ADDING CLASSES ------------------

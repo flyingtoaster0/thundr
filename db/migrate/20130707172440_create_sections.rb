@@ -9,6 +9,9 @@ class CreateSections < ActiveRecord::Migration
       t.date :start_date
       t.date :end_date
       t.string :season
+      t.string :link
+      t.integer :synonym
+      t.string :method
 
 
       t.timestamps

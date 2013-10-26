@@ -10,11 +10,11 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find_by_department_and_code(params[:department_id], params[:id])
+    @course = Course.where(:department => params[:department_id], :course_code => params[:id]).first
     @fall_listings = [@course.fall_lectures, @course.fall_labs, @course.fall_tutorials, @course.fall_practicals]
     @winter_listings = [@course.winter_lectures, @course.winter_labs, @course.winter_tutorials, @course.winter_practicals]
-    @summer_listings = [@course.summer_lectures, @course.summer_labs, @course.summer_tutorials, @course.summer_practicals]
-    @year_listings = [@course.year_lectures, @course.year_labs, @course.year_tutorials, @course.year_practicals]
+    @summer_listings = []#[@course.summer_lectures, @course.summer_labs, @course.summer_tutorials, @course.summer_practicals]
+    @year_listings = []#[@course.year_lectures, @course.year_labs, @course.year_tutorials, @course.year_practicals]
     @listings = [@fall_listings, @winter_listings, @summer_listings, @year_listings].reject{|x| x.reject{|y| y.empty?}.empty?}
   end
 

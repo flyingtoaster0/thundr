@@ -11,7 +11,7 @@
         </li>
 
         <li class="active">
-          <%= @course.course_code %>
+          <%= @course.department_and_course_code %>
         </li>
 
       </ul>
@@ -21,7 +21,7 @@
 
     <div class="course-info">
         <h1>
-          <%= link_to(@course.department, '/courses/'+@course.department+'/'+@course.code, {}) %><%= '-' + @course.code+' - '+@course.name %>
+          <%= link_to(@course.department, '/courses/'+@course.department+'/'+@course.course_code, {}) %><%= '-' + @course.course_code+' - '+@course.name %>
         </h1>
 
         <div class = 'description'>
@@ -68,7 +68,7 @@
                     <header>
 
                           <div style="float: left;" >
-                            <%= course.method_name %> (<%= link_to(course.course_code_full,'/courses/' + course.department + '/' + course.code, {:title => course.name}) %>)
+                            <%= course.method %> (<%= link_to(course.course_code_full,'/courses/' + course.department + '/' + course.course_code, {:title => course.name}) %>)
                           </div>
 
 
@@ -78,14 +78,16 @@
                       <!-- TODO make the synonym copy to clipboard when clicked -->
                     </header>
 
-                    <% unless course.day_array.empty? %>
-                        <% course.day_array.each do |day| %>
+                    <%# unless course.day_array.empty? %>
+                    <% unless Klass.where(:section_id => course.id).empty? %>
+                        <%# course.day_array.each do |day| %>
+                        <% Klass.where(:section_id => course.id).each do |day| %>
                             <tr>
                               <td>
                                 <div class='table-list-row'>
                                   <div class="pure-g">
                                     <div class="pure-u-3-8">
-                                      <%= day %>, <%= course.start_time %> - <%= course.end_time %>
+                                      <%= day.day_full %>, <%= day.start_time_twelve_hour %> - <%= day.end_time_twelve_hour %>
                                     </div>
 
                                     <div class="pure-u-1-4">
@@ -93,7 +95,7 @@
                                     </div>
 
                                     <div class="pure-u-1-8">
-                                      <%= course.room %>
+                                      <%= day.room %>
                                     </div>
 
                                     <div class="pure-u-1-4">
