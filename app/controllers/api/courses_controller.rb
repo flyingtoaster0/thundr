@@ -41,11 +41,10 @@ class API::CoursesController < ApplicationController
 
           limit = course_code.length
           while limit > 0 and courses.blank?
-            courses = Course.where("lower(department) = ? AND code LIKE ?", dept_code.downcase, course_code[0..limit]+'%')
+            courses = Course.where("lower(department) = ? AND course_code LIKE ?", dept_code.downcase, course_code[0..limit]+'%')
             limit -= 1
           end
         end
-
         courses = Course.where('lower(department) = ?', dept_code.downcase) if courses.blank?
       end
 
@@ -61,7 +60,12 @@ class API::CoursesController < ApplicationController
 
       #check by instructor
       instructor_name = params[:q].gsub('+',' ')
-      courses = Course.where("lower(instructor) LIKE ?", '%'+instructor_name[0..limit].downcase+'%') if courses.blank?
+
+      limit = instructor_name.length
+      while limit > 3 and courses.blank?
+        courses = Course.where(id: Section.select(:course_id).where("lower(instructor) LIKE ? AND method != ?", '%'+instructor_name[0..limit].downcase+'%', 'LAB'))
+        limit -= 1
+      end
     end
     respond_to do |format|
       format.json { render :json => courses}
