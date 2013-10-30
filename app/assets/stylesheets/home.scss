@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'FiraSans';
-  src: font-url('/assets/fonts/FiraSans-Regular.eot?#iefix') format("embedded-opentype"), font-url('/assets/fonts/FiraSans-Regular.woff') format("woff"), font-url('/assets/fonts/FiraSans-Regular.ttf') format("truetype");
+  src: url(font-path('FiraSans-Regular.eot') + '?#iefix') format("embedded-opentype"), url(font-path('FiraSans-Regular.woff')) format("woff"), url(font-path('FiraSans-Regular.ttf')) format("truetype");
 }
 
 html, body {
