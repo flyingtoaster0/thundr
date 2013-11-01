@@ -14,7 +14,7 @@ class API::CoursesController < ApplicationController
   end
 
   def find_by_department
-    @courses = Course.where('department = ?', params[:department_id])
+    @courses = Course.where('department = ? AND method != ? AND method!= ?', params[:department_id], 'LAB', 'TUT').order('course_code ASC')
     respond_to do |format|
       format.json { render :json => @courses }
     end
