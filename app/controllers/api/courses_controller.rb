@@ -7,9 +7,9 @@ class API::CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.where('code = ? AND department = ?', params[:course_id], params[:department_id])
+    @sections = Section.where('course_code = ? AND department = ?', params[:course_id], params[:department_id])
     respond_to do |format|
-      format.json { render :json => @course }
+      format.json { render :json => @sections }
     end
   end
 
@@ -21,9 +21,16 @@ class API::CoursesController < ApplicationController
   end
 
   def full_course
-    @course = Course.where('code = ? AND department = ? AND section = ?', params[:course_id], params[:department_id], params[:section])
+    @section = Section.where('course_code = ? AND department = ? AND section_code = ?', params[:course_id], params[:department_id], params[:section])
     respond_to do |format|
-      format.json { render :json => @course }
+      format.json { render :json => @section }
+    end
+  end
+
+  def classes
+    @classes = Klass.where(section_id: Section.select(:id).where('course_code = ? AND department = ? AND section_code = ?', params[:course_id], params[:department_id], params[:section]))
+    respond_to do |format|
+      format.json { render :json => @classes }
     end
   end
 

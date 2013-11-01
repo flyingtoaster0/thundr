@@ -48,6 +48,7 @@ LakeheadScheduler::Application.routes.draw do
     match '/courses/department/:department_id'           => 'courses#find_by_department',        :via => [:get]
     match '/courses/:department_id/:course_id'           => 'courses#show',                      :via => [:get]
     match '/courses/:department_id/:course_id/:section'  => 'courses#full_course',               :via => [:get]
+    match '/classes/:department_id/:course_id/:section'  => 'courses#classes',                   :via => [:get]
     match 'search/:q'                                    => 'courses#search',                    :via => [:get]
   end
 
