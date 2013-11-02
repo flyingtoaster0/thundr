@@ -7,12 +7,12 @@
           <span class="divider">-</span>
         </li>
         <li class="active">
-          <%= @department.deptName %>
+          <%= @department.dept_name %>
         </li>
 
       </ul>
       <h1>
-        <%= link_to(@department.deptCode+' - '+@department.deptName, '/departments/'+@department.deptCode, {}) %>
+        <%= link_to(@department.dept_code+' - '+@department.dept_name, '/departments/'+@department.dept_code, {}) %>
       </h1>
     </div>
   </div>

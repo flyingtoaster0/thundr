@@ -34,7 +34,7 @@ class CoursesController < ApplicationController
       @courses = nil
 
       #check by course code
-      unless(Department.where('"deptCode" = ?', dept_code.upcase).blank?)
+      unless(Department.where('"dept_code" = ?', dept_code.upcase).blank?)
         if course_code
 
           limit = course_code.length

@@ -8,7 +8,7 @@ class SearchController < ApplicationController
     courses = nil
 
     #check by course code
-    unless(Department.where('"deptCode" = ?', dept_code.upcase).blank?)
+    unless(Department.where('"dept_code" = ?', dept_code.upcase).blank?)
       if course_code
 
         limit = course_code.length
@@ -25,7 +25,7 @@ class SearchController < ApplicationController
       end
 
 
-      department = Department.where('deptCode = ?', dept_code.upcase)
+      department = Department.where('dept_code = ?', dept_code.upcase)
       unless department.blank?
         redirect_to('/departments/'+dept_code.upcase)
       end

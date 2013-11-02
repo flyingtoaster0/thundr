@@ -65,8 +65,8 @@
           <tbody>
             <% @deptArray1.each do |d| %>
                 <tr>
-                  <td style="width: 10em;"><%= d[:deptCode] %></td>
-                  <td><%= link_to(d[:deptName], 'departments/'+d[:deptCode], {}) %></td>
+                  <td style="width: 10em;"><%= d[:dept_code] %></td>
+                  <td><%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %></td>
                 </tr>
             <% end %>
           </tbody>
@@ -77,8 +77,8 @@
             <tbody>
               <% @deptArray2.each do |d| %>
                 <tr>
-                  <td style="width: 10em;"><%= d[:deptCode] %></td>
-                  <td><%= link_to(d[:deptName], 'departments/'+d[:deptCode], {}) %></td>
+                  <td style="width: 10em;"><%= d[:dept_code] %></td>
+                  <td><%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -88,8 +88,8 @@
             <tbody>
               <% @deptArray3.each do |d| %>
                 <tr>
-                  <td style="width: 10em;"><%= d[:deptCode] %></td>
-                  <td><%= link_to(d[:deptName], 'departments/'+d[:deptCode], {}) %></td>
+                  <td style="width: 10em;"><%= d[:dept_code] %></td>
+                  <td><%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %></td>
                 </tr>
               <% end %>
           </table>
