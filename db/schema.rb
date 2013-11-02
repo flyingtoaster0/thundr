@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20130904043228) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "departments", force: true do |t|
-    t.string "deptCode"
-    t.string "deptName"
+    t.string "dept_code"
+    t.string "dept_name"
   end
 
   create_table "klasses", force: true do |t|

@@ -436,8 +436,8 @@ class Admin
   
 
 
-  def add_dept(deptCode, deptName)
-    Department.find_or_create_by(:deptCode => deptCode, :deptName => deptName)
+  def add_dept(dept_code, dept_name)
+    Department.find_or_create_by(:dept_code => dept_code, :dept_name => dept_name)
   end
 
 

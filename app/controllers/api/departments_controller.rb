@@ -7,7 +7,7 @@ class API::DepartmentsController < ApplicationController
   end
 
   def show
-    @department = Department.where('deptCode = ?', params[:id])
+    @department = Department.where('dept_code = ?', params[:id])
     respond_to do |format|
       format.json { render :json => @department }
     end

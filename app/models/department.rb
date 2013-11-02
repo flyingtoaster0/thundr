@@ -1,4 +1,4 @@
 class Department < ActiveRecord::Base
   has_many :courses
-  #attr_accessible :deptCode, :deptName
+  #attr_accessible :dept_code, :dept_name
 end
