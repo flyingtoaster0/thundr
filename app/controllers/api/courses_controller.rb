@@ -34,6 +34,14 @@ class API::CoursesController < ApplicationController
     end
   end
 
+  def section_with_classes section_name
+    section_hash = section_name.to_a.map(&:serializable_hash)
+    section_name.zip(section_hash) do |o, n|
+      k = o.classes.collect{|x| x}
+      n['class_array'] = k
+    end
+    section_hash
+  end
 
   def course_info
     @course = Course.where('course_code = ? AND department = ?', params[:course_id], params[:department_id]).first
@@ -48,24 +56,10 @@ class API::CoursesController < ApplicationController
     @all_info['method'] = @course.method
 
     # Add the summer and all-year courses after fixing them in courses.rb
-
-    fall_lecs = @course.fall_lectures.to_a.map(&:serializable_hash)
-    @course.fall_lectures.zip(fall_lecs) do |o, n|
-      k = o.classes.collect{|x| x}
-      n['class_array'] = k
-    end
-
-
-    @all_info['lectures'] = ['fall'=> fall_lecs, 'winter'=> @course.winter_lectures].first
-
-
-
-    @all_info['labs'] = ['fall'=> @course.fall_labs, 'winter'=> @course.winter_labs].first
-    @all_info['practicals'] = ['fall'=> @course.fall_practicals, 'winter'=> @course.winter_practicals].first
-    @all_info['tutorials'] = ['fall'=> @course.fall_tutorials, 'winter'=> @course.winter_tutorials].first
-
-    #@all_info['lectures']['fall']
-
+    @all_info['lectures'] = ['fall'=> section_with_classes(@course.fall_lectures), 'winter'=> section_with_classes(@course.winter_lectures)].first
+    @all_info['labs'] = ['fall'=> section_with_classes(@course.fall_labs), 'winter'=> section_with_classes(@course.winter_labs)].first
+    @all_info['practicals'] = ['fall'=> section_with_classes(@course.fall_practicals), 'winter'=> section_with_classes(@course.winter_practicals)].first
+    @all_info['tutorials'] = ['fall'=> section_with_classes(@course.fall_tutorials), 'winter'=> section_with_classes(@course.winter_tutorials)].first
 
     respond_to do |format|
       format.json { render :json => @all_info }
