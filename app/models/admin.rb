@@ -437,10 +437,7 @@ class Admin
 
 
   def add_dept(deptCode, deptName)
-    unless Department.find_by_deptCode(deptCode)
-      _newDept = Department.new(:deptCode => deptCode, :deptName => deptName)
-      _newDept.save
-    end
+    Department.find_or_create_by(:deptCode => deptCode, :deptName => deptName)
   end
 
 
@@ -532,15 +529,6 @@ class Admin
 
                 #puts "_________________"
 
-                #existing_course = Course.find_by_department_and_code_and_section(department_from_course_code(infoArray2[0]),
-                #                                                                 code_from_course_code(infoArray2[0]),
-                #                                                                 section_from_course_code(infoArray2[0]))
-
-                #if existing_course
-                #  update_course(existing_course, infoArray2)
-                #else
-                #  _courseArray.append(makeCourse(infoArray2))
-                #end
 
 
               end
@@ -559,18 +547,7 @@ class Admin
 
                 #puts "__________________"
                 #puts infoArray[0]
-                
-                #existing_course = Course.find_by_department_and_code_and_section(department_from_course_code(infoArray[0]),
-                #                                                                  code_from_course_code(infoArray[0]),
-                #                                                                  section_from_course_code(infoArray[0]))
-                
-                #if existing_course
-                #  update_course(existing_course, infoArray[0..9])
-                #else
-                #  _courseArray.append(makeCourse(infoArray[0..9]))
-                #end
-                
-                
+
               end
 
               infoArray = []
