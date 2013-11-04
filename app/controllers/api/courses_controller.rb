@@ -34,6 +34,45 @@ class API::CoursesController < ApplicationController
     end
   end
 
+
+  def course_info
+    @course = Course.where('course_code = ? AND department = ?', params[:course_id], params[:department_id]).first
+
+    @all_info = Hash.new
+    @all_info['department'] = @course.department
+    @all_info['course_code'] = @course.course_code
+    @all_info['name'] = @course.name
+    @all_info['description'] = @course.description
+    @all_info['credits'] = @course.credits
+    @all_info['prerequisite'] = @course.prerequisite
+    @all_info['method'] = @course.method
+
+    # Add the summer and all-year courses after fixing them in courses.rb
+
+    fall_lecs = @course.fall_lectures.to_a.map(&:serializable_hash)
+    @course.fall_lectures.zip(fall_lecs) do |o, n|
+      k = o.classes.collect{|x| x}
+      n['class_array'] = k
+    end
+
+
+    @all_info['lectures'] = ['fall'=> fall_lecs, 'winter'=> @course.winter_lectures].first
+
+
+
+    @all_info['labs'] = ['fall'=> @course.fall_labs, 'winter'=> @course.winter_labs].first
+    @all_info['practicals'] = ['fall'=> @course.fall_practicals, 'winter'=> @course.winter_practicals].first
+    @all_info['tutorials'] = ['fall'=> @course.fall_tutorials, 'winter'=> @course.winter_tutorials].first
+
+    #@all_info['lectures']['fall']
+
+
+    respond_to do |format|
+      format.json { render :json => @all_info }
+    end
+  end
+
+
   def search
     courses = Array.new
     if params[:q].length > 3

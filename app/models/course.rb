@@ -38,27 +38,6 @@ class Course < ActiveRecord::Base
     #return Section.find_all_by_department_and_code(department, code).collect{|c| c.section[0]}
   end
 
-=begin
-  def day_array
-    [mon, tue, wed, thu, fri, sat, sun].zip(['Monday',
-                                            'Tuesday',
-                                            'Wednesday',
-                                            'Thursday',
-                                            'Friday',
-                                            'Saturday',
-                                            'Sunday']).collect{|x,d| x ? d : nil}.reject{|y| not y}
-  end
-
-  def start_date
-    startDate ? startDate.strftime('%b ') + startDate.strftime('%e').to_i.ordinalize + startDate.strftime(', %Y') : ''
-  end
-
-  def end_date
-    endDate ? endDate.strftime('%b ') + endDate.strftime('%e').to_i.ordinalize + endDate.strftime(', %Y') : ''
-  end
-
-
-=end
 
   def fall_lectures
 
