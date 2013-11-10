@@ -56,10 +56,9 @@ class API::CoursesController < ApplicationController
     @all_info['method'] = @course.method
 
     # Add the summer and all-year courses after fixing them in courses.rb
-    @all_info['lectures'] = ['fall'=> section_with_classes(@course.fall_lectures), 'winter'=> section_with_classes(@course.winter_lectures)].first
-    @all_info['labs'] = ['fall'=> section_with_classes(@course.fall_labs), 'winter'=> section_with_classes(@course.winter_labs)].first
-    @all_info['practicals'] = ['fall'=> section_with_classes(@course.fall_practicals), 'winter'=> section_with_classes(@course.winter_practicals)].first
-    @all_info['tutorials'] = ['fall'=> section_with_classes(@course.fall_tutorials), 'winter'=> section_with_classes(@course.winter_tutorials)].first
+    @all_info['fall'] = ['lectures'=> section_with_classes(@course.fall_lectures), 'labs'=> section_with_classes(@course.fall_labs), 'practicals'=> section_with_classes(@course.fall_practicals), 'tutorials'=> section_with_classes(@course.fall_tutorials)].first
+    @all_info['winter'] = ['lectures'=> section_with_classes(@course.winter_lectures), 'labs'=> section_with_classes(@course.winter_labs), 'practicals'=> section_with_classes(@course.winter_practicals), 'tutorials'=> section_with_classes(@course.winter_tutorials)].first
+
 
     respond_to do |format|
       format.json { render :json => [@all_info] }
