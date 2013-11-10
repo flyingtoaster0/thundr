@@ -62,7 +62,7 @@ class API::CoursesController < ApplicationController
     @all_info['tutorials'] = ['fall'=> section_with_classes(@course.fall_tutorials), 'winter'=> section_with_classes(@course.winter_tutorials)].first
 
     respond_to do |format|
-      format.json { render :json => @all_info }
+      format.json { render :json => [@all_info] }
     end
   end
 
