@@ -15,7 +15,7 @@ class Section < ActiveRecord::Base
 
 
   def classes
-    Klass.where(section_id: Section.select(:course_id).where(department: department, course_code: course_code, section_code: section_code))
+    y=Klass.where(section_id: Section.select(:id).where(department: department, course_code: course_code, section_code: section_code))
   end
 
   def season
