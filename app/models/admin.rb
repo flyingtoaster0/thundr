@@ -5,138 +5,138 @@ require 'date'
 
 class Admin
 
-  def getDayArray(dayString)
-    dayArr = Array.new()
+  def get_day_array(day_string)
+    day_array = Array.new()
 
-    dayArr.append 'M' if dayString.include? "M"
-    dayArr.append 'T' if ((dayString.include? "T" and !dayString.include? "Th") or (dayString.include? "T" and dayString.count("T") == 2))
-    dayArr.append 'W' if dayString.include? "W"
-    dayArr.append 'Th' if dayString.include? "Th"
-    dayArr.append 'F' if dayString.include? "F"
+    day_array.append 'M' if day_string.include? "M"
+    day_array.append 'T' if ((day_string.include? "T" and !day_string.include? "Th") or (day_string.include? "T" and day_string.count("T") == 2))
+    day_array.append 'W' if day_string.include? "W"
+    day_array.append 'Th' if day_string.include? "Th"
+    day_array.append 'F' if day_string.include? "F"
 
-    return dayArr
+    return day_array
   end
 
-  def make_items(infoArr)
-    if infoArr.length != 10
+  def make_items(info_array)
+    if info_array.length != 10
       return
     end
 
-    _courseCode = infoArr[0]
+    full_course_code = info_array[0]
 
-    _courseName = infoArr[1]
+    course_name = info_array[1]
 
-    _method = infoArr[2]
+    method = info_array[2]
 
-    _room = infoArr[3]
+    room = info_array[3]
 
-    _campus = "TBAY"
+    campus = "TBAY"
 
 
-    unless infoArr[4].nil?
-      unless infoArr[4].empty?
-        _dayArr = getDayArray(infoArr[4])
-        _mon = _dayArr[0]
-        _tue = _dayArr[1]
-        _wed = _dayArr[2]
-        _thu = _dayArr[3]
-        _fri = _dayArr[4]
+    unless info_array[4].nil?
+      unless info_array[4].empty?
+        day_array = get_day_array(info_array[4])
+        mon = day_array[0]
+        tue = day_array[1]
+        wed = day_array[2]
+        thu = day_array[3]
+        fri = day_array[4]
       end
     end
 
-    unless infoArr[5].nil? or infoArr[5].empty? or infoArr[5]== '-'
-      _timeArr = infoArr[5].split('-')
-      _startTime = Time.strptime(_timeArr[0], "%H:%M%P").strftime("%H:%M")
-      _endTime = Time.strptime(_timeArr[1], "%H:%M%P").strftime("%H:%M")
+    unless info_array[5].nil? or info_array[5].empty? or info_array[5]== '-'
+      time_array = info_array[5].split('-')
+      start_time = Time.strptime(time_array[0], "%H:%M%P").strftime("%H:%M")
+      end_time = Time.strptime(time_array[1], "%H:%M%P").strftime("%H:%M")
     end
 
-    _dateArr = infoArr[6].split('-')
-    _startDate = _dateArr[0]
-    _endDate = _dateArr[1]
+    date_array = info_array[6].split('-')
+    start_date = date_array[0]
+    end_date = date_array[1]
 
-    _credits = infoArr[7]
+    credits = info_array[7]
 
-    _synonym = infoArr[8].sub(%r{.*: },'')
+    synonym = info_array[8].sub(%r{.*: },'')
 
-    _instructor = infoArr[9].sub(%r{.*: },'')
+    instructor = info_array[9].sub(%r{.*: },'')
 
-    _department = _courseCode[0..3].to_s
+    department = full_course_code[0..3].to_s
 
-    _course_code = _courseCode[5..9].gsub(/\-/,'')
+    course_code = full_course_code[5..9].gsub(/\-/,'')
 
-    _section_code = _courseCode[10..13].gsub(/\-/,'')
+    section_code = full_course_code[10..13].gsub(/\-/,'')
 
     # ----------------- BEGIN ADDING NEW COURSE ------------------
-    _newCourse = Course.find_or_create_by(department: _department, course_code: _course_code )
-    _newCourse.department = _courseCode[0..3].to_s
-    _newCourse.course_code = _courseCode[5..9].gsub(/\-/,'')
-    _newCourse.name = _courseName
-    _newCourse.credits = _credits.to_f
+    new_course = Course.find_or_create_by(department: department, course_code: course_code )
+    new_course.department = department
+    new_course.course_code = course_code
+    new_course.name = course_name
+    new_course.credits = credits.to_f
 
 
-    _description_url = 'http://timetable.lakeheadu.ca/scripts/return.course.description.php?c=' + _department + '&cn=' + _courseCode[5..9].gsub(/\-/,'')
-    _description, _prerequisite = get_description_and_prereq _description_url
+    description_url = 'http://timetable.lakeheadu.ca/scripts/return.course.description.php?c=' + department + '&cn=' + course_code[5..9].gsub(/\-/,'')
+    description, prerequisite = get_description_and_prereq description_url
 
 
-    _newCourse.description =_description
-    _newCourse.prerequisite = _prerequisite
+    new_course.description = description
+    new_course.prerequisite = prerequisite
 
-    if _courseName.include? 'Clinical for'
-      _method = 'PRA'
-    elsif _courseName.include? 'Laboratory for'
-      _method = 'LAB'
+    if course_name.include? 'Clinical for'
+      method = 'PRA'
+    elsif course_name.include? 'Laboratory for'
+      method = 'LAB'
     end
 
-    _newCourse.method = _method
+    new_course.method = method
 
-    _newCourse.save
+    new_course.save
     # ----------------- END ADDING NEW COURSE ------------------
 
     # ----------------- BEGIN ADDING SECTIONS ------------------
-    _newSection = Section.find_or_create_by(department: _department, course_code: _course_code, section_code: _section_code )
+    new_section = Section.find_or_create_by(department: department, course_code: course_code, section_code: section_code )
 
 
-    _newSection.department = _courseCode[0..3].to_s
-    _newSection.course_code = _courseCode[5..9].gsub(/\-/,'')
-    _newSection.section_code = _courseCode[10..13].gsub(/\-/,'')
+    new_section.department = course_code[0..3].to_s
+    new_section.course_code = course_code[5..9].gsub(/\-/,'')
+    new_section.section_code = course_code[10..13].gsub(/\-/,'')
 
 
-    _newSection.start_date = _startDate ? Time.parse('20'+_startDate) : nil
-    _newSection.end_date = _endDate ? Time.parse('20'+_endDate) : nil
-    _newSection.instructor = _instructor
+    new_section.start_date = start_date ? Time.parse('20'+start_date) : nil
+    new_section.end_date = end_date ? Time.parse('20'+end_date) : nil
+    new_section.instructor = instructor
 
 
 
     # do some parsing to see where a TUT or PRA are linked to - find the number
-    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
-      _newSection.link = _department+'-'+_courseName[/\d+/]
-    elsif _method == 'LAB'
-      _newSection.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
+    if ((not course_name[/\d+/].nil?) and (method == 'TUT' or (method == 'PRA' and department == 'NURS')))
+      new_section.link = department+'-'+course_name[/\d+/]
+    elsif method == 'LAB'
+      new_section.link = department+'-'+course_code[5..8].gsub(/\-/,'')
     else
-      _newSection.link = nil
+      new_section.link = nil
     end
 
 
-    _newSection.synonym = _synonym.to_i
-    _newSection.method = _method
-    _newSection.course_id = _newCourse.id
+    new_section.synonym = synonym.to_i
+    new_section.method = method
+    new_section.course_id = new_course.id
 
-    _newSection.save
+    new_section.save
     # ----------------- END ADDING SECTIONS ------------------
 
     # ----------------- BEGIN ADDING CLASSES ------------------
-    unless _dayArr.nil?
-      _dayArr.each do |day|
+    unless day_array.nil?
+      day_array.each do |day|
         if day
 
-          _newKlass = Klass.new
+          new_klass = Klass.new
 
-          _newKlass.day = day
-          _newKlass.start_time = _startTime
-          _newKlass.end_time = _endTime
-          _newKlass.room = _room
-          _newKlass.section_id = _newSection.id
-          _newKlass.save
+          new_klass.day = day
+          new_klass.start_time = start_time
+          new_klass.end_time = end_time
+          new_klass.room = room
+          new_klass.section_id = new_section.id
+          new_klass.save
         end
       end
     end
@@ -161,99 +161,10 @@ class Admin
     doc = Nokogiri::HTML(open(url))
     divs = doc.css('div')
 
-    _description = divs[1] ? divs[1].content : ''
-    _prerequisite = divs[3] ? divs[3].content.gsub(/.*: /,'') : ''
+    description = divs[1] ? divs[1].content : ''
+    prerequisite = divs[3] ? divs[3].content.gsub(/.*: /,'') : ''
 
-    return _description, _prerequisite
-  end
-
-  def update_course(existing_course, info_array)
-    if info_array.length != 10
-      return
-    end
-
-    _courseCode = info_array[0]
-
-    _courseName = info_array[1].gsub(/Computer Requirements/,'')
-
-    _method = info_array[2]
-
-    _room = info_array[3]
-
-    _campus = "TBAY"
-
-
-    unless info_array[4].nil?
-      unless info_array[4].empty?
-        _dayArr = getDayArray(info_array[4])
-        _mon = _dayArr[0]
-        _tue = _dayArr[1]
-        _wed = _dayArr[2]
-        _thu = _dayArr[3]
-        _fri = _dayArr[4]
-      end
-    end
-
-    unless info_array[5].nil? or info_array[5].empty? or info_array[5]== '-'
-      _timeArr = info_array[5].split('-')
-      _startTime = Time.strptime(_timeArr[0], "%H:%M%P").strftime("%H:%M")
-      _endTime = Time.strptime(_timeArr[1], "%H:%M%P").strftime("%H:%M")
-    end
-
-    _dateArr = info_array[6].split('-')
-    _startDate = _dateArr[0]
-    _endDate = _dateArr[1]
-
-    _credits = info_array[7]
-
-    _synonym = info_array[8].sub(%r{.*: },'')
-
-    _instructor = info_array[9].sub(%r{.*: },'')
-
-    _department = _courseCode[0..3].to_s
-
-    existing_course.code = _courseCode[5..9].gsub(/\-/,'')
-    existing_course.department = _courseCode[0..3].to_s
-    existing_course.section = _courseCode[10..13].gsub(/\-/,'')
-
-    existing_course.name = _courseName
-    existing_course.room = _room
-    existing_course.campus = _campus
-    existing_course.mon = _mon
-    existing_course.tue = _tue
-    existing_course.wed = _wed
-    existing_course.thu = _thu
-    existing_course.fri = _fri
-    existing_course.startTime = _startTime ? Time.parse(_startTime) : nil
-    existing_course.endTime = _endTime ? Time.parse(_endTime) : nil
-    existing_course.startDate = _startDate ? Time.parse('20'+_startDate) : nil
-    existing_course.endDate = _endDate ? Time.parse('20'+_endDate) : nil
-    existing_course.credits = _credits.to_f
-    existing_course.synonym = _synonym.to_i
-    existing_course.instructor = _instructor
-
-
-    if _courseName.include? 'Clinical for'
-      _method = 'PRA'
-      #puts(_courseName)
-    elsif _courseName.include? 'Laboratory for'
-      _method = 'LAB'
-      #puts(_courseName)
-    end
-
-    existing_course.method = _method
-
-
-    if ((not _courseName[/\d+/].nil?) and (_method == 'TUT' or (_method == 'PRA' and _department == 'NURS')))
-      existing_course.link = _department+'-'+_courseName[/\d+/]
-    elsif _method == 'LAB'
-      existing_course.link = _department+'-'+_courseCode[5..8].gsub(/\-/,'')
-    else
-      existing_course.link = nil
-    end
-
-    existing_course.save
-
+    return description, prerequisite
   end
 
   def add_dept(dept_code, dept_name)
@@ -264,57 +175,56 @@ class Admin
     doc = Nokogiri::HTML(open('http://timetable.lakeheadu.ca/2013FW_UG_TBAY/courtime.html'))
 
 
-    linkArr = Array.new()
+    link_array = Array.new()
     #Add the rows to the departments table and push to the links array
     puts 'Getting the links...'
     doc.css('div#copy ul li a').each do |x|
       add_dept(x["href"][0..3].upcase, x.text)
-      linkArr.push("http://timetable.lakeheadu.ca/2013FW_UG_TBAY/" + x["href"])
+      link_array.push("http://timetable.lakeheadu.ca/2013FW_UG_TBAY/" + x["href"])
     end
 
     puts 'Constructing course array...'
 
-    startCount = 0
+    start_count = 0
     i = 0
-    currentLink = -1.0
-    total = linkArr.length
-    infoArray = []
-    infoArray2 = []
+    current_link = -1.0
+    info_array = []
+    info_array2 = []
 
-    linkArr.each do |link|
+    link_array.each do |link|
       doc = Nokogiri::HTML(open(link))
-      currentLink += 1
+      current_link += 1
       doc.css('tr td').each do |x|
 
         unless x.attr('style').nil?
           if x.attr('style') == 'nowrap'
-            if startCount == 0
-              startCount = 1
+            if start_count == 0
+              start_count = 1
               i = 0
 
-              unless infoArray[10].nil?
-                unless infoArray[10].empty?
-                  infoArray2 = infoArray[0..9]
-                  infoArray2[2] = infoArray[10]
-                  infoArray2[3] = infoArray[11]
-                  infoArray2[4] = infoArray[12]
-                  infoArray2[5] = infoArray[13]
-                  infoArray2[6] = infoArray[14]
+              unless info_array[10].nil?
+                unless info_array[10].empty?
+                  info_array2 = info_array[0..9]
+                  info_array2[2] = info_array[10]
+                  info_array2[3] = info_array[11]
+                  info_array2[4] = info_array[12]
+                  info_array2[5] = info_array[13]
+                  info_array2[6] = info_array[14]
                 end
               end
 
-              make_items infoArray2 unless infoArray2.empty?
+              make_items info_array2 unless info_array2.empty?
 
-              make_items infoArray[0..9] unless infoArray[0].nil?
+              make_items info_array[0..9] unless info_array[0].nil?
 
-              infoArray = []
-              infoArray2 = []
+              info_array = []
+              info_array2 = []
             else
-              startCount=0
+              start_count=0
             end
           end
         end
-        infoArray[i] = x.content.strip
+        info_array[i] = x.content.strip
         i+=1
       end
     end
