@@ -8,11 +8,11 @@ class Admin
   def get_day_array(day_string)
     day_array = Array.new()
 
-    day_array.append 'M' if day_string.include? "M"
-    day_array.append 'T' if ((day_string.include? "T" and !day_string.include? "Th") or (day_string.include? "T" and day_string.count("T") == 2))
-    day_array.append 'W' if day_string.include? "W"
-    day_array.append 'Th' if day_string.include? "Th"
-    day_array.append 'F' if day_string.include? "F"
+    day_array.append 'M' if day_string.include? 'M'
+    day_array.append 'T' if ((day_string.include? 'T' and !day_string.include? 'Th') or (day_string.include? 'T' and day_string.count('T') == 2))
+    day_array.append 'W' if day_string.include? 'W'
+    day_array.append 'Th' if day_string.include? 'Th'
+    day_array.append 'F' if day_string.include? 'F'
 
     return day_array
   end
