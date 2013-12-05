@@ -1,15 +1,21 @@
-<div class="pure-g-r content-ribbon">
-    <%= form_for(@user, :html => {:class => 'pure-form'}) do |f| %>
-        <fieldset class="pure-group">
+<div class="department-body">
+  <div class="expo">
+    <div class="loginform">
+      <%= form_for(@user, :html => {:class => 'pure-form'}) do |f| %>
+          <h1>Sign up</h1>
+          <fieldset class="pure-group">
+            <%= f.text_field :username, class: 'pure-input-1', placeholder: 'Username' %>
 
-            <%= f.text_field :username, class: 'pure-input-1-2', placeholder: 'Username' %>
+            <%= f.password_field :password, class: 'pure-input-1', placeholder: 'Password' %>
 
-            <%= f.password_field :password, class: 'pure-input-1-2', placeholder: 'Password' %>
+            <%= f.password_field :password_confirmation, class: 'pure-input-1', placeholder: 'Confirm Password' %>
 
-            <%= f.password_field :password_confirmation, class: 'pure-input-1-2', placeholder: 'Confirm Password' %>
+            <%= f.text_field :email, class: 'pure-input-1', placeholder: 'Email' %>
+          </fieldset>
+          <%= f.submit "Sign Up", class: "pure-button pure-input-1-2 pure-button-primary" %>
+      <% end %>
 
-            <%= f.text_field :email, class: 'pure-input-1-2', placeholder: 'Email' %>
-        </fieldset>
-        <%= f.submit "Sign Up", class: "pure-button pure-input-1-2 pure-button-primary" %>
-    <% end %>
+    </div>
+  </div>
+
 </div>

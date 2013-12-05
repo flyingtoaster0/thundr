@@ -1,12 +1,12 @@
 LakeheadScheduler::Application.routes.draw do
 
   resources :users
-  #resources :sessions, only: [:new, :create, :destroy]
 
 
   match '/signup'  => 'users#new',            :via => [:get]
   match '/signin'  => 'sessions#new',         :via => [:get]
   match '/signout' => 'sessions#destroy',     :via => [:delete]
+  resources :sessions, only: [:create]
 
   match '/about' => 'info#about', :via => [:get]
   match '/faq' => 'info#faq', :via => [:get]

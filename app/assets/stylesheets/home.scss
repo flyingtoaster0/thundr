@@ -71,6 +71,8 @@ aside {
   }
 }
 
+
+
 .pure-menu.pure-menu-open.pure-menu-fixed.menu-bar {
   border: 0;
   border-bottom: 1px solid #b7b7b7;
@@ -142,6 +144,18 @@ aside {
 
   border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1)
   */
+}
+.loginform
+{
+  height:auto;
+  width:50%;
+  margin:0 auto;
+
+  form {
+    margin:0 auto;
+    width:50%;
+
+  }
 }
 
 .search-form {

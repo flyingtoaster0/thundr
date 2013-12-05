@@ -1,14 +1,19 @@
 <% provide(:title, "Sign in") %>
-<h1>Sign in</h1>
+<div class="department-body">
+    <div class="expo">
+        <div class="loginform">
+          <%= form_for(:session, url: '/sessions', :html => {:class => 'pure-form pure-form-stacked'}) do |f| %>
+              <h1>Log in</h1>
+              <fieldset>
+                <%= f.text_field :username, placeholder: 'Username' %>
 
+                <%= f.password_field :password,  placeholder: 'Password' %>
+              </fieldset>
+              <%= f.submit "Sign in", class: 'pure-button pure-button-primary' %>
+              <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+          <% end %>
 
-<%= form_for(:session, url: sessions_path, :html => {:class => 'pure-form pure-form-stacked'}) do |f| %>
-    <fieldset>
-      <%= f.text_field :username, placeholder: 'Username' %>
+        </div>
+  </div>
 
-      <%= f.password_field :password,  placeholder: 'Password' %>
-    </fieldset>
-    <%= f.submit "Sign in", class: 'pure-button pure-button-primary' %>
-<% end %>
-
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+</div>
