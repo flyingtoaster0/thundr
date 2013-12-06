@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
     @summer_listings = []#[@course.summer_lectures, @course.summer_labs, @course.summer_tutorials, @course.summer_practicals]
     @year_listings = []#[@course.year_lectures, @course.year_labs, @course.year_tutorials, @course.year_practicals]
     @listings = [@fall_listings, @winter_listings, @summer_listings, @year_listings].reject{|x| x.reject{|y| y.empty?}.empty?}
+    @user = current_user
   end
 
   def index
