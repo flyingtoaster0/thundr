@@ -24,7 +24,7 @@ LakeheadScheduler::Application.routes.draw do
   get 'search' => 'search#index'
 
   resources :departments
-
+  resources :sections
   #resources :courses
 
   match 'courses/:search' => 'courses#search', :via => [:get]

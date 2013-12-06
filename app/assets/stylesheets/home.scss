@@ -391,6 +391,17 @@ pure-paginator .pure-button {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+
+    .pure-button {
+      font-size: 14px;
+      line-height: 20px;
+      background: #ffde45;
+      background-image: linear-gradient(to bottom, #ffde45, #f2d243);
+      color: #333;
+      padding: 4px 7px 4px 7px;
+      margin: 4px;
+      font-weight: bold;
+    }
   }
   h3 {
     margin: 10px 0;

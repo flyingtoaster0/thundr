@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def new
+    unless current_user.nil?
+      redirect_to root_url
+    end
     @user = User.new
   end
 
