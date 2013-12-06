@@ -137,9 +137,11 @@
 
                   <!-- For each schedule, add a button that would add this section to that schedule -->
                   <!-- For now, this is just a dummy form. Will probably need to use AJAX to "nicely" add sections to schedules -->
-                  <%= form_for course, html: {:class => 'pure-form'} do %>
-                      <button class="pure-button">Add to</button>
-                      <%= select('section', 'schedule_id', @user.schedules.collect{|s| [s.name, s.id]}, {include_blank: 'Select a schedule'}, {class: 'pure-input-1-4' }) %>
+                  <% unless @user.nil? %>
+                      <%= form_for course, html: {:class => 'pure-form'} do %>
+                          <button class="pure-button">Add to</button>
+                          <%= select('section', 'schedule_id', @user.schedules.collect{|s| [s.name, s.id]}, {include_blank: 'Select a schedule'}, {class: 'pure-input-1-4' }) %>
+                      <% end %>
                   <% end %>
                 </div>
             <% end %>
