@@ -2,7 +2,7 @@ class Section < ActiveRecord::Base
   belongs_to :course
   has_many :klasses
   has_and_belongs_to_many :schedules
-
+  before_destroy{schedules.clear}
   attr_accessor :classes_array
 
 
