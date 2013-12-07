@@ -1,6 +1,9 @@
 class API::SchedulesController < ApplicationController
   before_filter :restrict_access
 
+  #In this controller, any action that accesses data validates it based on the user specified by the remember_token supplied in the header.
+  #These actions will return error code 404 if the object doesn't exist, and 403 if the object doesn't belong to the user.
+
   #Returns all the schedules belonging to a particular user
   def index
     @schedules = Schedule.where(user_id: RememberToken.select(:user_id).where(token: @remember_token)).all
@@ -19,11 +22,73 @@ class API::SchedulesController < ApplicationController
     end
   end
 
-  def destroy
-    Schedule.destroy(params[:id])
 
+  #Returns a JSON object containing both the schedule, and courses contained in that schedule
+  #Returns an empty array if the requested schedule does not exist or does not belong to the user corresponding to the remember_token supplied in the header
+  def show
+    @schedule = Schedule.find(params[:id])
+    @schedule_list = Schedule.where(user_id: RememberToken.select(:user_id).where(token: @remember_token))
+    if @schedule and @schedule_list and @schedule_list.include? @schedule
+      @schedule_hash = Hash.new
+      @schedule_hash['schedule'] = @schedule
+      @schedule_hash['sections'] = @schedule.sections
+
+      respond_to do |format|
+        format.json {  render :json => [@schedule_hash] }
+      end
+
+    else
+      respond_to do |format|
+        format.json {  render :json => [] }
+      end
+    end
+  rescue ActiveRecord::RecordNotFound
     respond_to do |format|
-      format.all{head :ok, :content_type => 'text/html'}
+      format.json {  render :json => [] }
+    end
+  end
+
+  #Updates the name of a schedule
+  #404 if the schedule doesn't exist. 403 if it doesn't belong to the user specified by the remember token.
+  def update
+    @schedule = Schedule.find(params[:id])
+    @schedule_list = Schedule.where(user_id: RememberToken.select(:user_id).where(token: @remember_token))
+    if @schedule and @schedule_list and @schedule_list.include? @schedule
+      @new_name = params[:name].gsub('+', ' ')
+      @schedule.name = @new_name
+      @schedule.save
+      respond_to do |format|
+        format.all{head :ok, :content_type => 'text/html'}
+      end
+    else
+      respond_to do |format|
+        format.all{head :forbidden, :content_type => 'text/html'}
+      end
+    end
+
+  rescue ActiveRecord::RecordNotFound
+    respond_to do |format|
+      format.all{head :not_found, :content_type => 'text/html'}
+    end
+  end
+
+  def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule_list = Schedule.where(user_id: RememberToken.select(:user_id).where(token: @remember_token))
+    if @schedule and @schedule_list and @schedule_list.include? @schedule
+      Schedule.destroy(params[:id])
+
+      respond_to do |format|
+        format.all{head :ok, :content_type => 'text/html'}
+      end
+    else
+      respond_to do |format|
+        format.all{head :forbidden, :content_type => 'text/html'}
+      end
+    end
+  rescue ActiveRecord::RecordNotFound
+    respond_to do |format|
+      format.all{head :not_found, :content_type => 'text/html'}
     end
   end
 
@@ -38,13 +103,27 @@ class API::SchedulesController < ApplicationController
 
   def delete_section
     @schedule = Schedule.find(params[:id])
-    @section = Section.find(params[:section_id])
-    if @schedule and @section then @schedule.sections.delete(@section) end
+    @schedule_list = Schedule.where(user_id: RememberToken.select(:user_id).where(token: @remember_token))
+    if @schedule and @schedule_list and @schedule_list.include? @schedule
 
+      @section = Section.find(params[:section_id])
+      if @schedule and @section then @schedule.sections.delete(@section) end
+
+      respond_to do |format|
+        format.all{head :ok, :content_type => 'text/html'}
+      end
+    else
+      respond_to do |format|
+        format.all{head :forbidden, :content_type => 'text/html'}
+      end
+    end
+
+  rescue ActiveRecord::RecordNotFound
     respond_to do |format|
-      format.all{head :ok, :content_type => 'text/html'}
+      format.all{head :not_found, :content_type => 'text/html'}
     end
   end
+
 
   private
 
