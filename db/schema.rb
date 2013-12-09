@@ -73,8 +73,6 @@ ActiveRecord::Schema.define(version: 20131206015003) do
     t.datetime "updated_at"
   end
 
-
-
   create_table "remember_tokens", force: true do |t|
     t.string  "token"
     t.integer "user_id"
@@ -122,12 +120,6 @@ ActiveRecord::Schema.define(version: 20131206015003) do
     t.string   "remember_token"
     t.string   "username"
   end
-
-  create_table "schedules_sections", id: false do |t|
-    t.integer :section_id
-    t.integer :schedule_id
-  end
-
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
