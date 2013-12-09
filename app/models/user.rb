@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :schedules
+  has_many :remember_tokens
   has_one :cart
   include ActiveModel::ForbiddenAttributesProtection
   # Include default devise modules. Others available are:
