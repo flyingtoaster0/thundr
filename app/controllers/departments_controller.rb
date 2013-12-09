@@ -7,7 +7,7 @@ class DepartmentsController < ApplicationController
   end
 
   def show
-    @department = Department.where(deptCode: params[:id]).first
+    @department = Department.where(dept_code: params[:id]).first
 
 
     @courses = Course.where('department = ? AND method != ? AND method!= ?', params[:id], 'LAB', 'TUT').order('course_code ASC')
