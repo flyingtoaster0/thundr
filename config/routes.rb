@@ -51,6 +51,7 @@ LakeheadScheduler::Application.routes.draw do
     match '/schedules/add_section/:id/:section_id'       => 'schedules#add_section',             :via => [:get]
     match '/schedules/delete_section/:id/:section_id'    => 'schedules#delete_section',          :via => [:get]
     match '/login'                                       => 'users#login',                       :via => [:get]
+    match '/register'                                    => 'users#register',                    :via => [:get]
     match '/courses'                                     => 'courses#index',                     :via => [:get]
     match '/courses/department/:department_id'           => 'courses#find_by_department',        :via => [:get]
     match '/courses/:department_id/:course_id'           => 'courses#show',                      :via => [:get]
