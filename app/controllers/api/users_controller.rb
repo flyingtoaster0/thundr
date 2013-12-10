@@ -17,7 +17,7 @@ class API::UsersController < ApplicationController
       if @user && @user.authenticate(password)
         remember_token = RememberToken.create(token: User.encrypt(User.new_remember_token), user_id: @user.id, accessed_at: Time.now)
         respond_to do |format|
-          format.json { render :json => [remember_token] }
+          format.json { render :json => remember_token }
         end
       end
     end
