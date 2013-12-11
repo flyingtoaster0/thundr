@@ -26,25 +26,26 @@ class API::SchedulesController < ApplicationController
   #Returns a JSON object containing both the schedule, and courses contained in that schedule
   #Returns an empty array if the requested schedule does not exist or does not belong to the user corresponding to the remember_token supplied in the header
   def show
-    @schedule = Schedule.find(params[:id])
-    @schedule_list = Schedule.where(user_id: RememberToken.select(:user_id).where(token: @remember_token))
-    if @schedule and @schedule_list and @schedule_list.include? @schedule
-      @schedule_hash = Hash.new
-      @schedule_hash['schedule'] = @schedule
-      @schedule_hash['sections'] = @schedule.sections
+    #@schedule = Schedule.find(params[:id])
+    @user_id = RememberToken.where(token: @remember_token).first.user_id
+    @schedule = Schedule.where(user_id: @user_id).first_or_create
+    if @schedule
+      #@schedule_hash = Hash.new
+      #@schedule_hash['schedule'] = @schedule
+      #@schedule_hash['sections'] = @schedule.sections
 
       respond_to do |format|
-        format.json {  render :json => [@schedule_hash] }
+        format.json {  render :json => @schedule.sections }
       end
 
     else
       respond_to do |format|
-        format.json {  render :json => [] }
+        format.json {  render :json => nil }
       end
     end
   rescue ActiveRecord::RecordNotFound
     respond_to do |format|
-      format.json {  render :json => [] }
+      format.json {  render :json => nil }
     end
   end
 
@@ -93,7 +94,8 @@ class API::SchedulesController < ApplicationController
   end
 
   def add_section
-    @schedule = Schedule.find(params[:id])
+    @user_id = RememberToken.where(token: @remember_token).first.user_id
+    @schedule = Schedule.where(user_id: @user_id).first
     @section = Section.find(params[:section_id])
     if @schedule and @section then @schedule.sections << @section end
     respond_to do |format|
@@ -102,7 +104,8 @@ class API::SchedulesController < ApplicationController
   end
 
   def delete_section
-    @schedule = Schedule.find(params[:id])
+    @user_id = RememberToken.where(token: @remember_token).first.user_id
+    @schedule = Schedule.where(user_id: @user_id).first
     @schedule_list = Schedule.where(user_id: RememberToken.select(:user_id).where(token: @remember_token))
     if @schedule and @schedule_list and @schedule_list.include? @schedule
 

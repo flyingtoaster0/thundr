@@ -2,6 +2,7 @@ class CreateSections < ActiveRecord::Migration
   def change
     create_table :sections do |t|
       t.belongs_to :course
+      t.string :name
       t.string :department
       t.string :course_code
       t.string :section_code

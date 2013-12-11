@@ -45,11 +45,12 @@ LakeheadScheduler::Application.routes.draw do
   namespace :api, :defaults => {:format => :json} do
     resources :departments
     resources :schedules
+    match '/schedules/show'                              => 'schedule#show',                     :via => [:get]
     match '/schedules/create/:name'                      => 'schedules#create',                  :via => [:get]
     match '/schedules/update/:id/:name'                  => 'schedules#update',                  :via => [:get]
     match '/schedules/delete/:id'                        => 'schedules#destroy',                 :via => [:get]
-    match '/schedules/add_section/:id/:section_id'       => 'schedules#add_section',             :via => [:get]
-    match '/schedules/delete_section/:id/:section_id'    => 'schedules#delete_section',          :via => [:get]
+    match '/schedules/add_section/:section_id'           => 'schedules#add_section',             :via => [:get]
+    match '/schedules/delete_section/:section_id'        => 'schedules#delete_section',          :via => [:get]
     match '/login'                                       => 'users#login',                       :via => [:get]
     match '/register'                                    => 'users#register',                    :via => [:get]
     match '/courses'                                     => 'courses#index',                     :via => [:get]

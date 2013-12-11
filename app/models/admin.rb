@@ -99,6 +99,7 @@ class Admin
     new_section.department = department
     new_section.course_code = course_code
     new_section.section_code = section_code
+    new_section.name = course_name
 
 
     new_section.start_date = start_date ? Time.parse('20'+start_date) : nil
