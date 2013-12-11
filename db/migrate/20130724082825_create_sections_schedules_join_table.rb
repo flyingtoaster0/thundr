@@ -1,6 +1,6 @@
 class CreateSectionsSchedulesJoinTable < ActiveRecord::Migration
   def change
-    create_table :sections_schedules, id: false do |t|
+    create_table :schedules_sections, id: false do |t|
       t.integer :section_id
       t.integer :schedule_id
     end
