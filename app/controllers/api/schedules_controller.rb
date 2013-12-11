@@ -39,12 +39,12 @@ class API::SchedulesController < ApplicationController
 
     else
       respond_to do |format|
-        format.json {  render :json => nil }
+        format.json {  render :json => [] }
       end
     end
   rescue ActiveRecord::RecordNotFound
     respond_to do |format|
-      format.json {  render :json => nil }
+      format.json {  render :json => [] }
     end
   end
 
