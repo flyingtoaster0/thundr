@@ -22,7 +22,6 @@ class API::SchedulesController < ApplicationController
     end
   end
 
-
   #Returns a JSON object containing both the schedule, and courses contained in that schedule
   #Returns an empty array if the requested schedule does not exist or does not belong to the user corresponding to the remember_token supplied in the header
   def show
