@@ -7,6 +7,9 @@ class CreateKlasses < ActiveRecord::Migration
       t.string :end_time
       t.string :campus
       t.string :room
+      t.string :department
+      t.string :course_code
+      t.string :section_code
 
       t.timestamps
     end

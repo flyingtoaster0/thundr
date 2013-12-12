@@ -132,6 +132,9 @@ class Admin
 
           new_klass = Klass.new
 
+          new_klass.department = department
+          new_klass.course_code = course_code
+          new_klass.section_code = section_code
           new_klass.day = day
           new_klass.start_time = start_time
           new_klass.end_time = end_time

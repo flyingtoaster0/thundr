@@ -44,8 +44,8 @@ LakeheadScheduler::Application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     resources :departments
-    resources :schedules
-    match '/schedules/show'                              => 'schedule#show',                     :via => [:get]
+    match '/schedules/classes'                           => 'schedules#classes',                  :via => [:get]
+    match '/schedules/show'                              => 'schedules#show',                     :via => [:get]
     match '/schedules/create/:name'                      => 'schedules#create',                  :via => [:get]
     match '/schedules/update/:id/:name'                  => 'schedules#update',                  :via => [:get]
     match '/schedules/delete/:id'                        => 'schedules#destroy',                 :via => [:get]

@@ -94,11 +94,15 @@ class API::SchedulesController < ApplicationController
 
   def add_section
     @user_id = RememberToken.where(token: @remember_token).first.user_id
-    @schedule = Schedule.where(user_id: @user_id).first
+    @schedule = Schedule.where(user_id: @user_id).first_or_create
     @section = Section.find(params[:section_id])
-    if @schedule and @section then @schedule.sections << @section end
+    if @schedule and @section and not @schedule.sections.include? @section then @schedule.sections << @section end
     respond_to do |format|
       format.all{head :ok, :content_type => 'text/html'}
+    end
+  else
+    respond_to do |format|
+      format.all{head :not_found, :content_type => 'text/html'}
     end
   end
 
@@ -126,6 +130,22 @@ class API::SchedulesController < ApplicationController
     end
   end
 
+  def classes
+    @classes = Array.new
+    @user_id = RememberToken.where(token: @remember_token).first.user_id
+    @schedule = Schedule.where(user_id: @user_id).first
+
+    @schedule.sections.each do |s|
+      s.classes.each do |k|
+        @classes << k
+      end
+    end
+
+    respond_to do |format|
+      format.json {  render :json => @classes }
+    end
+
+  end
 
   private
 

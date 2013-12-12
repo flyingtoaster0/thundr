@@ -36,11 +36,6 @@ ActiveRecord::Schema.define(version: 20131206015003) do
     t.integer "cart_id"
   end
 
-  create_table "courses_schedules", id: false, force: true do |t|
-    t.integer "course_id"
-    t.integer "schedule_id"
-  end
-
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0
     t.integer  "attempts",   default: 0
@@ -69,6 +64,9 @@ ActiveRecord::Schema.define(version: 20131206015003) do
     t.string   "end_time"
     t.string   "campus"
     t.string   "room"
+    t.string   "department"
+    t.string   "course_code"
+    t.string   "section_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,13 +79,21 @@ ActiveRecord::Schema.define(version: 20131206015003) do
 
   create_table "schedules", force: true do |t|
     t.string   "name"
+    t.string   "season"
+    t.integer  "year"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",    null: false
   end
 
+  create_table "schedules_sections", id: false, force: true do |t|
+    t.integer "section_id"
+    t.integer "schedule_id"
+  end
+
   create_table "sections", force: true do |t|
     t.integer  "course_id"
+    t.string   "name"
     t.string   "department"
     t.string   "course_code"
     t.string   "section_code"
