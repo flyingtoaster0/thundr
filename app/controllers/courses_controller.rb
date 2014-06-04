@@ -34,6 +34,13 @@ class CoursesController < ApplicationController
 
       @courses = nil
 
+      #check by course code if query is entirely numeric
+      if /^\d+$/ =~ dept_code and dept_code.length == 4 then
+        #query is just a course code
+        @courses = Course.where("course_code = ?", dept_code)
+        @courses unless @courses.blank?
+      end
+
       #check by course code
       unless(Department.where('"dept_code" = ?', dept_code.upcase).blank?)
         if course_code
@@ -47,6 +54,8 @@ class CoursesController < ApplicationController
 
         @courses = Course.where('lower(department) = ?', dept_code.downcase) if @courses.blank?
       end
+
+      p "DEPT_CODE: #{dept_code} COURSE_CODE: #{course_code}"
 
       #Checking by course title
       course_name = params[:q].gsub('+',' ')
