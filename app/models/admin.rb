@@ -176,7 +176,7 @@ class Admin
   end
 
   def run_db_import
-    doc = Nokogiri::HTML(open('http://timetable.lakeheadu.ca/2013FW_UG_TBAY/courtime.html'))
+    doc = Nokogiri::HTML(open('http://timetable.lakeheadu.ca/2014FW_UG_TBAY/courtime.html'))
 
 
     link_array = Array.new()
@@ -184,7 +184,7 @@ class Admin
     puts 'Getting the links...'
     doc.css('div#copy ul li a').each do |x|
       add_dept(x["href"][0..3].upcase, x.text)
-      link_array.push("http://timetable.lakeheadu.ca/2013FW_UG_TBAY/" + x["href"])
+      link_array.push("http://timetable.lakeheadu.ca/2014FW_UG_TBAY/" + x["href"])
     end
 
     puts 'Constructing course array...'
