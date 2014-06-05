@@ -182,9 +182,8 @@ class Admin
     link_array = Array.new()
     #Add the rows to the departments table and push to the links array
     puts 'Getting the links...'
-    #doc.css('div#copy ul li a').each do |x|
-    ['NURS','OJIB','OUTD','PHIL','PHYS','POLY','PSYC','RELI','SOCI','SOWK','SPAN','VISU','WATE','WOME'].each do |x|
-      #add_dept(x["href"][0..3].upcase, x.text)
+    doc.css('div#copy ul li a').each do |x|
+      add_dept(x["href"][0..3].upcase, x.text)
       link_array.push("http://timetable.lakeheadu.ca/2014FW_UG_TBAY/" + x.downcase + ".html")
     end
 
