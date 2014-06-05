@@ -185,7 +185,7 @@ class Admin
     #doc.css('div#copy ul li a').each do |x|
     ['NURS','OJIB','OUTD','PHIL','PHYS','POLY','PSYC','RELI','SOCI','SOWK','SPAN','VISU','WATE','WOME'].each do |x|
       #add_dept(x["href"][0..3].upcase, x.text)
-      link_array.push("http://timetable.lakeheadu.ca/2014FW_UG_TBAY/" + x)
+      link_array.push("http://timetable.lakeheadu.ca/2014FW_UG_TBAY/" + x.downcase + ".html")
     end
 
     puts 'Constructing course array...'
