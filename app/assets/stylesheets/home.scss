@@ -7,24 +7,19 @@
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'FiraSans';
-  src: url('fonts/FiraSans-Regular.eot?#iefix') format("embedded-opentype"), url(asset-path('FiraSans-Regular.woff', font)) format("woff"), url(asset-path('FiraSans-Regular.ttf', font)) format("truetype");
-}
-
 html, body {
   height: 100%;
   margin: 0 auto;
   line-height: 1.7em;
   position: relative;
-  font-family: "FiraSans";
+  font-family: Helvetica;
   font-size: 14px;
   line-height: 20px;
   color: #333;
 }
 
 .pure-g *{
-  font-family: "FiraSans";
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 a {
