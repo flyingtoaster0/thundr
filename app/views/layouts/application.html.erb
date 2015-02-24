@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Thundr | The (unofficial) course catalog for Lakehead University students</title>
+  <title>Thundr | The Unofficial Course Catalog for Lakehead University Students</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -12,55 +12,42 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <div class="content">
-      <div class="header">
-        <div class="pure-menu pure-menu-open pure-menu-fixed pure-menu-horizontal menu-bar">
-          <a class="pure-menu-heading" href="/"><%= image_tag('52-x-45-cloud-only-white.png', alt: "Thundr") %></a>
 
-
-          <div class="pure-menu-heading" style="float: right;">
-            <%= render 'layouts/search' %>
-          </div>
-
-          <div class="col-lg-12">
-            <h1> TEST </h1>
-          </div>
-          <div class="col-lg-6">
-            <h1> TEST </h1>
-          </div>
-          <div class="col-lg-6">
-            <h1> TEST </h1>
-          </div>
-
-          <ul style="float: right;">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/faq">FAQ</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <!--li><%= link_to "Sign out", signout_path, method: "delete" %></li-->
-          </ul>
-
-
-
-
-          <!--
-          <div class="pure-menu-heading" style="float: right;">
-            <%# if current_user %>
-                <%#= current_user.username %>
-            <%# end %>
-          </div>
-          -->
-        </div>
-      </div>
-
-      <div class="content-body">
-        <%= content_for?(:content) ? yield(:content) : yield %>
-      </div>
-
-      <div class="footer">
-        Have ideas? Wanna help out? Check out the project on <a href="https://github.com/flyingtoaster0/lakehead-scheduler">GitHub!</a>
-      </div>
+  <header class='py3 border-bottom-light'>
+    <h1 class='h3 caps center mt0 mb3'>
+      Thundr <svg width='16' height='16' viewBox="0 0 32 32" style="fill:currentcolor"><path d="M0 10 C0 6, 3 2, 8 2 C12 2, 15 5, 16 6 C17 5, 20 2, 24 2 C30 2, 32 6, 32 10 C32 18, 18 29, 16 30 C14 29, 0 18, 0 10  "></path></svg>
+    </h1>
+    <div class='center mx-auto'>
+      <%= render 'layouts/search' %>
     </div>
+  </header>
+  <nav>
+    <div class='lg nowrap overflow-scroll-inertial mx-auto center bg-lg1 py2 border-bottom-light'>
+      <a href='/' class='m1 p1'>Home</a>
+      <a href='/about' class='m1 p1'>About</a>
+      <a href='/faq' class='m1 p1'>FAQ</a>
+      <a href='/contact' class='m1 p1'>Contact</a>
+      <!--li><%= link_to "Sign out", signout_path, method: "delete" %></li-->
+    </div>
+  </nav>
+
+  <!-- This is a uility for the user system (WIP)
+  <%# if current_user %>
+      <%#= current_user.username %>
+  <%# end %>
+  -->
+
+  <main>
+    <div class="content-body">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
+  </main>
+      
+  <footer>
+    <div class='bg-blk1'>
+      <p class='ml1 mr1 mt0 mb0 py3 gray1 center'>Have ideas? Wanna help out? Check out the project on <a href="https://github.com/flyingtoaster0/thundr" class="gray1 gray2-h">GitHub!</a></p>
+    </div>
+  </footer>
 
 </body>
 </html>
