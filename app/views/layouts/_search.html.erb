@@ -1,6 +1,4 @@
-<div class="search-form">
-  <%= form_tag('/courses/search/', :method => 'get', :class => 'pure-form') do %>
-      <%= text_field_tag :q, nil, :class=> 'pure-input-rounded', placeholder: 'e.g. COMP-1411' %>
-      <%= submit_tag 'Go!', :name => nil, :class => 'pure-button pure-button-search' %>
-  <% end %>
-</div>
+<%= form_tag('/courses/search/', :method => 'get', :class => 'inline-block') do %>
+  <%= text_field_tag :q, nil, :class=> 'fieldset-reset m0 bg-lg1 rounded', placeholder: 'Search' %>
+  <!-- <%= submit_tag 'Go!', :name => nil, :class => 'button regular rounded bg-white blk0' %> -->
+<% end %>
