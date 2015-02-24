@@ -11,18 +11,18 @@ For the most part, Thundr functions by using web scraping web scrapers to pull d
 Contributing
 ============
 
-Contributions are welcome to this project (especially from Lakehead students). Before you being development, you'll need to install a few things.
+Contributions are welcome to this project (especially from Lakehead students). Before you begin development, you'll need to install a few things.
 
 ####Prerequisites
 
 - Git - There are a ton of different ways to get Git, and it varies per platform. If you're on a mac, the easiest way is to install [Xcode](https://developer.apple.com/xcode/) (which you've probably already done), and install Xcode's command line developer tools. To do this, open up a terminal, run the command `gcc`, and you'll be prompted to install the command line developer tools.
 - [Ruby](https://www.ruby-lang.org/)
 - [Ruby on Rails](http://rubyonrails.org/)
-- [Postgres](http://www.postgresql.org/) or for Mac users, [Postgres](http://postgresapp.com/)
+- [Postgres](http://www.postgresql.org/), **or for Mac users,** [Postgres](http://postgresapp.com/)
 
 ####Getting up and running
 
-First, you'll need to install all the dependecies. Try to run bundle install and see if nokogiri fails to install:
+First, you'll need to install all the project dependencies. Try to run `bundle install` and see if nokogiri fails to install:
 
 ```bash
 $ cd thundr
