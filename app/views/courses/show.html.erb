@@ -1,56 +1,30 @@
-<div class="department-body">
-      <ul class="breadcrumb">
-        <li class="active">
-          <%= link_to('Home', root_url, {}) %>
-          <span class="divider">-</span>
-        </li>
+<div class="container">
 
-        <li class="active">
-          <%= link_to(@course.department, '/departments/'+@course.department, {}) %>
-          <span class="divider">-</span>
-        </li>
+  <h2 class='h2 ml1 mr1'><%= link_to(@course.department, '/courses/'+@course.department+'/'+@course.course_code, {}) %><%= '-' + @course.course_code+' - '+@course.name %></h2>
+  <h4 class='h4 ml1 mr1'>Description</h4>
 
-        <li class="active">
-          <%= @course.department_and_course_code %>
-        </li>
+  <div class='ml1 mr1'>
+    <% if @course.description == '' %>
+        <p>No description was found for this course.</p>
+    <% else %>
+        <p><%= @course.description %></p>
+    <% end %>
+  </div>
 
-      </ul>
+  <div class='ml1 mr1'>
+    <% if @course.prerequisite == '' %>
+        <p>No prerequisite information was found for this course.<p>
+    <% else %>
+        <h4 class='h4'>Prerequisites</h4>
+        <p><%= @course.prerequisite %></p>
+    <% end %>
+  </div>
 
-    <hr>
+  <div class = 'textbooks'>
+    <!-- @TODO -->
+  </div>
 
-
-    <div class="course-info">
-        <h1>
-          <%= link_to(@course.department, '/courses/'+@course.department+'/'+@course.course_code, {}) %><%= '-' + @course.course_code+' - '+@course.name %>
-        </h1>
-
-        <div class = 'description'>
-          <% if @course.description == '' %>
-              No description was found for this course.
-          <% else %>
-              <%= @course.description %>
-          <% end %>
-        </div>
-
-        <div class = 'prereqs'>
-          <% if @course.prerequisite == '' %>
-              No prerequisite information was found for this course.
-          <% else %>
-              Prerequisites: <%= @course.prerequisite %>
-          <% end %>
-        </div>
-
-        <div class = 'textbooks'>
-
-        </div>
-    </div>
-
-    <hr>
-
-
-  <h2 class="muted">
-    Sections
-  </h2>
+  <h4 class='h4 ml1 mr1'>Sections</h4>
 
   <% @listings.each do |season_listing| %>
       <div class='list-container'>
@@ -71,10 +45,7 @@
                             <%= course.method %> (<%= link_to(course.course_code_full,'/courses/' + course.department + '/' + course.course_code, {:title => course.name}) %>)
                           </div>
 
-
-                      <div style="float: right;">
-                        Synonym: <%= course.synonym %>
-                      </div>
+                          <p class='right'>Synonym: <button class='copy'><%= course.synonym %></button></p>
                       <!-- TODO make the synonym copy to clipboard when clicked -->
                     </header>
 

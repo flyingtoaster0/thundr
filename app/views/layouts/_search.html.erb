@@ -1,4 +1,4 @@
 <%= form_tag('/courses/search/', :method => 'get', :class => 'inline-block') do %>
-  <%= text_field_tag :q, nil, :class=> 'fieldset-reset m0 bg-lg1 rounded', placeholder: 'Search' %>
-  <!-- <%= submit_tag 'Go!', :name => nil, :class => 'button regular rounded bg-white blk0' %> -->
+  <%= text_field_tag :q, nil, :class=> 'fieldset-reset m0 bg-white rounded border-light', placeholder: 'Search' %>
+  <!-- <%= submit_tag 'Go', :name => nil, :class => 'button regular bg-white border-dark rounded blk0' %> -->
 <% end %>
