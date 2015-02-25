@@ -1,25 +1,12 @@
-<div class="department-body">
-  <div class="pure-g">
-    <div class="pure-u">
-      <ul class="breadcrumb">
-        <li>
-          <%= link_to('Home', root_url, {}) %>
-          <span class="divider">-</span>
-        </li>
-        <li class="active">
-          Search results for: <%= '"'+params[:q]+'"' %>
-        </li>
-      </ul>
-      <h1>
-        <%#= link_to(@department.dept_code+' - '+@department.dept_name, '/departments/'+@department.dept_code, {}) %>
-      </h1>
-    </div>
-  </div>
+<div class="container">
+  <h2 class='h2 ml1 mr1'>Search results for: <%= '"'+params[:q]+'"' %></h2>
+<!--
+    <%#= link_to(@department.dept_code+' - '+@department.dept_name, '/departments/'+@department.dept_code, {}) %> -->
 
   <% if @courses.blank? %>
-      <aside>
-        This search turned up no results. Try searching course codes like "MATH-3331", words like "calculus" or instructor last names like "Benson".
-      </aside>
+    <aside>
+      <p class='ml1 mr1'>This search turned up no results. Try searching course codes like "MATH-3331", words like "calculus" or instructor last names like "Benson".</p>
+    </aside>
   <% else %>
       <%= render 'layouts/course_list_table' %>
   <% end %>

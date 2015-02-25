@@ -38,10 +38,10 @@
 
     <div id='1'>
       <% @deptArray1.each do |d| %>
-        <div class='col col-6 px2 py1 border-bottom-light'>
+        <div class='col col-6 px1 py1 border-bottom-light'>
           <span class='bold'><%= d[:dept_code] %></span>
         </div>
-        <div class='col col-6 px2 py1 border-bottom-light border-left-light'>
+        <div class='col col-6 px1 py1 border-bottom-light border-left-light'>
           <%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %>
         </div>
       <% end %>
@@ -50,10 +50,10 @@
 
     <div id='2' style='display: none;'>
       <% @deptArray2.each do |d| %>
-        <div class='col col-6 px2 py1 border-bottom-light'>
+        <div class='col col-6 px1 py1 border-bottom-light'>
           <span class='bold'><%= d[:dept_code] %></span>
         </div>
-        <div class='col col-6 px2 py1 border-bottom-light border-left-light'>
+        <div class='col col-6 px1 py1 border-bottom-light border-left-light'>
           <%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %>
         </div>
       <% end %>
@@ -62,10 +62,10 @@
 
     <div id='3' style='display: none;'>
       <% @deptArray3.each do |d| %>
-        <div class='col col-6 px2 py1 border-bottom-light'>
+        <div class='col col-6 px1 py1 border-bottom-light'>
           <span class='bold'><%= d[:dept_code] %></span>
         </div>
-        <div class='col col-6 px2 py1 border-bottom-light border-left-light'>
+        <div class='col col-6 px1 py1 border-bottom-light border-left-light'>
           <%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %>
         </div>
       <% end %>

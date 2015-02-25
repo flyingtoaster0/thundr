@@ -5,7 +5,7 @@
   <% @courses.each do |c| %>
     <div class='border-light rounded ml1 mr1 mb2'>
 
-      <div class='block bold px2 py1 bg-lg1 border-bottom-light'>
+      <div class='block bold px1 py1 bg-lg1 border-bottom-light'>
         <%= c.department %> - <%= c.course_code %>
         <span class='right'>
           <% if c.credits == 1.0 %>
@@ -23,7 +23,7 @@
         </span>
       </div>
 
-      <div class='px2 py1'>
+      <div class='px1 py1'>
         <%= link_to('/courses'+'/'+c.department+'/'+c.course_code, {}) do %>
           <%= c.name %>
         <% end %>
