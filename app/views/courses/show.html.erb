@@ -27,96 +27,42 @@
   <h4 class='h4 ml1 mr1'>Sections</h4>
 
   <% @listings.each do |season_listing| %>
-      <div class='list-container'>
 
-        <h3>
-          <%= season_listing.first.first ? season_listing.first.first.season : '' %>
-        </h3>
+    <div class='border-light rounded ml1 mr1 mb2'>
+      <h4 class='h4 m0 px1 py1 bg-lg1'><%= season_listing.first.first ? season_listing.first.first.season : '' %></h4>
+    
+      <% season_listing.each do |course_listing| %>
+        <% course_listing.each do |course| %>
+          <div class='px1 py1 border-top-light'>
+            <h6 class='h6 m0 inline-block'><%= course.method %> (<%= link_to(course.course_code_full,'/courses/' + course.department + '/' + course.course_code, {:title => course.name}) %>)</h6>
+            <h6 class='h6 m0 inline-block right'>Synonym: <button class='copy button rounded bg-blk2 white'><%= course.synonym %></button></h6>
+          </div>
 
-
-        <% season_listing.each do |course_listing| %>
-
-            <% course_listing.each do |course| %>
-                <div class='section'>
-                  <table class='table-list'>
-                    <header>
-
-                          <div style="float: left;" >
-                            <%= course.method %> (<%= link_to(course.course_code_full,'/courses/' + course.department + '/' + course.course_code, {:title => course.name}) %>)
-                          </div>
-
-                          <p class='right'>Synonym: <button class='copy'><%= course.synonym %></button></p>
-                      <!-- TODO make the synonym copy to clipboard when clicked -->
-                    </header>
-
-                    <%# unless course.day_array.empty? %>
-                    <% unless Klass.where(:section_id => course.id).empty? %>
-                        <%# course.day_array.each do |day| %>
-                        <% Klass.where(:section_id => course.id).each do |day| %>
-                            <tr>
-                              <td>
-                                <div class='table-list-row'>
-                                  <div class="pure-g">
-                                    <div class="pure-u-3-8">
-                                      <%= day.day_full %>, <%= day.start_time_twelve_hour %> - <%= day.end_time_twelve_hour %>
-                                    </div>
-
-                                    <div class="pure-u-1-4">
-                                      <%= course.instructor %>
-                                    </div>
-
-                                    <div class="pure-u-1-8">
-                                      <%= day.room %>
-                                    </div>
-
-                                    <div class="pure-u-1-4">
-                                      <span style="float: right;">
-                                        <%= course.start_date %> - <%= course.end_date %>
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                        <% end %>
-                    <% else %>
-                        <tr class='course'>
-                          <td>
-                            <div class="pure-g">
-                              <div class="pure-u-3-8">
-                                -
-                              </div>
-
-                              <div class="pure-u-1-4">
-                                <%= course.instructor %>
-                              </div>
-
-                              <div class="pure-u-1-8">
-                                <%= '' %>
-                              </div>
-
-                              <div class="pure-u-1-4">
-                              <span style="float: right;">
-                                <%= course.start_date %> - <%= course.end_date  %>
-                              </span>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                    <% end %>
-                  </table>
-
-                  <!-- For each schedule, add a button that would add this section to that schedule -->
-                  <!-- For now, this is just a dummy form. Will probably need to use AJAX to "nicely" add sections to schedules -->
-                  <% unless @user.nil? %>
-                      <%= form_for course, html: {:class => 'pure-form'} do %>
-                          <button class="pure-button">Add to</button>
-                          <%= select('section', 'schedule_id', @user.schedules.collect{|s| [s.name, s.id]}, {include_blank: 'Select a schedule'}, {class: 'pure-input-1-4' }) %>
-                      <% end %>
-                  <% end %>
-                </div>
+        <%# unless course.day_array.empty? %>
+        <% unless Klass.where(:section_id => course.id).empty? %>
+        <%# course.day_array.each do |day| %>
+          <% Klass.where(:section_id => course.id).each do |day| %>
+            <ul class='list-reset px1 py1 mb0 border-top-light'>
+              <li class='bold'><%= day.day_full %>, <%= day.start_time_twelve_hour %> - <%= day.end_time_twelve_hour %></li>
+              <li><%= course.instructor %></li>
+              <li><%= day.room %></li>
+              <li class='small'><%= course.start_date %> - <%= course.end_date %>
+            </ul>
+          <% end %>
+        <% else %>
+          <%= course.instructor %>
+          <%= course.start_date %> <%= course.end_date  %>
+        <% end %>
+        <!-- For each schedule, add a button that would add this section to that schedule -->
+        <!-- For now, this is just a dummy form. Will probably need to use AJAX to "nicely" add sections to schedules -->
+        <% unless @user.nil? %>
+            <%= form_for course, html: {:class => 'pure-form'} do %>
+                <button class="pure-button">Add to</button>
+                <%= select('section', 'schedule_id', @user.schedules.collect{|s| [s.name, s.id]}, {include_blank: 'Select a schedule'}, {class: 'pure-input-1-4' }) %>
             <% end %>
         <% end %>
-      </div>
-  <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
 </div>

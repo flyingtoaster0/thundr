@@ -206,8 +206,7 @@ button,
   cursor: pointer;
   display: inline-block;
   box-sizing: border-box;
-  line-height: 1.125rem;
-  padding: .5rem 1rem;
+  padding: 0.125rem 0.25rem;
   margin: 0;
   height: auto;
   border: 1px solid transparent;
@@ -1088,16 +1087,6 @@ hr {
 
 
 /**
- * @TODO Buttons
- */
-
-.button {
-
-}
-
-
-
-/**
  * Borders
  */
 
@@ -1255,6 +1244,10 @@ hr {
 
 .brown {
   color: #8f5536;
+}
+
+.white {
+  color: #fff;
 }
 
 
@@ -1678,4 +1671,12 @@ hr {
 }
 ::-moz-selection {
   background: #74ddff;
+}
+
+.no-underline:hover {
+  text-decoration: none;
+}
+
+.small {
+  font-size: .75rem;
 }
