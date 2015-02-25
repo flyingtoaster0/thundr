@@ -58,3 +58,9 @@ Open a new tab, and in the same directory run
 ```bash
 $ rails server
 ```
+
+####My changes
+
+- Completely new layout
+- Added a label for full-year courses
+- Setup click-to-copy for course synonyms

@@ -1,20 +1,7 @@
-<div class="department-body">
-  <div class="pure-g">
-    <div class="pure-u">
-      <ul class="breadcrumb">
-        <li>
-          <%= link_to('Home', root_url, {}) %>
-          <span class="divider">-</span>
-        </li>
-        <li class="active">
-          <%= @department.dept_name %>
-        </li>
+<div class="container">
 
-      </ul>
-      <h1>
-        <%= link_to(@department.dept_code+' - '+@department.dept_name, '/departments/'+@department.dept_code, {}) %>
-      </h1>
-    </div>
-  </div>
+  <h2 class='h2 ml1 mr1'>
+    <%= link_to(@department.dept_code+' - '+@department.dept_name, '/departments/'+@department.dept_code, {}) %>
+  </h2>
   <%= render 'layouts/course_list_table' %>
 </div>

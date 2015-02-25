@@ -1,8 +1,7 @@
 <script type="text/javascript">
 
-  'use strict';
-
   function paginate(pageId) {
+    'use strict';
 
       for (var i = 1; i < 4; i++) {
 
@@ -11,7 +10,7 @@
 
           var paginatorId = 'paginate' + i;
           var paginatorButton = document.getElementById(paginatorId);
-          paginatorButton.className = 'pure-button';
+          paginatorButton.className = 'block center bg-lg1 py1';
 
       }
 
@@ -20,75 +19,65 @@
 
       var paginatorId = 'paginate' + pageId;
       var paginatorButton = document.getElementById(paginatorId);
-      paginatorButton.className = 'pure-button pure-button-active';
+      paginatorButton.className = 'block center bg-lg0 py1';
   }
+
 </script>
 
-<div class="department-body">
+<div class="container">
 
-    <div class='container'>
-      <p class='ml1 mr1 mt3 justify'><span class='bold'>Thundr</span> is the unofficial course catalog for Lakehead Univeristy students. Just enter a course code in the search bar and hit 'go' to begin.
-    </div>
-    <div class="search-div">
-      <div class="pure-g">
-        <div class="pure-u">
-          <h2 class="search-label">Enter a course code to begin</h2>
+  <p class='ml1 mr1 mt3 justify'><span class='bold'>Thundr</span> is the unofficial course catalog for Lakehead Univeristy students. Enter a search term above, <span class='italic'>ex: COMP-1411</span>, or browse courses below.</p>
+
+  <div class='border-top-light border-right-light border-left-light rounded ml1 mr1 mb2'>
+
+    <ul class="list-reset">
+      <li class='col col-4 border-bottom-light border-right-light'><a class="block center bg-lg1 bg-lg py1" href="javascript:void(0);" onclick="paginate(1)" id="paginate1">A - F</a></li>
+      <li class='col col-4 border-bottom-light'><a class="block center bg-lg1 py1" href="javascript:void(0);" onclick="paginate(2)" id="paginate2">G - M</a></li>
+      <li class='col col-4 border-bottom-light border-left-light'><a class="block center bg-lg1 py1" href="javascript:void(0);" onclick="paginate(3)" id="paginate3">N - Z</a></li>
+    </ul>
+
+    <div id='1'>
+      <% @deptArray1.each do |d| %>
+        <div class='col col-6 px2 py1 border-bottom-light'>
+          <span class='bold'><%= d[:dept_code] %></span>
         </div>
-      </div>
-      <div class="pure-g">
-        <div class="pure-u" style="margin: 12px 4px 40px 4px;">
-          <%= render 'layouts/search' %>
+        <div class='col col-6 px2 py1 border-bottom-light border-left-light'>
+          <%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %>
         </div>
-      </div>
-      <%= render 'layouts/fblike' %>
+      <% end %>
+      <div class='clearfix'></div>
     </div>
 
-
-
-  <ul class="pure-paginator">
-
-    <!-- TODO Change the implementation of the onclick events to jquery -->
-    <li><a class="pure-button pure-button-active" href="javascript:void(0);" onclick="paginate(1)" id="paginate1">A - F</a></li>
-    <li><a class="pure-button" href="javascript:void(0);" onclick="paginate(2)" id="paginate2">G - M</a></li>
-    <li><a class="pure-button" href="javascript:void(0);" onclick="paginate(3)" id="paginate3">N - Z</a></li>
-  </ul>
-  <div class="pure-g">
-    <div class="pure-u-2-3">
-      <div class=tab-content>
-
-        <table class="pure-table-borderless wide-table" id="1">
-          <tbody>
-            <% @deptArray1.each do |d| %>
-                <tr>
-                  <td style="width: 10em;"><%= d[:dept_code] %></td>
-                  <td><%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %></td>
-                </tr>
-            <% end %>
-          </tbody>
-          </table>
-
-
-          <table class="pure-table-borderless wide-table" id="2" style="display: none">
-            <tbody>
-              <% @deptArray2.each do |d| %>
-                <tr>
-                  <td style="width: 10em;"><%= d[:dept_code] %></td>
-                  <td><%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-
-          <table class="pure-table-borderless wide-table" id="3" style="display: none">
-            <tbody>
-              <% @deptArray3.each do |d| %>
-                <tr>
-                  <td style="width: 10em;"><%= d[:dept_code] %></td>
-                  <td><%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %></td>
-                </tr>
-              <% end %>
-          </table>
-      </div>
+    <div id='2' style='display: none;'>
+      <% @deptArray2.each do |d| %>
+        <div class='col col-6 px2 py1 border-bottom-light'>
+          <span class='bold'><%= d[:dept_code] %></span>
+        </div>
+        <div class='col col-6 px2 py1 border-bottom-light border-left-light'>
+          <%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %>
+        </div>
+      <% end %>
+      <div class='clearfix'></div>
     </div>
+
+    <div id='3' style='display: none;'>
+      <% @deptArray3.each do |d| %>
+        <div class='col col-6 px2 py1 border-bottom-light'>
+          <span class='bold'><%= d[:dept_code] %></span>
+        </div>
+        <div class='col col-6 px2 py1 border-bottom-light border-left-light'>
+          <%= link_to(d[:dept_name], 'departments/'+d[:dept_code], {}) %>
+        </div>
+      <% end %>
+      <div class='clearfix'></div>
+    </div>
+
   </div>
+
 </div>
+<script type='text/javascript'>
+(function(){
+  'use strict';
+  document.getElementById('paginate1').className='block center bg-lg0 py1';
+})();
+</script>

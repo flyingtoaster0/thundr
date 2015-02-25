@@ -1,54 +1,40 @@
-<div class='list-container'>
+<div class='container'>
 
-  <table class='table-list'>
-    <header>
-      <h3 class="muted">
-        courses
-      </h3>
-    </header>
-    <tbody>
-    <% @courses.each do |c| %>
-        <tr>
-          <td>
-            <div class='table-list-row'>
-              <div class="pure-g">
-                <div class="pure-u-1-4">
-                  <%= c.department %>-<%= c.course_code %>
-                </div>
+  <h4 class='h4 ml1 mr1'>Courses</h4>
 
-                <div class="pure-u-1-2">
+  <% @courses.each do |c| %>
+    <div class='border-light rounded ml1 mr1 mb2'>
 
-                  <%= link_to('/courses'+'/'+c.department+'/'+c.course_code, {class: 'ununderlinable'}) do %>
-                                <span class="underlinable" style='margin-right: 9px'>
-                                    <%= c.name %>
-                                </span>
-                      <% if c.all_seasons.include? 'F' %>
-                                    <span class="season-tag season-Fall">
-                                      Fall
-                                    </span>
-                      <% end %>
-                      <% if c.all_seasons.include? 'W' %>
-                                    <span class="season-tag season-Winter">
-                                      Winter
-                                    </span>
-                      <% end %>
-                      <% if c.all_seasons.include? 'S' %>
-                                    <span class="season-tag season-Summer">
-                                      Summer
-                                    </span>
-                      <% end %>
-                  <% end %>
-                </div>
+      <div class='block bold px2 py1 bg-lg1 border-bottom-light'>
+        <%= c.department %> - <%= c.course_code %>
+        <span class='right'>
+          <% if c.credits == 1.0 %>
+            <span class='h6 bg-blk0 yellow rounded px1 py0'> Full Year</span>
+          <% end %>
+          <% if c.all_seasons.include? 'F' %>
+            <span class='h6 bg-blk0 red rounded px1 py0'> Fall</span>
+          <% end %>
+          <% if c.all_seasons.include? 'W' %>
+            <span class='h6 bg-blk0 blue rounded px1 py0'> Winter</span>
+          <% end %>
+          <% if c.all_seasons.include? 'S' %>
+            <span class='h6 bg-blk0 green rounded px1 py0'> Summer</span>
+          <% end %>
+        </span>
+      </div>
 
-                <div class="pure-u-1-4">
-                  <%= c.credits %>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-    <% end %>
+      <div class='px2 py1'>
+        <%= link_to('/courses'+'/'+c.department+'/'+c.course_code, {}) do %>
+          <%= c.name %>
+        <% end %>
+       
+        <span class='right'>
+          Credits: <span class='bold'><%= c.credits %></span>
+        </span>
+      </div>
 
-    </tbody>
-  </table>
+    </div>
+  <% end %>
+  <div class='clearfix'></div>
+
 </div>
