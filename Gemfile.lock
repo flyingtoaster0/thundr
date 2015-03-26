@@ -62,6 +62,7 @@ GEM
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.5.2)
+    rack-cors (0.3.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -127,6 +128,7 @@ DEPENDENCIES
   jquery-rails
   nokogiri (~> 1.6.0)
   pg
+  rack-cors
   rails (= 4.0.0)
   rspec-rails (= 2.13.1)
   sass-rails (~> 4.0.0)
