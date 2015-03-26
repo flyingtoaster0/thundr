@@ -49,3 +49,6 @@ gem 'nokogiri', '~> 1.6.0'
 # gem 'debugger'
 
 #gem 'devise'
+
+# Enable CORS
+gem 'rack-cors', :require => 'rack/cors'
