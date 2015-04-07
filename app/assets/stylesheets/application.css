@@ -1625,7 +1625,7 @@ hr {
 }
 
 .slide-in {
-  translateY(-100%);
+  transform: translateY(-100%);
   -webkit-animation: slide-in 1;
   animation: slide-in 1;
   -webkit-animation-fill-mode: forwards;
