@@ -6,7 +6,7 @@ Thundr is a course catalog for Lakehead University students. It is live at http:
 Overview
 ========
 
-For the most part, Thundr functions by using web scraping web scrapers to pull data from the Lakehead University webside into the database. The data is then available through the website through the Rails framework. Currently, this works by having the application visit the fall/winter timetables page and grabs every link that leads to a timetable for a department. Those links are followed, and then the course information is grabbed from the pages returned by them. The website itself is actually quite simple. It simply acts an an interface for users to view the stored information (though more features are still being added :) )
+For the most part, Thundr functions by using web scraping web scrapers to pull data from the Lakehead University webside into the database. The data is then available through the website through the Rails framework. Currently, this works by having the application visit the fall/winter timetables page and grabs every link that leads to a timetable for a department. Those links are followed, and then the course information is grabbed from the pages returned by them. The website itself is actually quite simple. It simply acts as an interface for users to view the stored information (though more features are still being added :) )
 
 Contributing
 ============
